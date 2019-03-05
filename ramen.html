@@ -19,17 +19,17 @@
 
   svg.append("path").attr("fill",bowl.color)
   .attr("d",function() {
-      return "M"+bowl.x+" "+bowl.y
-      +"C"+bowl.x+" "+(bowl.y+bowl.h/3).toFixed(2)
-      +" "+(bowl.x + (bowl.w-bowl.stand.w)/2/2).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
-      +" "+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h)
-      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h + bowl.stand.h)
-      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h)
-      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h)
-      +"C"+(bowl.x + 3*(bowl.w-bowl.stand.w)/4 + bowl.stand.w).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
-      +" "+(bowl.x + bowl.w)+" "+(bowl.y+bowl.h/3).toFixed(2)
-      +" "+(bowl.x + bowl.w)+" "+(bowl.y)
-      +"Z";
+    return "M"+bowl.x+" "+bowl.y
+    +"C"+bowl.x+" "+(bowl.y+bowl.h/3).toFixed(2)
+    +" "+(bowl.x + (bowl.w-bowl.stand.w)/2/2).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
+    +" "+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h)
+    +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h + bowl.stand.h)
+    +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h)
+    +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h)
+    +"C"+(bowl.x + 3*(bowl.w-bowl.stand.w)/4 + bowl.stand.w).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
+    +" "+(bowl.x + bowl.w)+" "+(bowl.y+bowl.h/3).toFixed(2)
+    +" "+(bowl.x + bowl.w)+" "+(bowl.y)
+    +"Z";
   });
 
 
@@ -44,15 +44,15 @@
   };
   svg.append("path").attr("fill",outer_ring.color)
   .attr("d",function() {
-      return "M"+outer_ring.x+" "+outer_ring.y
-      +"C"+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
-      +" "+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
-      +" "+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y)
-      +"L"+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y + outer_ring.h)
-      +"C"+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
-      +" "+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
-      +" "+outer_ring.x+" "+(outer_ring.y + outer_ring.h)
-      +"Z";
+    return "M"+outer_ring.x+" "+outer_ring.y
+    +"C"+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+    +" "+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+    +" "+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y)
+    +"L"+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y + outer_ring.h)
+    +"C"+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+    +" "+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+    +" "+outer_ring.x+" "+(outer_ring.y + outer_ring.h)
+    +"Z";
   });
 
 
@@ -68,18 +68,18 @@
 
   svg.append("path").attr("fill",top_lip.color)
   .attr("d",function() {
-      return "M"+top_lip.x+" "+top_lip.y
-      +"C"+(top_lip.x + top_lip.w/3)+" "+(top_lip.y + top_lip.r)
-      +" "+(top_lip.x + 2*top_lip.w/3)+" "+(top_lip.y + top_lip.r)
-      +" "+(top_lip.x + top_lip.w)+" "+top_lip.y
-      +"C"+(top_lip.x + top_lip.w)+" "+(top_lip.y - top_lip.h)
-      +" "+top_lip.x+" "+(top_lip.y - top_lip.h)
-      +" "+top_lip.x+" "+top_lip.y
+    return "M"+top_lip.x+" "+top_lip.y
+    +"C"+(top_lip.x + top_lip.w/3)+" "+(top_lip.y + top_lip.r)
+    +" "+(top_lip.x + 2*top_lip.w/3)+" "+(top_lip.y + top_lip.r)
+    +" "+(top_lip.x + top_lip.w)+" "+top_lip.y
+    +"C"+(top_lip.x + top_lip.w)+" "+(top_lip.y - top_lip.h)
+    +" "+top_lip.x+" "+(top_lip.y - top_lip.h)
+    +" "+top_lip.x+" "+top_lip.y
   });
 
 
 
-  const soup_offset = 20;
+  const soup_offset = 15;
   const soup = {
     x: bowl.x + soup_offset,
     y: bowl.y,
@@ -90,13 +90,13 @@
   }
   svg.append("path").attr("fill",soup.color)
   .attr("d",function() {
-      return "M"+soup.x+" "+soup.y
-      +"C"+soup.x+" "+(soup.y + soup.r)
-      +" "+(soup.x + soup.w)+" "+(soup.y + soup.r)
-      +" "+(soup.x + soup.w)+" "+soup.y
-      +"C"+(soup.x + soup.w)+" "+(soup.y - soup.h)
-      +" "+soup.x+" "+(soup.y - soup.h)
-      +" "+soup.x+" "+soup.y
+    return "M"+soup.x+" "+soup.y
+    +"C"+soup.x+" "+(soup.y + soup.r)
+    +" "+(soup.x + soup.w)+" "+(soup.y + soup.r)
+    +" "+(soup.x + soup.w)+" "+soup.y
+    +"C"+(soup.x + soup.w)+" "+(soup.y - soup.h)
+    +" "+soup.x+" "+(soup.y - soup.h)
+    +" "+soup.x+" "+soup.y
   });
 
 
@@ -115,16 +115,31 @@
   };
   svg.append("path").attr("fill",bottom_lip.color)
   .attr("d",function() {
-      return "M"+bottom_lip.x+" "+bottom_lip.y
-      +"C"+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
-      +" "+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
-      +" "+(bottom_lip.x + bottom_lip.w)+" "+bottom_lip.y
-      +"L"+(bottom_lip.x + bottom_lip.w)+" "+(bottom_lip.y + bottom_lip.h)
-      +"C"+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
-      +" "+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
-      +" "+bottom_lip.x+" "+(bottom_lip.y + bottom_lip.h)
-      +"Z";
+    return "M"+bottom_lip.x+" "+bottom_lip.y
+    +"C"+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
+    +" "+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
+    +" "+(bottom_lip.x + bottom_lip.w)+" "+bottom_lip.y
+    +"L"+(bottom_lip.x + bottom_lip.w)+" "+(bottom_lip.y + bottom_lip.h)
+    +"C"+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
+    +" "+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
+    +" "+bottom_lip.x+" "+(bottom_lip.y + bottom_lip.h)
+    +"Z";
   });
+
+  const egg = white: {
+    x: 0,
+    y: 0,
+    rx: 20,
+    ry: 15,
+    color: "white"
+  };
+
+  const yolk= {
+    x: 0,
+    y: 0,
+    r: 5,
+    color: "yellow"
+  };
 </script>
 
 </html>
