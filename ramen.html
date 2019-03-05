@@ -1,0 +1,130 @@
+<html>
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript">
+  let svg = d3.select("svg");
+
+  const bowl = {
+    x: 100,
+    y: 100,
+    w: 200,
+    h: 100,
+    stand: {
+      w: 100,
+      h: 10
+    },
+    color: "pink"
+  }
+
+  svg.append("path").attr("fill",bowl.color)
+  .attr("d",function() {
+      return "M"+bowl.x+" "+bowl.y
+      +"C"+bowl.x+" "+(bowl.y+bowl.h/3).toFixed(2)
+      +" "+(bowl.x + (bowl.w-bowl.stand.w)/2/2).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
+      +" "+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h)
+      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h + bowl.stand.h)
+      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h)
+      +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h)
+      +"C"+(bowl.x + 3*(bowl.w-bowl.stand.w)/4 + bowl.stand.w).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
+      +" "+(bowl.x + bowl.w)+" "+(bowl.y+bowl.h/3).toFixed(2)
+      +" "+(bowl.x + bowl.w)+" "+(bowl.y)
+      +"Z";
+  });
+
+
+
+  const outer_ring = {
+    x: bowl.x,
+    y: bowl.y + 10,
+    w: bowl.w,
+    h: 5,
+    r:20,
+    color: "gold"
+  };
+  svg.append("path").attr("fill",outer_ring.color)
+  .attr("d",function() {
+      return "M"+outer_ring.x+" "+outer_ring.y
+      +"C"+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+      +" "+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+      +" "+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y)
+      +"L"+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y + outer_ring.h)
+      +"C"+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+      +" "+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+      +" "+outer_ring.x+" "+(outer_ring.y + outer_ring.h)
+      +"Z";
+  });
+
+
+
+  const top_lip = {
+    x: bowl.x,
+    y: bowl.y,
+    w: bowl.w,
+    h: 50,
+    r: outer_ring.r+1,
+    color: "white"
+  }
+
+  svg.append("path").attr("fill",top_lip.color)
+  .attr("d",function() {
+      return "M"+top_lip.x+" "+top_lip.y
+      +"C"+(top_lip.x + top_lip.w/3)+" "+(top_lip.y + top_lip.r)
+      +" "+(top_lip.x + 2*top_lip.w/3)+" "+(top_lip.y + top_lip.r)
+      +" "+(top_lip.x + top_lip.w)+" "+top_lip.y
+      +"C"+(top_lip.x + top_lip.w)+" "+(top_lip.y - top_lip.h)
+      +" "+top_lip.x+" "+(top_lip.y - top_lip.h)
+      +" "+top_lip.x+" "+top_lip.y
+  });
+
+
+
+  const soup_offset = 20;
+  const soup = {
+    x: bowl.x + soup_offset,
+    y: bowl.y,
+    w: bowl.w - 2*soup_offset,
+    h: top_lip.h-soup_offset,
+    r: outer_ring.r,
+    color: "#FAD7A0"
+  }
+  svg.append("path").attr("fill",soup.color)
+  .attr("d",function() {
+      return "M"+soup.x+" "+soup.y
+      +"C"+soup.x+" "+(soup.y + soup.r)
+      +" "+(soup.x + soup.w)+" "+(soup.y + soup.r)
+      +" "+(soup.x + soup.w)+" "+soup.y
+      +"C"+(soup.x + soup.w)+" "+(soup.y - soup.h)
+      +" "+soup.x+" "+(soup.y - soup.h)
+      +" "+soup.x+" "+soup.y
+  });
+
+
+
+
+
+
+
+  const bottom_lip = {
+    x: bowl.x,
+    y: bowl.y,
+    w: bowl.w,
+    h: 10,
+    r: outer_ring.r,
+    color: "white"
+  };
+  svg.append("path").attr("fill",bottom_lip.color)
+  .attr("d",function() {
+      return "M"+bottom_lip.x+" "+bottom_lip.y
+      +"C"+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
+      +" "+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
+      +" "+(bottom_lip.x + bottom_lip.w)+" "+bottom_lip.y
+      +"L"+(bottom_lip.x + bottom_lip.w)+" "+(bottom_lip.y + bottom_lip.h)
+      +"C"+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
+      +" "+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
+      +" "+bottom_lip.x+" "+(bottom_lip.y + bottom_lip.h)
+      +"Z";
+  });
+</script>
+
+</html>
