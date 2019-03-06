@@ -116,9 +116,9 @@
   const egg = {
     x: 150,
     y: 80,
-    rx: 10,
-    ry1: 20,
-    ry2:13,
+    rx: 13,
+    ry1: 25,
+    ry2:20,
     rotate: -60,
     color: "white"
   };
@@ -138,7 +138,7 @@
   const yolk= {
     x: egg.x + egg.rx,
     y: egg.y + egg.ry1,
-    r: 7,
+    r: 9,
     color: "yellow"
   };
   svg.append("circle").attr("fill",yolk.color)
@@ -181,6 +181,28 @@
     +" "+chopstick_2.x+" "+(chopstick_2.y + chopstick_2.h)
     +" "+(chopstick_2.x + chopstick_2.w)+" "+(chopstick_2.y + chopstick_2.h)
     +"Z";
+  });
+
+
+  const noodles = {
+    x: 100,
+    y: 100,
+    dx: 3,
+    dy: 15,
+    w: 50,
+    h: 100,
+  }
+  svg.append("path").attr("fill","pink")
+  .attr("d",function() {
+    let str = "M "+noodles.x+" "+noodles.y+"C";
+    let i = noodles.y;
+    while(i < noodles.y + noodles.h) {
+      const inrc = Math.round(100*noodles.dy*Math.random())/100;
+      i += inrc;
+      str += (100 + Math.random()*noodles.dx - noodles.dx/2).toFixed(2) + " " + i + " "
+    }
+    str += "L"+200+" "+i
+    return str;
   });
 </script>
 
