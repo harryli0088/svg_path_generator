@@ -14,7 +14,7 @@
       w: 100,
       h: 10
     },
-    color: "pink"
+    color: "#EC7063"
   }
 
   svg.append("path").attr("fill",bowl.color)
@@ -34,112 +34,117 @@
 
 
 
-  const outer_ring = {
-    x: bowl.x,
-    y: bowl.y + 10,
-    w: bowl.w,
-    h: 5,
-    r:20,
-    color: "gold"
-  };
-  svg.append("path").attr("fill",outer_ring.color)
-  .attr("d",function() {
-    return "M"+outer_ring.x+" "+outer_ring.y
-    +"C"+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
-    +" "+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
-    +" "+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y)
-    +"L"+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y + outer_ring.h)
-    +"C"+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
-    +" "+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
-    +" "+outer_ring.x+" "+(outer_ring.y + outer_ring.h)
-    +"Z";
-  });
+  // const outer_ring = {
+  //   x: bowl.x,
+  //   y: bowl.y + 10,
+  //   w: bowl.w,
+  //   h: 5,
+  //   r:20,
+  //   color: "gold"
+  // };
+  // svg.append("path").attr("fill",outer_ring.color)
+  // .attr("d",function() {
+  //   return "M"+outer_ring.x+" "+outer_ring.y
+  //   +"C"+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+  //   +" "+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r)
+  //   +" "+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y)
+  //   +"L"+(outer_ring.x + outer_ring.w)+" "+(outer_ring.y + outer_ring.h)
+  //   +"C"+(outer_ring.x + 2*outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+  //   +" "+(outer_ring.x + outer_ring.w/3)+" "+(outer_ring.y + outer_ring.r + outer_ring.h)
+  //   +" "+outer_ring.x+" "+(outer_ring.y + outer_ring.h)
+  //   +"Z";
+  // });
 
 
 
-  const top_lip = {
-    x: bowl.x,
+  const rim = {
+    x: bowl.x + bowl.w/2,
     y: bowl.y,
-    w: bowl.w,
+    rx: bowl.w/2,
+    ry: 40,
+    color: "white"
+  };
+  svg.append("ellipse").attr("fill",rim.color)
+  .attr("cx",rim.x)
+  .attr("cy",rim.y)
+  .attr("rx",rim.rx)
+  .attr("ry",rim.ry);
+
+
+
+  const nori = {
+    x: bowl.x + 25,
+    y: bowl.y-70,
+    w: 50,
     h: 50,
-    r: outer_ring.r+1,
-    color: "white"
-  }
-
-  svg.append("path").attr("fill",top_lip.color)
+    r: 5,
+    rotate: -15,
+    color: "#333"
+  };
+  svg.append("path").attr("fill",nori.color).attr("transform","rotate("+nori.rotate+","+(nori.x+nori.w)+","+(nori.y+nori.h)+")")
   .attr("d",function() {
-    return "M"+top_lip.x+" "+top_lip.y
-    +"C"+(top_lip.x + top_lip.w/3)+" "+(top_lip.y + top_lip.r)
-    +" "+(top_lip.x + 2*top_lip.w/3)+" "+(top_lip.y + top_lip.r)
-    +" "+(top_lip.x + top_lip.w)+" "+top_lip.y
-    +"C"+(top_lip.x + top_lip.w)+" "+(top_lip.y - top_lip.h)
-    +" "+top_lip.x+" "+(top_lip.y - top_lip.h)
-    +" "+top_lip.x+" "+top_lip.y
+    return "M"+nori.x+" "+nori.y
+    +"L"+(nori.x + nori.w)+" "+nori.y
+    +"Q"+(nori.x + nori.w - nori.r)+" "+(nori.y + nori.h/2)
+    +" "+(nori.x + nori.w)+" "+(nori.y + nori.h)
+    +"L"+nori.x+" "+(nori.y + nori.h)
+    +"Q"+(nori.x - nori.r)+" "+(nori.y + nori.h/2)
+    +" "+nori.x+" "+nori.y
   });
 
 
-
-  const soup_offset = 15;
   const soup = {
-    x: bowl.x + soup_offset,
-    y: bowl.y,
-    w: bowl.w - 2*soup_offset,
-    h: top_lip.h-soup_offset,
-    r: outer_ring.r,
+    x: rim.x,
+    y: rim.y,
+    rx: rim.rx*0.9,
+    ry: rim.ry*0.8,
+    opacity: 0.9,
     color: "#FAD7A0"
-  }
-  svg.append("path").attr("fill",soup.color)
+  };
+  svg.append("ellipse").attr("fill",soup.color).attr("style","opacity:"+soup.opacity)
+  .attr("cx",soup.x)
+  .attr("cy",soup.y)
+  .attr("rx",soup.rx)
+  .attr("ry",soup.ry);
+
+
+
+
+
+
+
+  const egg = {
+    x: 150,
+    y: 80,
+    rx: 10,
+    ry1: 20,
+    ry2:13,
+    rotate: -60,
+    color: "white"
+  };
+  svg.append("path").attr("fill",egg.color).attr("transform","rotate("+egg.rotate+","+(egg.x+egg.rx)+","+(egg.y+egg.ry1)+")")
   .attr("d",function() {
-    return "M"+soup.x+" "+soup.y
-    +"C"+soup.x+" "+(soup.y + soup.r)
-    +" "+(soup.x + soup.w)+" "+(soup.y + soup.r)
-    +" "+(soup.x + soup.w)+" "+soup.y
-    +"C"+(soup.x + soup.w)+" "+(soup.y - soup.h)
-    +" "+soup.x+" "+(soup.y - soup.h)
-    +" "+soup.x+" "+soup.y
+    return "M"+egg.x+" "+(egg.y + egg.ry1)
+    +"C"+egg.x+" "+(egg.y + egg.ry1 + egg.ry2)
+    +" "+(egg.x + 2*egg.rx)+" "+(egg.y + egg.ry1 + egg.ry2)
+    +" "+(egg.x + 2*egg.rx)+" "+(egg.y + egg.ry1)
+    +"C"+(egg.x + 7*egg.rx/4)+" "+egg.y
+    +" "+(egg.x + egg.rx/4)+" "+egg.y
+    +" "+egg.x+" "+(egg.y+egg.ry1)
   });
 
 
-
-
-
-
-
-  const bottom_lip = {
-    x: bowl.x,
-    y: bowl.y,
-    w: bowl.w,
-    h: 10,
-    r: outer_ring.r,
-    color: "white"
-  };
-  svg.append("path").attr("fill",bottom_lip.color)
-  .attr("d",function() {
-    return "M"+bottom_lip.x+" "+bottom_lip.y
-    +"C"+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
-    +" "+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.r)
-    +" "+(bottom_lip.x + bottom_lip.w)+" "+bottom_lip.y
-    +"L"+(bottom_lip.x + bottom_lip.w)+" "+(bottom_lip.y + bottom_lip.h)
-    +"C"+(bottom_lip.x + 2*bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
-    +" "+(bottom_lip.x + bottom_lip.w/3)+" "+(bottom_lip.y + bottom_lip.h + bottom_lip.r)
-    +" "+bottom_lip.x+" "+(bottom_lip.y + bottom_lip.h)
-    +"Z";
-  });
-
-  const egg = white: {
-    x: 0,
-    y: 0,
-    rx: 20,
-    ry: 15,
-    color: "white"
-  };
 
   const yolk= {
-    x: 0,
-    y: 0,
-    r: 5,
+    x: egg.x + egg.rx,
+    y: egg.y + egg.ry1,
+    r: 7,
     color: "yellow"
   };
+  svg.append("circle").attr("fill",yolk.color)
+  .attr("cx",yolk.x)
+  .attr("cy",yolk.y)
+  .attr("r",yolk.r);
 </script>
 
 </html>
