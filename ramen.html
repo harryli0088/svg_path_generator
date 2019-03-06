@@ -145,6 +145,43 @@
   .attr("cx",yolk.x)
   .attr("cy",yolk.y)
   .attr("r",yolk.r);
+
+
+  const chopstick_1 = {
+    x: 170,
+    y: 50,
+    w: 150,
+    h: 5,
+    rotate: 5,
+    color: "#3E2723"
+  };
+  svg.append("path").attr("fill",chopstick_1.color).attr("transform","rotate("+chopstick_1.rotate+","+(chopstick_1.x+chopstick_1.w/2)+","+(chopstick_1.y+chopstick_1.h/2)+")")
+  .attr("d",function() {
+    return "M"+(chopstick_1.x + chopstick_1.w)+" "+chopstick_1.y
+    +"C"+chopstick_1.x+" "+chopstick_1.y
+    +" "+chopstick_1.x+" "+(chopstick_1.y + chopstick_1.h)
+    +" "+(chopstick_1.x + chopstick_1.w)+" "+(chopstick_1.y + chopstick_1.h)
+    +"Z";
+  });
+
+
+
+
+  const chopstick_2 = {
+    x: chopstick_1.x,
+    y: chopstick_1.y-7,
+    w: chopstick_1.w,
+    h: chopstick_1.h,
+    color: chopstick_1.color
+  };
+  svg.append("path").attr("fill",chopstick_2.color)
+  .attr("d",function() {
+    return "M"+(chopstick_2.x + chopstick_2.w)+" "+chopstick_2.y
+    +"C"+chopstick_2.x+" "+chopstick_2.y
+    +" "+chopstick_2.x+" "+(chopstick_2.y + chopstick_2.h)
+    +" "+(chopstick_2.x + chopstick_2.w)+" "+(chopstick_2.y + chopstick_2.h)
+    +"Z";
+  });
 </script>
 
 </html>
