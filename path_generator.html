@@ -1,0 +1,55 @@
+<html>
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script type="text/javascript">
+  const path = {
+    start: {
+      x: 0,
+      y: 0,
+    },
+    sections: [
+      {dx: 100, dy: 100, r: 0},
+      {dx: 100, dy: 100, r: 100}
+    ]
+  };
+
+  function generate_path(section, current_pos, step_size, wiggle_size) {
+    let d = "C"; //the path data string to eventually return
+
+    let distance;
+    let num_steps;
+    let step_vector = {x: 0, y: 0};
+    let wiggle_vector = {x: 0, y: 0};
+
+    //if there is a radius
+    if(r !== 0) {
+
+    }
+    //else this is a straight line
+    else {
+      distance = Math.sqrt(section.dx^2 + section.dy^2); //find the distance
+      num_steps = Math.max( Math.round(distance/step_size) , 1 ); //force there to be at least one step
+      step_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
+
+      //get each point along this line with a wiggle
+      for(let i=1; i<=num_steps; ++i) {
+        const dx_i = i/num_steps*section.dx; //get a step of the x
+        const dy_i = i/num_steps*section.dy; //get a step of the y
+
+        current_pos.x += dx_i; //add the step of x
+        current_pos.y += dy_i; //add the step of y
+
+        const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
+
+        //calculate the wiggle vector here
+
+        d += (current_pos.x + wiggle_vector.x) + " " + (current_pos.y + wiggle_vector.y) + " "; //add the next point with some wiggle
+      }
+    }
+
+    return d;
+  }
+</script>
+
+</html>
