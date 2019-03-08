@@ -3,7 +3,7 @@
 
 <script src="https://d3js.org/d3.v5.min.js"></script>
 <script type="text/javascript">
-  const path = {
+  const path_data = {
     start: {
       x: 0,
       y: 0,
@@ -16,7 +16,7 @@
     wiggle_size: 5
   };
 
-  function generate_path(section, current_pos, step_size, wiggle_size) {
+  function generate_section(section, current_pos, step_size, wiggle_size) {
     let d = ""; //the path data string to eventually return
 
     let distance;
@@ -56,15 +56,18 @@
   }
 
 
-  let current_pos = {x: path.start.x, y: path.start.y};
-  let d = "M"+path.start.x+" "+path.start.y+" ";
-  for(let i=0; i<path.sections.length; ++i) {
-    d += generate_path(path.sections[i], current_pos, path.step_size, path.wiggle_size);
+  function generate_path(path_data) {
+    let current_pos = {x: path_data.start.x, y: path_data.start.y};
+    let d = "M"+path_data.start.x+" "+path_data.start.y+" ";
+    for(let i=0; i<path_data.sections.length; ++i) {
+      d += generate_section(path_data.sections[i], current_pos, path_data.step_size, path_data.wiggle_size);
+    }
+    return d + "Z";
   }
-  d += "Z";
-  console.log(d);
+
+
   d3.select("svg").append("path").attr("fill","pink")
-  .attr("d",d);
+  .attr("d",generate_path(path_data));
 </script>
 
 </html>
