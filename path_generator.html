@@ -68,6 +68,43 @@
 
   d3.select("svg").append("path").attr("fill","pink")
   .attr("d",generate_path(path_data));
+
+
+
+
+
+
+
+
+function get_arc_length(dx,dy,r) {
+  const direct_distance = Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2) ); //get direct distance between the two points of the arc
+  const angle = Math.sin( direct_distance/(2*r) ); //get the angle of the arc
+  return angle * r; //return the distance
+}
+
+  const num_steps = Math.max( 1, Math.round(distance/step_size) );
+
+
+  const direction =
+
+  let prev = {x:0,y:0};
+
+  for(let i=1; i<=num_steps; ++i) {
+
+      //get the step vector here
+
+      //get the wiggle and wiggle vector here
+
+      const angle_i = (i/num_steps) * angle; //get the next step angle
+      const from_origin = {
+          x: section.r - Math.cos(angle_i)*section.r,
+          y: Math.sin(angle_i)*section.r
+      };
+  }
+}
+
+
+
 </script>
 
 </html>
