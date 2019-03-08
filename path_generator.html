@@ -11,26 +11,31 @@
     sections: [
       {dx: 100, dy: 100, r: 0},
       {dx: 100, dy: 100, r: 100}
-    ]
+    ],
+    step_size: 10,
+    wiggle_size: 2
   };
 
   function generate_path(section, current_pos, step_size, wiggle_size) {
-    let d = "C"; //the path data string to eventually return
+    let d = ""; //the path data string to eventually return
 
     let distance;
     let num_steps;
-    let step_vector = {x: 0, y: 0};
+    let step_unit_vector = {x: 0, y: 0}; //the unit vector pointing in the direction of the next step
     let wiggle_vector = {x: 0, y: 0};
 
     //if there is a radius
-    if(r !== 0) {
+    if(section.r !== 0) {
 
     }
     //else this is a straight line
     else {
-      distance = Math.sqrt(section.dx^2 + section.dy^2); //find the distance
+      d = "C";
+
+      distance = Math.sqrt(Math.pow(section.dx,2) + Math.pow(section.dy,2)); //find the distance
       num_steps = Math.max( Math.round(distance/step_size) , 1 ); //force there to be at least one step
-      step_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
+      step_unit_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
+      console.log(distance,num_steps,step_unit_vector)
 
       //get each point along this line with a wiggle
       for(let i=1; i<=num_steps; ++i) {
@@ -42,14 +47,25 @@
 
         const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
 
-        //calculate the wiggle vector here
+        wiggle_vector = {x: wiggle*step_unit_vector.y, y:-1*wiggle*step_unit_vector.x}; //calculate the wiggle vector
 
-        d += (current_pos.x + wiggle_vector.x) + " " + (current_pos.y + wiggle_vector.y) + " "; //add the next point with some wiggle
+        d += (current_pos.x + wiggle_vector.x).toFixed(2) + " " + (current_pos.y + wiggle_vector.y).toFixed(2) + " "; //add the next point with some wiggle
       }
     }
 
     return d;
   }
+
+
+  let current_pos = {x: path.start.x, y: path.start.y};
+  let d = "M"+path.start.x+" "+path.start.y+" ";
+  for(let i=0; i<path.sections.length; ++i) {
+    d += generate_path(path.sections[i], current_pos, path.step_size, path.wiggle_size);
+  }
+  d += "Z";
+  console.log(d);
+  d3.select("svg").append("path").attr("fill","pink")
+  .attr("d",d);
 </script>
 
 </html>
