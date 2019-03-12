@@ -1,7 +1,7 @@
 <html>
 <svg width="500" height="500" style="background: gray"></svg>
 
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="./d3.js"></script>
 <script type="text/javascript">
   const path_data = {
     start: {
@@ -9,11 +9,11 @@
       y: 0,
     },
     sections: [
-      {dx: 100, dy: 200, r: 0},
-      {dx: 100, dy: 100, r: 100}
+    {dx: 100, dy: 200, r: 0},
+    {dx: 100, dy: 200, r: 200}
     ],
-    step_size: 20,
-    wiggle_size: 5
+    step_size: 10,
+    wiggle_size: 1
   };
 
   function generate_section(section, current_pos, step_size, wiggle_size) {
@@ -24,16 +24,48 @@
     let step_unit_vector = {x: 0, y: 0}; //the unit vector pointing in the direction of the next step
     let wiggle_vector = {x: 0, y: 0};
 
+    const starting_point = {x: current_pos.x, y: current_pos.y};
+
     //if there is a radius
     if(section.r !== 0) {
+      const end_point = {x:starting_point.x + section.dx, y:starting_point.y + section.dy};
+      const direct_distance = Math.sqrt( Math.pow(section.dx,2) + Math.pow(section.dy,2) ); //get direct distance between the two points of the arc
+      const angle = 2*Math.asin( direct_distance/(2*section.r) ); //get the angle of the arc
 
+      distance = angle * section.r; //get the distance of the arc length
+      num_steps = get_num_steps(distance, step_size);
+
+      height = section.r * Math.cos(angle/2); //height of the isosceles
+      const angle_dxy = Math.atan(section.dy/section.dx);
+      height_vector = {x: height*Math.sin(angle_dxy), y: -height*Math.cos(angle_dxy)}; //relative to the raidus point R
+
+
+      const center = {
+        x:starting_point.x + section.dx/2 + height_vector.x,
+        y:starting_point.y + section.dy/2 + height_vector.y,
+        r: section.r
+      }; //the coordinates of the center of the circle
+      d3.select("svg").append("circle").attr("cx",center.x).attr("cy",center.y).attr("r",12)
+
+      current_pos.r = Math.sqrt(2*Math.pow(section.r,2)*(1-Math.cos(angle/num_steps))); //law of cosines
+
+      for(let i=1; i<=num_steps; ++i) {
+        const p = get_next_curve_point(current_pos,center,end_point);
+        step_unit_vector = get_step_unit_vector(p.x,p.y);
+        current_pos.x = p.x;
+        current_pos.y = p.y;
+
+        wiggle_vector = get_wiggle_vector(wiggle_size, step_unit_vector);
+
+        d += next_point(current_pos, wiggle_vector);
+      }
+
+      d += end_point.x + " " + end_point.y + " ";
     }
     //else this is a straight line
     else {
-      d = "C"; //string to return later
-
       distance = Math.sqrt(Math.pow(section.dx,2) + Math.pow(section.dy,2)); //find the distance
-      num_steps = Math.max( Math.round(distance/step_size) , 1 ); //force there to be at least one step
+      num_steps = get_num_steps(distance, step_size);
       step_unit_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
 
       //get each point along this line with a wiggle
@@ -44,13 +76,14 @@
         current_pos.x += dx_i - current_pos.x; //add the x difference
         current_pos.y += dy_i - current_pos.y; //add the y difference
 
-        const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
+        wiggle_vector = get_wiggle_vector(wiggle_size, step_unit_vector);
 
-        wiggle_vector = {x: wiggle*step_unit_vector.y, y:-1*wiggle*step_unit_vector.x}; //calculate the wiggle vector
-
-        d += (current_pos.x + wiggle_vector.x).toFixed(2) + " " + (current_pos.y + wiggle_vector.y).toFixed(2) + " "; //add the next point with some wiggle
+        d += next_point(current_pos, wiggle_vector);
       }
     }
+
+    current_pos.x = starting_point.x + section.dx;
+    current_pos.y = starting_point.y + section.dy;
 
     return d;
   }
@@ -58,9 +91,10 @@
 
   function generate_path(path_data) {
     let current_pos = {x: path_data.start.x, y: path_data.start.y};
-    let d = "M"+path_data.start.x+" "+path_data.start.y+" ";
+    let d = "M"+path_data.start.x+" "+path_data.start.y+"C  ";
     for(let i=0; i<path_data.sections.length; ++i) {
       d += generate_section(path_data.sections[i], current_pos, path_data.step_size, path_data.wiggle_size);
+      d3.select("svg").append("circle").attr("cx",current_pos.x).attr("cy",current_pos.y).attr("r",10).attr("fill","purple")
     }
     return d + "Z";
   }
@@ -72,39 +106,85 @@
 
 
 
-
-
-
-
-function get_arc_length(dx,dy,r) {
-  const direct_distance = Math.sqrt( Math.pow(dx,2) + Math.pow(dy,2) ); //get direct distance between the two points of the arc
-  const angle = Math.sin( direct_distance/(2*r) ); //get the angle of the arc
-  return angle * r; //return the distance
-}
-
-  const num_steps = Math.max( 1, Math.round(distance/step_size) );
-
-
-  const direction =
-
-  let prev = {x:0,y:0};
-
-  for(let i=1; i<=num_steps; ++i) {
-
-      //get the step vector here
-
-      //get the wiggle and wiggle vector here
-
-      const angle_i = (i/num_steps) * angle; //get the next step angle
-      const from_origin = {
-          x: section.r - Math.cos(angle_i)*section.r,
-          y: Math.sin(angle_i)*section.r
-      };
+  function get_num_steps(distance,step_size) {
+    return Math.max( Math.round(distance/step_size) , 1 ); //force there to be at least one step
   }
-}
+
+  function get_wiggle_vector(wiggle_size, step_unit_vector) {
+    const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
+    return {x: wiggle*step_unit_vector.y, y:-1*wiggle*step_unit_vector.x}; //calculate the wiggle vector
+  }
+
+  function get_step_unit_vector(dx,dy) {
+    const distance = Math.sqrt(Math.pow(dx,2) + Math.pow(dy,2));
+    return {x:dx/distance, y:dy/distance};
+  }
+
+  function next_point(current_pos, wiggle_vector) {
+    return (current_pos.x + wiggle_vector.x).toFixed(2) + " " + (current_pos.y + wiggle_vector.y).toFixed(2) + " "; //add the next point with some wiggle
+  }
 
 
 
+
+  function intersection(x0, y0, r0, x1, y1, r1) {
+    let a, dx, dy, d, h, rx, ry;
+    let x2, y2;
+
+    // dx and dy are the vertical and horizontal distances between the circle centers.
+    dx = x1 - x0;
+    dy = y1 - y0;
+
+    /* Determine the straight-line distance between the centers. */
+    d = Math.sqrt((dy*dy) + (dx*dx));
+
+    /* Check for solvability. */
+    if (d > (r0 + r1)) {
+      return false; /* no solution. circles do not intersect. */
+    }
+    if (d < Math.abs(r0 - r1)) {
+      return false; /* no solution. one circle is contained in the other */
+    }
+
+    /* 'point 2' is the point where the line through the circle
+    * intersection points crosses the line between the circle
+    * centers.
+    */
+
+    /* Determine the distance from point 0 to point 2. */
+    a = ((r0*r0) - (r1*r1) + (d*d)) / (2.0 * d) ;
+
+    /* Determine the coordinates of point 2. */
+    x2 = x0 + (dx * a/d);
+    y2 = y0 + (dy * a/d);
+
+    // Determine the distance from point 2 to either of the intersection points
+    h = Math.sqrt((r0*r0) - (a*a));
+
+    // Now determine the offsets of the intersection points from point 2.
+    rx = -dy * (h/d);
+    ry = dx * (h/d);
+
+    /* Determine the absolute intersection points. */
+    const xi = x2 + rx;
+    const xi_prime = x2 - rx;
+    const yi = y2 + ry;
+    const yi_prime = y2 - ry;
+
+    return [xi, yi, xi_prime, yi_prime];
+  }
+
+
+  function get_next_curve_point(start,center,end) {
+    const points = intersection(start.x, start.y, start.r, center.x, center.y, center.r);
+    const point_1 = {x: points[0],y: points[1]};
+    const point_2 = {x: points[2],y: points[3]};
+
+    const dist_1 = Math.sqrt(Math.pow(end.x-point_1.x,2) + Math.pow(end.y-point_1.y,2));
+    const dist_2 = Math.sqrt(Math.pow(end.x-point_2.x,2) + Math.pow(end.y-point_2.y,2));
+
+    return (dist_1 > dist_2) ? point_2 : point_1; //return the closer point
+  }
 </script>
 
 </html>
