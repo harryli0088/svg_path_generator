@@ -5,30 +5,32 @@
 <script type="text/javascript">
   const path_data = {
     start: {
-      x: 0,
-      y: 0,
+      x: 200,
+      y: 500,
     },
     sections: [
-    {dx: 100, dy: 200, r: 0},
-    {dx: 100, dy: 200, r: 200}
+    {dx: 0, dy: -300, r: 0},
+    {dx: 100, dy: 200, r: 200},
+    {dx: 100, dy:-200, r: 200 },
+    {dx: 0, dy: 300, r: 0},
     ],
     step_size: 10,
-    wiggle_size: 1
+    wiggle_size: 3
   };
 
   function generate_section(section, current_pos, step_size, wiggle_size) {
     let d = ""; //the path data string to eventually return
 
-    let distance;
-    let num_steps;
+    let distance = 0;
+    let num_steps = 0;
     let step_unit_vector = {x: 0, y: 0}; //the unit vector pointing in the direction of the next step
-    let wiggle_vector = {x: 0, y: 0};
+    let wiggle_vector = {x: 0, y: 0}; //the vector to add to the current_pos to add wiggle to the path
 
     const starting_point = {x: current_pos.x, y: current_pos.y};
+    const end_point = {x:starting_point.x + section.dx, y:starting_point.y + section.dy};
 
     //if there is a radius
     if(section.r !== 0) {
-      const end_point = {x:starting_point.x + section.dx, y:starting_point.y + section.dy};
       const direct_distance = Math.sqrt( Math.pow(section.dx,2) + Math.pow(section.dy,2) ); //get direct distance between the two points of the arc
       const angle = 2*Math.asin( direct_distance/(2*section.r) ); //get the angle of the arc
 
@@ -59,8 +61,6 @@
 
         d += next_point(current_pos, wiggle_vector);
       }
-
-      d += end_point.x + " " + end_point.y + " ";
     }
     //else this is a straight line
     else {
@@ -68,19 +68,21 @@
       num_steps = get_num_steps(distance, step_size);
       step_unit_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
 
+      const dx_i = section.dx/num_steps; //get the x distance of this step from the origin
+      const dy_i = section.dy/num_steps; //get the y distance of this step from the origin
+
       //get each point along this line with a wiggle
       for(let i=1; i<=num_steps; ++i) {
-        const dx_i = i/num_steps*section.dx; //get the x distance of this step from the origin
-        const dy_i = i/num_steps*section.dy; //get the y distance of this step from the origin
-
-        current_pos.x += dx_i - current_pos.x; //add the x difference
-        current_pos.y += dy_i - current_pos.y; //add the y difference
+        current_pos.x += dx_i; //add the x difference
+        current_pos.y += dy_i; //add the y difference
 
         wiggle_vector = get_wiggle_vector(wiggle_size, step_unit_vector);
 
         d += next_point(current_pos, wiggle_vector);
       }
     }
+
+    d += end_point.x + " " + end_point.y + " "; //add the end point to make sure the path gets completely drawn
 
     current_pos.x = starting_point.x + section.dx;
     current_pos.y = starting_point.y + section.dy;
