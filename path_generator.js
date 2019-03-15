@@ -3,7 +3,7 @@ function generate_path(path_data) {
   let current_pos = {x: path_data.start.x, y: path_data.start.y};
   let d = "M"+path_data.start.x+" "+path_data.start.y+"C  ";
   for(let i=0; i<path_data.sections.length; ++i) {
-    d += generate_section(path_data.sections[i], current_pos, path_data.step_size, path_data.wiggle_size);
+    d += generate_section(path_data.sections[i], current_pos);
     // d3.select("svg").append("circle").attr("cx",current_pos.x).attr("cy",current_pos.y).attr("r",10).attr("fill","purple");
   }
   return d + "Z";
@@ -11,7 +11,7 @@ function generate_path(path_data) {
 
 
 //generates the path for a single section
-function generate_section(section, current_pos, step_size, wiggle_size) {
+function generate_section(section, current_pos) {
   let d = ""; //the path data string to eventually return
 
   let distance = 0;
@@ -28,7 +28,7 @@ function generate_section(section, current_pos, step_size, wiggle_size) {
     const angle = 2*Math.asin( direct_distance/(2*section.r) ); //get the angle of the arc
 
     distance = angle * section.r; //get the distance of the arc length
-    num_steps = get_num_steps(distance, step_size);
+    num_steps = get_num_steps(distance, section.step_size);
 
     height = section.r * Math.cos(angle/2); //height of the isosceles
     const angle_dxy = Math.atan(section.dy/section.dx);
@@ -50,14 +50,14 @@ function generate_section(section, current_pos, step_size, wiggle_size) {
       current_pos.x = p.x;
       current_pos.y = p.y;
 
-      wiggle_vector = get_wiggle_vector(wiggle_size, step_unit_vector);
+      wiggle_vector = get_wiggle_vector(section.wiggle_size, step_unit_vector);
       d += next_point(current_pos, wiggle_vector);
     }
   }
   //else this is a straight line
   else {
     distance = Math.sqrt(Math.pow(section.dx,2) + Math.pow(section.dy,2)); //find the distance
-    num_steps = get_num_steps(distance, step_size);
+    num_steps = get_num_steps(distance, section.step_size);
     step_unit_vector = {x: section.dx/distance, y: section.dy/distance}; //create a unit vector of the direction we're going in
 
     const dx_i = section.dx/num_steps; //get the x distance of this step from the origin
@@ -68,7 +68,7 @@ function generate_section(section, current_pos, step_size, wiggle_size) {
       current_pos.x += dx_i; //add the x difference
       current_pos.y += dy_i; //add the y difference
 
-      wiggle_vector = get_wiggle_vector(wiggle_size, step_unit_vector);
+      wiggle_vector = get_wiggle_vector(section.wiggle_size, step_unit_vector);
 
       d += next_point(current_pos, wiggle_vector);
     }

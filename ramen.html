@@ -168,6 +168,32 @@
 
 
 
+
+
+
+  const noodles = {
+    start: {
+      x: bowl.x + bowl.w/2,
+      y: bowl.y,
+    },
+    sections: [
+    {dx: 0, dy: -50, r: 0},
+    {dx: 10, dy: -10, r: 3},
+    {dx: 10, dy:0, r: 0 },
+    {dx: 10, dy:10, r: 3 },
+    {dx: 0, dy: 50, r: 0},
+    {dx: -30, dy: 0, r: -10},
+    ],
+    step_size: 4,
+    wiggle_size: 1
+  };
+
+  svg.append("path").attr("fill","gold")
+  .attr("d",generate_path(noodles));
+
+
+
+
   const chopstick_2 = {
     x: chopstick_1.x,
     y: chopstick_1.y-7,
@@ -183,26 +209,6 @@
     +" "+(chopstick_2.x + chopstick_2.w)+" "+(chopstick_2.y + chopstick_2.h)
     +"Z";
   });
-
-
-  const noodles = {
-    start: {
-      x: bowl.x + bowl.w/2,
-      y: bowl.y,
-    },
-    sections: [
-    {dx: 0, dy: -50, r: 0},
-    {dx: 10, dy: -10, r: 5},
-    {dx: 5, dy:0, r: 0 },
-    {dx: 10, dy:10, r: 5 },
-    {dx: 0, dy: 50, r: 0},
-    ],
-    step_size: 5,
-    wiggle_size: 2
-  };
-
-  svg.append("path").attr("fill","gold")
-  .attr("d",generate_path(noodles));
 </script>
 
 </html>
