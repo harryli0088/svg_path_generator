@@ -1,4 +1,5 @@
 <html>
+<!-- made by Harry Li  -->
 <svg width="500" height="500" style="background: gray"></svg>
 
 <script src="./d3.js"></script>
@@ -307,7 +308,7 @@
 
 
 
-  let pork_g = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2)+","+bowl.y+") rotate(30) skewX(-10)")
+  let pork_g = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2 + 17)+","+(bowl.y - 8)+") rotate(30) skewX(-10)");
 
   const pork_skin = {
     start: {
@@ -366,6 +367,31 @@
   };
 
   pork_g.append("path").attr("fill",pork_spiral.color)
+  .attr("d",generate_path(pork_spiral));
+
+
+  let pork_g_2 = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2 + 4)+","+(bowl.y + 2)+") rotate(30) skewX(-10)");
+
+  pork_g_2.append("path").attr("fill",pork_skin.color)
+  .attr("d",generate_path(pork_skin));
+
+  pork_g_2.append("path").attr("fill",pork.color)
+  .attr("d",generate_path(pork));
+
+  pork_g_2.append("path").attr("fill",pork_spiral.color)
+  .attr("d",generate_path(pork_spiral));
+
+
+
+  let pork_g_3 = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2 - 15)+","+(bowl.y + 5)+") rotate(30) skewX(-10)");
+
+  pork_g_3.append("path").attr("fill",pork_skin.color)
+  .attr("d",generate_path(pork_skin));
+
+  pork_g_3.append("path").attr("fill",pork.color)
+  .attr("d",generate_path(pork));
+
+  pork_g_3.append("path").attr("fill",pork_spiral.color)
   .attr("d",generate_path(pork_spiral));
 </script>
 

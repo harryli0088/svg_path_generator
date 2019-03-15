@@ -1,3 +1,5 @@
+//made by Harry Li
+
 //primary function that returns the generated path
 function generate_path(path_data) {
   let current_pos = {x: path_data.start.x, y: path_data.start.y};
