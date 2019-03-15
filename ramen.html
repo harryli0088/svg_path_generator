@@ -268,6 +268,38 @@
 
   svg.append("path").attr("fill",strand_3.color)
   .attr("d",generate_path(strand_3));
+
+
+
+
+  const scallions = {
+    x: bowl.x + 50,
+    y: bowl.y - 15,
+    range_x: 12,
+    range_y: 8,
+    number: 6,
+    colors: ["green"],
+    min_rx: 2,
+    max_rx: 5,
+    y_prop: 0.8,
+    min_w: 0.75,
+    max_w: 1,
+    min_o: 0.5,
+    max_o: 1
+  };
+  for(let i=0; i<scallions.number; ++i) {
+    const rx = (scallions.max_rx-scallions.min_rx)*Math.random()+scallions.min_rx;
+
+    svg.append("ellipse").attr("fill","transparent")
+    .attr("cx", (scallions.x + (2*Math.random()-1)*scallions.range_x).toFixed(2) )
+    .attr("cy", (scallions.y + (2*Math.random()-1)*scallions.range_y).toFixed(2) )
+    .attr("rx", rx.toFixed(2) )
+    .attr("ry", rx*scallions.y_prop.toFixed(2) )
+    .attr("stroke",scallions.colors[ Math.floor(Math.random()*scallions.colors.length) ])
+    .attr("stroke-width", ((scallions.max_w-scallions.min_w)*Math.random()+scallions.min_w).toFixed(2) )
+    .attr("opacity", ((scallions.max_o-scallions.min_o)*Math.random()+scallions.min_o).toFixed(2) );
+  }
+
 </script>
 
 </html>
