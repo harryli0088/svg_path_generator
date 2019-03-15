@@ -177,15 +177,13 @@
       y: bowl.y,
     },
     sections: [
-    {dx: 0, dy: -50, r: 0},
-    {dx: 10, dy: -10, r: 3},
-    {dx: 10, dy:0, r: 0 },
-    {dx: 10, dy:10, r: 3 },
-    {dx: 0, dy: 50, r: 0},
-    {dx: -30, dy: 0, r: -10},
-    ],
-    step_size: 4,
-    wiggle_size: 1
+    {dx: 0, dy: -50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: 10, dy: -10, r: -20, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy:0, r: 0, step_size: 5, wiggle_size: 0.5},
+    {dx: 10, dy:10, r: -20, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: -30, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
+    ]
   };
 
   svg.append("path").attr("fill","gold")
