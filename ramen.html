@@ -102,7 +102,7 @@
     rx: rim.rx*0.9,
     ry: rim.ry*0.8,
     opacity: 0.9,
-    color: "#FAD7A0"
+    color: "#C06B2D"
   };
   svg.append("ellipse").attr("fill",soup.color).attr("style","opacity:"+soup.opacity)
   .attr("cx",soup.x)
@@ -119,7 +119,7 @@
   const egg = {
     x: 150,
     y: 80,
-    rx: 13,
+    rx: 12,
     ry1: 25,
     ry2:20,
     rotate: -60,
@@ -141,13 +141,16 @@
   const yolk= {
     x: egg.x + egg.rx,
     y: egg.y + egg.ry1,
-    r: 9,
-    color: "yellow"
+    rx: 8,
+    ry: 9,
+    color: "yellow",
+    rotate: egg.rotate
   };
-  svg.append("circle").attr("fill",yolk.color)
+  svg.append("ellipse").attr("fill",yolk.color).attr("transform","rotate("+egg.rotate+","+(egg.x+egg.rx)+","+(egg.y+egg.ry1)+")")
   .attr("cx",yolk.x)
   .attr("cy",yolk.y)
-  .attr("r",yolk.r);
+  .attr("rx",yolk.rx)
+  .attr("ry",yolk.ry);
 
 
 
@@ -205,10 +208,11 @@
     {dx: 2, dy:2, r: -20, step_size: 1, wiggle_size: 0.5},
     {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
     {dx: -24, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
-    ]
+    ],
+    color: "gold"
   };
 
-  svg.append("path").attr("fill","gold")
+  svg.append("path").attr("fill",noodles.color)
   .attr("d",generate_path(noodles));
 
 
@@ -275,15 +279,15 @@
   const scallions = {
     x: bowl.x + 50,
     y: bowl.y - 15,
-    range_x: 12,
+    range_x: 15,
     range_y: 8,
-    number: 6,
-    colors: ["green"],
+    number: 12,
+    colors: ["green", "#009900", "white"],
     min_rx: 2,
     max_rx: 5,
     y_prop: 0.8,
-    min_w: 0.75,
-    max_w: 1,
+    min_w: 1,
+    max_w: 1.25,
     min_o: 0.5,
     max_o: 1
   };
@@ -298,8 +302,69 @@
     .attr("stroke",scallions.colors[ Math.floor(Math.random()*scallions.colors.length) ])
     .attr("stroke-width", ((scallions.max_w-scallions.min_w)*Math.random()+scallions.min_w).toFixed(2) )
     .attr("opacity", ((scallions.max_o-scallions.min_o)*Math.random()+scallions.min_o).toFixed(2) );
-  }
+  };
 
+
+
+
+  const skin = {
+    start: {
+      x: bowl.x + bowl.w/2 - 9,
+      y: bowl.y + 5,
+    },
+    sections: [
+    {dx: 21, dy: -17, r: -20, step_size: 4, wiggle_size: 1},
+    {dx: 21, dy: 17, r: -20, step_size: 4, wiggle_size: 1},
+    {dx: -21, dy: 17, r: 14, step_size: 4, wiggle_size: 1},
+    {dx: -21, dy: -17, r: 14, step_size: 4, wiggle_size: 1},
+    ],
+    color: "#864A1F"
+  };
+
+  svg.append("path").attr("fill",skin.color)
+  .attr("d",generate_path(skin));
+
+
+
+  const pork_1 = {
+    start: {
+      x: skin.start.x + 1,
+      y: skin.start.y + 1,
+    },
+    sections: [
+    {dx: 20, dy: -16, r: -20, step_size: 4, wiggle_size: 1},
+    {dx: 20, dy: 16, r: -20, step_size: 4, wiggle_size: 1},
+    {dx: -20, dy: 16, r: 14, step_size: 4, wiggle_size: 1},
+    {dx: -20, dy: -16, r: 14, step_size: 4, wiggle_size: 1},
+    ],
+    color: "#FDEBD0"
+  };
+
+  svg.append("path").attr("fill",pork_1.color)
+  .attr("d",generate_path(pork_1));
+
+
+
+
+  const pork_2 = {
+    start: {
+      x: pork_1.start.x + 20,
+      y: pork_1.start.y + 16,
+    },
+    sections: [
+    {dx: -10, dy: -10, r: 14, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -12, r: -12, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 8, r: -14, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -7, dy: -6, r: -12, step_size: 1, wiggle_size: 0.5},
+    {dx: -7, dy: 10, r: -13, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 10, r: 15, step_size: 1, wiggle_size: 0.5},
+    ],
+    color: "#9F6C47"
+  };
+
+  svg.append("path").attr("fill",pork_2.color)
+  .attr("d",generate_path(pork_2));
 </script>
 
 </html>
