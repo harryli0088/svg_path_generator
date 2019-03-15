@@ -1,7 +1,8 @@
 <html>
 <svg width="500" height="500" style="background: gray"></svg>
 
-<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="./d3.js"></script>
+<script src="./path_generator.js"></script>
 <script type="text/javascript">
   let svg = d3.select("svg");
 
@@ -185,25 +186,23 @@
 
 
   const noodles = {
-    x: 100,
-    y: 100,
-    dx: 3,
-    dy: 15,
-    w: 50,
-    h: 100,
-  }
-  svg.append("path").attr("fill","pink")
-  .attr("d",function() {
-    let str = "M "+noodles.x+" "+noodles.y+"C";
-    let i = noodles.y;
-    while(i < noodles.y + noodles.h) {
-      const inrc = Math.round(100*noodles.dy*Math.random())/100;
-      i += inrc;
-      str += (100 + Math.random()*noodles.dx - noodles.dx/2).toFixed(2) + " " + i + " "
-    }
-    str += "L"+200+" "+i
-    return str;
-  });
+    start: {
+      x: bowl.x + bowl.w/2,
+      y: bowl.y,
+    },
+    sections: [
+    {dx: 0, dy: -50, r: 0},
+    {dx: 10, dy: -10, r: 5},
+    {dx: 5, dy:0, r: 0 },
+    {dx: 10, dy:10, r: 5 },
+    {dx: 0, dy: 50, r: 0},
+    ],
+    step_size: 5,
+    wiggle_size: 2
+  };
+
+  svg.append("path").attr("fill","gold")
+  .attr("d",generate_path(noodles));
 </script>
 
 </html>
