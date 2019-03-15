@@ -9,8 +9,8 @@
   const bowl = {
     x: 100,
     y: 100,
-    w: 200,
-    h: 100,
+    w: 175,
+    h: 80,
     stand: {
       w: 100,
       h: 10
@@ -25,7 +25,9 @@
     +" "+(bowl.x + (bowl.w-bowl.stand.w)/2/2).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
     +" "+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h)
     +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h + bowl.stand.h)
-    +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h)
+    +"C"+(bowl.x + (bowl.w-bowl.stand.w)/2)+" "+(bowl.y + bowl.h + bowl.stand.h + 15)
+    +" "+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h+ 15)
+    +" "+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h + bowl.stand.h)
     +"L"+(bowl.x + (bowl.w-bowl.stand.w)/2 + bowl.stand.w)+" "+(bowl.y + bowl.h)
     +"C"+(bowl.x + 3*(bowl.w-bowl.stand.w)/4 + bowl.stand.w).toFixed(2)+" "+(bowl.y + bowl.h*2/3).toFixed(2)
     +" "+(bowl.x + bowl.w)+" "+(bowl.y+bowl.h/3).toFixed(2)
@@ -148,10 +150,13 @@
   .attr("r",yolk.r);
 
 
+
+
+
   const chopstick_1 = {
-    x: 170,
+    x: 140,
     y: 50,
-    w: 150,
+    w: 200,
     h: 5,
     rotate: 5,
     color: "#3E2723"
@@ -164,30 +169,6 @@
     +" "+(chopstick_1.x + chopstick_1.w)+" "+(chopstick_1.y + chopstick_1.h)
     +"Z";
   });
-
-
-
-
-
-
-
-  const noodles = {
-    start: {
-      x: bowl.x + bowl.w/2,
-      y: bowl.y,
-    },
-    sections: [
-    {dx: 0, dy: -50, r: 0, step_size: 4, wiggle_size: 1},
-    {dx: 10, dy: -10, r: -20, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy:0, r: 0, step_size: 5, wiggle_size: 0.5},
-    {dx: 10, dy:10, r: -20, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
-    {dx: -30, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
-    ]
-  };
-
-  svg.append("path").attr("fill","gold")
-  .attr("d",generate_path(noodles));
 
 
 
@@ -207,6 +188,86 @@
     +" "+(chopstick_2.x + chopstick_2.w)+" "+(chopstick_2.y + chopstick_2.h)
     +"Z";
   });
+
+
+
+
+
+  const noodles = {
+    start: {
+      x: bowl.x + bowl.w/2 + 10,
+      y: bowl.y - 2,
+    },
+    sections: [
+    {dx: 0, dy: -50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: 2, dy: -2, r: -20, step_size: 1, wiggle_size: 0.5},
+    {dx: 20, dy:0, r: 0, step_size: 2, wiggle_size: 1},
+    {dx: 2, dy:2, r: -20, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: -24, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
+    ]
+  };
+
+  svg.append("path").attr("fill","gold")
+  .attr("d",generate_path(noodles));
+
+
+
+  const strand_1 = {
+    start: {
+      x: noodles.start.x + 3,
+      y: noodles.start.y,
+    },
+    sections: [
+    {dx: 0, dy: -40, r: 0, step_size: 4, wiggle_size: 0.25},
+    {dx: 1, dy: -10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 1, dy:10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 40, r: 0, step_size: 4, wiggle_size: 0.25},
+    ],
+    color: "#DAB770"
+  };
+
+  svg.append("path").attr("fill",strand_1.color)
+  .attr("d",generate_path(strand_1));
+
+
+
+  const strand_2 = {
+    start: {
+      x: noodles.start.x + 11,
+      y: noodles.start.y,
+    },
+    sections: [
+    {dx: 0, dy: -42, r: 0, step_size: 4, wiggle_size: 0.25},
+    {dx: 1, dy: -10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 1, dy:10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 42, r: 0, step_size: 4, wiggle_size: 0.25},
+    ],
+    color: "#DAB770"
+  };
+
+  svg.append("path").attr("fill",strand_2.color)
+  .attr("d",generate_path(strand_2));
+
+
+
+
+  const strand_3 = {
+    start: {
+      x: noodles.start.x + 17,
+      y: noodles.start.y,
+    },
+    sections: [
+    {dx: 0, dy: -40, r: 0, step_size: 4, wiggle_size: 0.25},
+    {dx: 1, dy: -10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 1, dy:10, r: -20, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 40, r: 0, step_size: 4, wiggle_size: 0.25},
+    ],
+    color: "#DAB770"
+  };
+
+  svg.append("path").attr("fill",strand_3.color)
+  .attr("d",generate_path(strand_3));
 </script>
 
 </html>
