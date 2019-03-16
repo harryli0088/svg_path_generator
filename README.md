@@ -6,6 +6,7 @@ a javascript function that generates a data string for the "d" attribute in a "p
 
 ## usage
 the generate_path function takes in a path_data object
+```
 path_data = {
   start: {x: number, y: number},
   sections: [
@@ -19,8 +20,9 @@ path_data = {
     ...
   ]
 }
+```
 
-
+```
 //example path_data
 const path_data = {
    start: {
@@ -36,8 +38,9 @@ const path_data = {
      {dx: -30, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
    ]
  }
+ ```
  
- ##examples
+ ## examples
  Examples can be found in the /examples directory. There is a d3.js file included
  
  ![Ramen Example](/examples/ramen.svg)
