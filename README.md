@@ -1,6 +1,7 @@
 # svg_path_generator
-a javascript function that generates a data string for the "d" attribute in a "path" element.
+A javascript function that generates a data string for the "d" attribute in a "path" element.
 
+It takes in general straight lines or curves that you want to follow, and can add randomized "wiggles" to give it a hand-drawn effect
 
 
 
@@ -39,8 +40,8 @@ const path_data = {
    ]
  }
  ```
- 
+
  ## examples
  Examples can be found in the /examples directory. There is a d3.js file included
- 
+
  ![Ramen Example](/examples/ramen.svg)
