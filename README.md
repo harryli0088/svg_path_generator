@@ -1,3 +1,6 @@
+![Ramen Example](/examples/ramen.svg)
+
+
 # svg_path_generator
 A javascript function that generates a data string for the "d" attribute in a "path" element.
 
@@ -42,10 +45,8 @@ const path_data = {
  ```
 
 ## examples
-Examples can be found in the /examples directory. There is a d3.js file included
-
-Ramen:
-![Ramen Example](/examples/ramen.svg)
+Examples can be found in the /examples directory. There is a d3.js file included.
+/examples/ramen.html is a full example of how every part of the ramen is created!
 
 
 ## License
