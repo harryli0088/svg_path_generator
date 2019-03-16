@@ -41,7 +41,12 @@ const path_data = {
  }
  ```
 
- ## examples
- Examples can be found in the /examples directory. There is a d3.js file included
+## examples
+Examples can be found in the /examples directory. There is a d3.js file included
 
- ![Ramen Example](/examples/ramen.svg)
+Ramen:
+![Ramen Example](/examples/ramen.svg)
+
+
+## License
+MIT License
