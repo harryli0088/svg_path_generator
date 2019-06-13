@@ -1,0 +1,34 @@
+<html>
+  <!-- made by Harry Li  -->
+  <svg width="500" height="500" style="background: gray"></svg>
+
+  <script src="./d3.js"></script>
+  <script src="../path_generator.js"></script>
+  <script type="text/javascript">
+  let svg = d3.select("svg");
+
+
+
+  const tuna = {
+    start: {
+      x: 100,
+      y: 100,
+    },
+    sections: [
+      {dx: 15, dy: -7, r: 20, step_size: 1, wiggle_size: 0.5},
+      {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
+      {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
+      {dx: 10, dy: 10, r: 14, step_size: 1, wiggle_size: 0.5},
+      {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
+      {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0.5},
+      {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
+      {dx: 0, dy: -2, r: -4, step_size: 1, wiggle_size: 0.5},
+    ],
+    color: "red"
+  };
+
+  svg.append("path").attr("fill",tuna.color)
+  .attr("d",generate_path(tuna));
+</script>
+
+</html>
