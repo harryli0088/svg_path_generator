@@ -7,12 +7,32 @@
   <script type="text/javascript">
   let svg = d3.select("svg");
 
+  let tuna_g = svg.append("g").attr("transform","translate(100,100)");
+
+  const tuna_rice = {
+    start: {
+      x: 15,
+      y: -3
+    },
+    sections: [
+      {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+      {dx: 10, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
+      {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
+      {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
+      {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
+      {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+    ],
+    color: "white"
+  };
+
+  tuna_g.append("path").attr("fill",tuna_rice.color).attr("d",generate_path(tuna_rice));
+
 
 
   const tuna = {
     start: {
-      x: 100,
-      y: 100,
+      x: 0,
+      y: 0
     },
     sections: [
       {dx: 15, dy: -7, r: 20, step_size: 1, wiggle_size: 0.5},
@@ -27,8 +47,7 @@
     color: "red"
   };
 
-  svg.append("path").attr("fill",tuna.color)
-  .attr("d",generate_path(tuna));
+  tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
 </script>
 
 </html>
