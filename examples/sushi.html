@@ -115,16 +115,16 @@ const tuna = {
     y: 0
   },
   sections: [
-    {dx: 15, dy: -7, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: -7, r: 30, step_size: 1, wiggle_size: 0.5},
     {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
     {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
     {dx: 10, dy: 10, r: 14, step_size: 1, wiggle_size: 0.5},
     {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
     {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0.5},
     {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -2, r: -4, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -2, r: -5, step_size: 1, wiggle_size: 0.5},
   ],
-  color: "red"
+  color: "#EA361F"
 };
 
 tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
@@ -284,7 +284,7 @@ salmon_g.append("path").attr("fill",salmon_stripe_4.color).attr("d",generate_pat
 const salmon_stripe_5 = {
   start: {
     x: -9,
-    y: 4
+    y: 5
   },
   sections: [
     {dx: 0, dy: 7, r: -25, step_size: 1, wiggle_size: 0.5},
