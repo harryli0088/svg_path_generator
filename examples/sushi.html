@@ -522,6 +522,94 @@ const red_clam_seaweed = {
 };
 
 red_clam_g.append("path").attr("fill",red_clam_seaweed.color).attr("d",generate_path(red_clam_seaweed));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let octopus_g = svg.append("g").attr("transform","translate(100,300)");
+
+const octopus_rice = {
+  start: {
+    x: 5,
+    y: 23
+  },
+  sections: [
+    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
+    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+octopus_g.append("path").attr("fill",octopus_rice.color).attr("d",generate_path(octopus_rice));
+
+
+
+const octopus_purple = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: 30, dy: 15, r: -80, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
+    {dx: -7, dy: 7, r: -7, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: 0, r: -7, step_size: 1, wiggle_size: 0.5},
+    {dx: -1, dy: -1, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -8, dy: -5, r: -6, step_size: 1, wiggle_size: 0.5},
+    {dx: -1, dy: -1, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -7, dy: -7, r: -6, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: "#c969e0"
+};
+
+octopus_g.append("path").attr("fill",octopus_purple.color).attr("d",generate_path(octopus_purple));
+
+
+
+
+
+const octopus_white = {
+  start: {
+    x: 0,
+    y: 1
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -60, step_size: 1, wiggle_size: 0.5},
+    {dx: 25, dy: 11, r: -100, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: 5, r: -70, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 5, r: -70, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 5, r: -70, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: 2, r: -70, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -2, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: -30, dy: -10, r: 60, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -10, r: -20, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: "#ccc"
+};
+
+octopus_g.append("path").attr("fill",octopus_white.color).attr("d",generate_path(octopus_white));
 </script>
 
 </html>
