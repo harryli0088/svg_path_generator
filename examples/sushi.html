@@ -543,8 +543,8 @@ let octopus_g = svg.append("g").attr("transform","translate(100,300)");
 
 const octopus_rice = {
   start: {
-    x: 5,
-    y: 23
+    x: 0,
+    y: 15
   },
   sections: [
     {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
@@ -610,6 +610,39 @@ const octopus_white = {
 };
 
 octopus_g.append("path").attr("fill",octopus_white.color).attr("d",generate_path(octopus_white));
+
+
+
+octopus_g.append("ellipse").attr("cx",45).attr("cy",24).attr("rx",4.5).attr("ry",5).attr("fill","white").attr("stroke","purple").attr("stroke-width",1.5);
+octopus_g.append("ellipse").attr("cx",54).attr("cy",29).attr("rx",3).attr("ry",5).attr("fill","white").attr("stroke","purple").attr("stroke-width",1.5);
+
+
+const octopus_half_sucker_sections = [
+  {dx: -1, dy: 1, r: -10, step_size: 1, wiggle_size: 0.5},
+  {dx: -8, dy: 0, r: -4.5, step_size: 1, wiggle_size: 0.5},
+  {dx: -1, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
+  {dx: 10, dy: 0, r: -6, step_size: 1, wiggle_size: 0.5},
+];
+
+const octopus_suckers = [
+  {x: 54, y: 35, rotate: -45},
+  {x: 46, y: 41, rotate: 0},
+  {x: 35, y: 41, rotate: 35},
+  {x: 26, y: 36, rotate: 70},
+];
+
+octopus_suckers.forEach(sucker => {
+  const tmp_sucker = {
+    start: {
+      x: sucker.x,
+      y: sucker.y
+    },
+    sections: octopus_half_sucker_sections
+  };
+
+  octopus_g.append("path").attr("fill","purple").attr("d",generate_path(tmp_sucker)).attr("transform","rotate("+sucker.rotate+","+sucker.x+","+sucker.y+")");
+});
+
 </script>
 
 </html>
