@@ -537,8 +537,8 @@ red_clam_g.append("path").attr("fill",red_clam_seaweed.color).attr("d",generate_
 
 
 
-
-
+const octopus_color = "#c969e0";
+const octopus_dark_color = "purple";
 let octopus_g = svg.append("g").attr("transform","translate(100,300)");
 
 const octopus_rice = {
@@ -549,8 +549,9 @@ const octopus_rice = {
   sections: [
     {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
     {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
-    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 18, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
+    {dx: 10, dy: 1, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 7, dy: -2, r: 8, step_size: 1, wiggle_size: 0.5},
     {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
     {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
   ],
@@ -561,7 +562,7 @@ octopus_g.append("path").attr("fill",octopus_rice.color).attr("d",generate_path(
 
 
 
-const octopus_purple = {
+const octopus_outside_1 = {
   start: {
     x: 0,
     y: 0
@@ -570,7 +571,7 @@ const octopus_purple = {
     {dx: 15, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
     {dx: 30, dy: 15, r: -80, step_size: 1, wiggle_size: 0.5},
     {dx: 10, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: -7, dy: 7, r: -7, step_size: 1, wiggle_size: 0.5},
+    {dx: -4, dy: 4, r: -7, step_size: 1, wiggle_size: 0.5},
     {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0.5},
     {dx: -10, dy: 0, r: -7, step_size: 1, wiggle_size: 0.5},
     {dx: -1, dy: -1, r: 100, step_size: 1, wiggle_size: 0.5},
@@ -579,16 +580,16 @@ const octopus_purple = {
     {dx: -7, dy: -7, r: -6, step_size: 1, wiggle_size: 0.5},
 
   ],
-  color: "#c969e0"
+  color: octopus_color
 };
 
-octopus_g.append("path").attr("fill",octopus_purple.color).attr("d",generate_path(octopus_purple));
+octopus_g.append("path").attr("fill",octopus_outside_1.color).attr("d",generate_path(octopus_outside_1));
 
 
 
 
 
-const octopus_white = {
+const octopus_inside_1 = {
   start: {
     x: 0,
     y: 1
@@ -606,29 +607,53 @@ const octopus_white = {
     {dx: 10, dy: -10, r: -20, step_size: 1, wiggle_size: 0.5},
 
   ],
-  color: "#ccc"
+  color: "#eee"
 };
 
-octopus_g.append("path").attr("fill",octopus_white.color).attr("d",generate_path(octopus_white));
+octopus_g.append("path").attr("fill",octopus_inside_1.color).attr("d",generate_path(octopus_inside_1));
 
 
 
-octopus_g.append("ellipse").attr("cx",45).attr("cy",24).attr("rx",4.5).attr("ry",5).attr("fill","white").attr("stroke","purple").attr("stroke-width",1.5);
-octopus_g.append("ellipse").attr("cx",54).attr("cy",29).attr("rx",3).attr("ry",5).attr("fill","white").attr("stroke","purple").attr("stroke-width",1.5);
+
+const octopus_outside_2 = {
+  start: {
+    x: -7,
+    y: 13
+  },
+  sections: [
+    {dx: 0, dy: 3, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 3, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 5, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: -20, dy: -10, r: 80, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: octopus_color
+};
+
+octopus_g.append("path").attr("fill",octopus_outside_2.color).attr("d",generate_path(octopus_outside_2));
+
+
+
+
+
+octopus_g.append("ellipse").attr("cx",45).attr("cy",25).attr("rx",4.5).attr("ry",5).attr("fill","#eee").attr("stroke",octopus_dark_color).attr("stroke-width",1.5);
+octopus_g.append("ellipse").attr("cx",54).attr("cy",29).attr("rx",3).attr("ry",5).attr("fill","#eee").attr("stroke",octopus_dark_color).attr("stroke-width",1.5);
 
 
 const octopus_half_sucker_sections = [
   {dx: -1, dy: 1, r: -10, step_size: 1, wiggle_size: 0.5},
-  {dx: -8, dy: 0, r: -4.5, step_size: 1, wiggle_size: 0.5},
+  {dx: -8, dy: 0, r: -4.25, step_size: 1, wiggle_size: 0.5},
   {dx: -1, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
-  {dx: 10, dy: 0, r: -6, step_size: 1, wiggle_size: 0.5},
+  {dx: 10, dy: 0, r: -5.5, step_size: 1, wiggle_size: 0.5},
 ];
 
 const octopus_suckers = [
-  {x: 54, y: 35, rotate: -45},
-  {x: 46, y: 41, rotate: 0},
-  {x: 35, y: 41, rotate: 35},
-  {x: 26, y: 36, rotate: 70},
+  {x: 49, y: 38, rotate: 0},
+  {x: 38, y: 37, rotate: 25},
+  {x: 29, y: 33, rotate: 40},
+  {x: -7, y: 16, rotate: 200},
+  {x: -16, y: 13, rotate: 180},
 ];
 
 octopus_suckers.forEach(sucker => {
@@ -640,8 +665,69 @@ octopus_suckers.forEach(sucker => {
     sections: octopus_half_sucker_sections
   };
 
-  octopus_g.append("path").attr("fill","purple").attr("d",generate_path(tmp_sucker)).attr("transform","rotate("+sucker.rotate+","+sucker.x+","+sucker.y+")");
+  octopus_g.append("path").attr("fill",octopus_dark_color).attr("d",generate_path(tmp_sucker)).attr("transform","rotate("+sucker.rotate+","+sucker.x+","+sucker.y+")");
 });
+
+
+
+
+const octopus_sucker_1 = {
+  start: {
+    x: 52,
+    y: 35
+  },
+  sections: [
+    {dx: 1, dy: 1, r: 1, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 4, r: -3, step_size: 1, wiggle_size: 0.5},
+    {dx: -1, dy: -1, r: -1, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: -4, r: -3, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: octopus_dark_color
+};
+
+octopus_g.append("path").attr("fill",octopus_sucker_1.color).attr("d",generate_path(octopus_sucker_1));
+
+
+
+
+const octopus_sucker_2 = {
+  start: {
+    x: 18,
+    y: 26
+  },
+  sections: [
+    {dx: 3, dy: 1, r: 3, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 4, r: -3, step_size: 1, wiggle_size: 0.5},
+    {dx: -3, dy: -1, r: -3, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: -4, r: 3, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: octopus_dark_color
+};
+
+octopus_g.append("path").attr("fill",octopus_sucker_2.color).attr("d",generate_path(octopus_sucker_2));
+
+
+
+
+const octopus_seaweed = {
+  start: {
+    x: 25,
+    y: 3
+  },
+  sections: [
+    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.5},
+    {dx: -23, dy: 20, r: -30, step_size: 1, wiggle_size: 0.5},
+    {dx: 3, dy: 13, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: -3, dy: -13, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 23, dy: -20, r: -30, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "black"
+};
+
+octopus_g.append("path").attr("fill",octopus_seaweed.color).attr("d",generate_path(octopus_seaweed));
 
 </script>
 
