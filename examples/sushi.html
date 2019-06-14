@@ -7,6 +7,44 @@
   <script type="text/javascript">
   let svg = d3.select("svg");
 
+  const leaf = {
+    start: {
+      x: 100,
+      y: 120
+    },
+    sections: [
+      {dx: 300, dy: -50, r: -500, step_size: 1, wiggle_size: 0.5},
+      {dx: -300, dy: 50, r: 500, step_size: 1, wiggle_size: 0.5},
+    ],
+    color: "green"
+  };
+
+  svg.append("path").attr("fill",leaf.color).attr("d",generate_path(leaf));
+
+
+  const roe_seaweed = {
+    start: {
+      x: 200,
+      y: 200
+    },
+    sections: [
+      {dx: 5, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
+      {dx: 50, dy: 5, r: 50, step_size: 1, wiggle_size: 0.5},
+      {dx: 0, dy: 30, r: 0, step_size: 1, wiggle_size: 0.5},
+
+
+    ],
+    color: "black"
+  };
+
+  svg.append("path").attr("fill",roe_seaweed.color).attr("d",generate_path(roe_seaweed));
+
+
+
+
+
+
+
   let tuna_g = svg.append("g").attr("transform","translate(100,100)");
 
   const tuna_rice = {
