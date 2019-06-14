@@ -1,91 +1,133 @@
 <html>
-  <!-- made by Harry Li  -->
-  <svg width="500" height="500" style="background: gray"></svg>
+<!-- made by Harry Li  -->
+<svg width="500" height="500" style="background: gray"></svg>
 
-  <script src="./d3.js"></script>
-  <script src="../path_generator.js"></script>
-  <script type="text/javascript">
-  let svg = d3.select("svg");
+<script src="./d3.js"></script>
+<script src="../path_generator.js"></script>
+<script type="text/javascript">
+let svg = d3.select("svg");
 
-  const leaf = {
-    start: {
-      x: 100,
-      y: 120
-    },
-    sections: [
-      {dx: 300, dy: -50, r: -500, step_size: 1, wiggle_size: 0.5},
-      {dx: -300, dy: 50, r: 500, step_size: 1, wiggle_size: 0.5},
-    ],
-    color: "green"
-  };
+const leaf = {
+  start: {
+    x: 100,
+    y: 120
+  },
+  sections: [
+    {dx: 300, dy: -50, r: -500, step_size: 1, wiggle_size: 0.5},
+    {dx: -300, dy: 50, r: 500, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "green"
+};
 
-  svg.append("path").attr("fill",leaf.color).attr("d",generate_path(leaf));
-
-
-  const roe_seaweed = {
-    start: {
-      x: 200,
-      y: 200
-    },
-    sections: [
-      {dx: 5, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
-      {dx: 50, dy: 5, r: 50, step_size: 1, wiggle_size: 0.5},
-      {dx: 0, dy: 30, r: 0, step_size: 1, wiggle_size: 0.5},
-
-
-    ],
-    color: "black"
-  };
-
-  svg.append("path").attr("fill",roe_seaweed.color).attr("d",generate_path(roe_seaweed));
+svg.append("path").attr("fill",leaf.color).attr("d",generate_path(leaf));
 
 
 
+/**
+* Shuffles array in place.
+* @param {Array} a items An array containing the items.
+*/
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
+
+let roes_g = svg.append("g").attr("transform","translate(200,200)");
+
+//roes are ordered first by x, then by y
+let roes = [
+  {x:5, y:2, r:4.5, color: "#F5770C"},
+  {x:10, y:5, r:4.6, color: "orange"},
+  {x:13, y:-3, r:4.8, color: "#F4671B"},
+  {x:15, y:12 , r:4.8, color: "#E25C0F"},
+  {x:17, y:5, r:5, color: "#FA8E3E"},
+  {x:20, y:0, r:5.1, color: "#EA772C"},
+  {x:23, y:10, r:4.5, color: "#F5770C"},
+  {x:25, y:5, r:4.7, color: "orange"},
+  {x:30, y:-2, r:5, color: "#F37619"},
+  {x:30, y:12, r:4.5, color: "#EA772C"},
+  {x:33, y:3, r:5, color: "#F4671B"},
+  {x:37, y:7, r:4.6, color: "#F38528"},
+  {x:39, y:13, r:4.5, color: "#F4671B"},
+  {x:40, y:2, r:5, color: "#FA8E3E"},
+  {x:45, y:10, r:4.7, color: "orange"},
+];
+shuffle(roes); //shuffle roes
+
+roes.forEach(roe => roes_g.append("circle").attr("cx",roe.x).attr("cy",roe.y).attr("r",roe.r).attr("fill",roe.color).attr("opacity",0.9).attr("stroke-width",0.5).attr("stroke","orange")); //append all roes
+
+
+const roe_seaweed = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 5, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 45, dy: 5, r: 50, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 30, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -45, dy: -5, r: 50, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: -7, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -30, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "black"
+};
+
+roes_g.append("path").attr("fill",roe_seaweed.color).attr("d",generate_path(roe_seaweed));
 
 
 
 
-  let tuna_g = svg.append("g").attr("transform","translate(100,100)");
-
-  const tuna_rice = {
-    start: {
-      x: 15,
-      y: -3
-    },
-    sections: [
-      {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-      {dx: 10, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
-      {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
-      {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
-      {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
-      {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
-    ],
-    color: "white"
-  };
-
-  tuna_g.append("path").attr("fill",tuna_rice.color).attr("d",generate_path(tuna_rice));
 
 
 
-  const tuna = {
-    start: {
-      x: 0,
-      y: 0
-    },
-    sections: [
-      {dx: 15, dy: -7, r: 20, step_size: 1, wiggle_size: 0.5},
-      {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
-      {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
-      {dx: 10, dy: 10, r: 14, step_size: 1, wiggle_size: 0.5},
-      {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
-      {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0.5},
-      {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
-      {dx: 0, dy: -2, r: -4, step_size: 1, wiggle_size: 0.5},
-    ],
-    color: "red"
-  };
+let tuna_g = svg.append("g").attr("transform","translate(100,100)");
 
-  tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
+const tuna_rice = {
+  start: {
+    x: 15,
+    y: -3
+  },
+  sections: [
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+tuna_g.append("path").attr("fill",tuna_rice.color).attr("d",generate_path(tuna_rice));
+
+
+
+const tuna = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: -7, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
+    {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 10, r: 14, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
+    {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0.5},
+    {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -2, r: -4, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "red"
+};
+
+tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
 </script>
 
 </html>
