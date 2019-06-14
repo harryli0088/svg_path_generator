@@ -436,6 +436,92 @@ const squid_stripe_4 = {
 };
 
 squid_g.append("path").attr("fill",squid_stripe_4.color).attr("d",generate_path(squid_stripe_4));
+
+
+
+
+
+
+let red_clam_g = svg.append("g").attr("transform","translate(100,200)");
+
+const red_clam_rice = {
+  start: {
+    x: 5,
+    y: 23
+  },
+  sections: [
+    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
+    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+red_clam_g.append("path").attr("fill",red_clam_rice.color).attr("d",generate_path(red_clam_rice));
+
+
+
+const red_clam_top = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 30, dy: 20, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -17, dy: 17, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -14, dy: -36, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "red"
+};
+
+red_clam_g.append("path").attr("fill",red_clam_top.color).attr("d",generate_path(red_clam_top));
+
+
+
+
+const red_clam_bottom = {
+  start: {
+    x: 30,
+    y: 20
+  },
+  sections: [
+    {dx: 10, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 8, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 7, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 0, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: -24, dy: -10, r: 100, step_size: 1, wiggle_size: 0.5},
+
+  ],
+  color: "#ece7cf"
+};
+
+red_clam_g.append("path").attr("fill",red_clam_bottom.color).attr("d",generate_path(red_clam_bottom));
+
+
+
+
+const red_clam_seaweed = {
+  start: {
+    x: 30,
+    y: 20
+  },
+  sections: [
+    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.5},
+    {dx: -20, dy: 15, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 10, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -10, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: 20, dy: -15, r: -25, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "black"
+};
+
+red_clam_g.append("path").attr("fill",red_clam_seaweed.color).attr("d",generate_path(red_clam_seaweed));
 </script>
 
 </html>
