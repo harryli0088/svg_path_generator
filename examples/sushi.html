@@ -128,6 +128,173 @@ const tuna = {
 };
 
 tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
+
+
+
+
+
+
+
+let salmon_g = svg.append("g").attr("transform","translate(300,300)");
+
+const salmon_rice = {
+  start: {
+    x: 5,
+    y: 8
+  },
+  sections: [
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 6, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 6, dy: 4, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 12, dy: 4, r: 12, step_size: 1, wiggle_size: 0.5},
+    {dx: 9, dy: 3, r: 13, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -3, r: 13, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -5, r: 13, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_rice.color).attr("d",generate_path(salmon_rice));
+
+
+
+
+
+const salmon = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 5, dy: -0, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: 40, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 10, r: -6, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: 8, r: 50, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 0, r: 6, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -8, r: 25, step_size: 1, wiggle_size: 0.5},
+    {dx: -20, dy: -20, r: -60, step_size: 1, wiggle_size: 0.5},
+    {dx: -30, dy: -5, r: -40, step_size: 1, wiggle_size: 0.5},
+    {dx: -15, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: -10, r: -40, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "#FF9300"
+};
+
+salmon_g.append("path").attr("fill",salmon.color).attr("d",generate_path(salmon));
+
+
+
+
+const salmon_stripe_0 = {
+  start: {
+    x: 72,
+    y: 27
+  },
+  sections: [
+    {dx: 1, dy: 15, r: 30, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: -1, dy: -15, r: 30, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_0.color).attr("d",generate_path(salmon_stripe_0)).attr("opacity",0.5);
+
+
+
+
+const salmon_stripe_1 = {
+  start: {
+    x: 55,
+    y: 6
+  },
+  sections: [
+    {dx: 2, dy: 20, r: -28, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 20, r: 35, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: -20, r: 35, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: -20, r: -26, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_1.color).attr("d",generate_path(salmon_stripe_1)).attr("opacity",0.6);
+
+
+
+
+const salmon_stripe_2 = {
+  start: {
+    x: 35,
+    y: -5
+  },
+  sections: [
+    {dx: 8, dy: 20, r: -28, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 15, r: -0, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -15, r: -0, step_size: 1, wiggle_size: 0.5},
+    {dx: -8, dy: -20, r: -26, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_2.color).attr("d",generate_path(salmon_stripe_2)).attr("opacity",0.6);
+
+
+
+
+const salmon_stripe_3 = {
+  start: {
+    x: 18,
+    y: -6
+  },
+  sections: [
+    {dx: 8, dy: 24, r: -22, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: -8, dy: -24, r: -22, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_3.color).attr("d",generate_path(salmon_stripe_3)).attr("opacity",0.6);
+
+
+
+
+const salmon_stripe_4 = {
+  start: {
+    x: 5,
+    y: -1
+  },
+  sections: [
+    {dx: 3, dy: 15, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: -3, dy: -15, r: -25, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_4.color).attr("d",generate_path(salmon_stripe_4)).attr("opacity",0.6);
+
+
+
+
+const salmon_stripe_5 = {
+  start: {
+    x: -9,
+    y: 4
+  },
+  sections: [
+    {dx: 0, dy: 7, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
+    {dx: -0, dy: -7, r: -25, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+salmon_g.append("path").attr("fill",salmon_stripe_5.color).attr("d",generate_path(salmon_stripe_5)).attr("opacity",0.6);
 </script>
 
 </html>
