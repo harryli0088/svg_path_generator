@@ -782,16 +782,70 @@ const yellowtail_top = {
   },
   sections: [
     {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
-    {dx: -40, dy: -11, r: 60, step_size: 1, wiggle_size: 0.5},
+    {dx: -40, dy: -11, r: 60, step_size: 1, wiggle_size: 0.25},
     {dx: -10, dy: -8, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: 48, dy: 13, r: 80, step_size: 1, wiggle_size: 0.5},
+    {dx: 48, dy: 13, r: 80, step_size: 1, wiggle_size: 0.25},
   ],
   color: "#FF7468"
 };
 
-
-
 yellowtail_g.append("path").attr("fill",yellowtail_top.color).attr("d",generate_path(yellowtail_top));
+
+
+
+
+const yellowtail_stripe_1 = {
+  start: {
+    x: 25,
+    y: 5
+  },
+  sections: [
+    {dx: 40, dy: 8, r: -100, step_size: 1, wiggle_size: 0.25},
+    {dx: 12, dy: 3, r: 60, step_size: 1, wiggle_size: 0.25},
+    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -12, dy: -3, r: 60, step_size: 1, wiggle_size: 0.25},
+    {dx: -40, dy: -9, r: -100, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "white"
+};
+
+yellowtail_g.append("path").attr("fill",yellowtail_stripe_1.color).attr("d",generate_path(yellowtail_stripe_1)).attr("opacity",0.5);
+
+
+
+
+const yellowtail_stripe_2 = {
+  start: {
+    x:14,
+    y: 1
+  },
+  sections: [
+    {dx: 57, dy: 7, r: -80, step_size: 1, wiggle_size: 0.25},
+    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -57, dy: -8, r: -80, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "white"
+};
+
+yellowtail_g.append("path").attr("fill",yellowtail_stripe_2.color).attr("d",generate_path(yellowtail_stripe_2)).attr("opacity",0.5);
+
+
+
+
+const yellowtail_stripe_3 = {
+  start: {
+    x:6,
+    y: -4
+  },
+  sections: [
+    {dx: 57, dy: 2, r: -80, step_size: 1, wiggle_size: 0.25},
+    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -57, dy: -3, r: -80, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "white"
+};
+
+yellowtail_g.append("path").attr("fill",yellowtail_stripe_3.color).attr("d",generate_path(yellowtail_stripe_3)).attr("opacity",0.5);
 
 
 </script>
