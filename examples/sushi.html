@@ -126,7 +126,7 @@ const tuna = {
     {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
     {dx: 0, dy: -2, r: -5, step_size: 1, wiggle_size: 0.5},
   ],
-  color: "#EA361F"
+  color: "#E74C3C"
 };
 
 tuna_g.append("path").attr("fill",tuna.color).attr("d",generate_path(tuna));
@@ -446,8 +446,8 @@ let red_clam_g = svg.append("g").attr("transform","translate(100,200)");
 
 const red_clam_rice = {
   start: {
-    x: 5,
-    y: 23
+    x: 0,
+    y: 20
   },
   sections: [
     {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
@@ -470,12 +470,12 @@ const red_clam_top = {
     y: 0
   },
   sections: [
-    {dx: 30, dy: 20, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 25, dy: 17, r: 100, step_size: 1, wiggle_size: 0.5},
     {dx: -17, dy: 17, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -14, dy: -36, r: 40, step_size: 1, wiggle_size: 0.5},
+    {dx: -9, dy: -33, r: 40, step_size: 1, wiggle_size: 0.5},
     {dx: 2, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
   ],
-  color: "red"
+  color: "#E92F1C"
 };
 
 red_clam_g.append("path").attr("fill",red_clam_top.color).attr("d",generate_path(red_clam_top));
@@ -485,8 +485,8 @@ red_clam_g.append("path").attr("fill",red_clam_top.color).attr("d",generate_path
 
 const red_clam_bottom = {
   start: {
-    x: 30,
-    y: 20
+    x: 25,
+    y: 17
   },
   sections: [
     {dx: 10, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
@@ -507,8 +507,8 @@ red_clam_g.append("path").attr("fill",red_clam_bottom.color).attr("d",generate_p
 
 const red_clam_seaweed = {
   start: {
-    x: 30,
-    y: 20
+    x: 25,
+    y: 17
   },
   sections: [
     {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.5},
