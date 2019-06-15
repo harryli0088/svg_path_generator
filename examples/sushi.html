@@ -848,6 +848,60 @@ const yellowtail_stripe_3 = {
 yellowtail_g.append("path").attr("fill",yellowtail_stripe_3.color).attr("d",generate_path(yellowtail_stripe_3)).attr("opacity",0.5);
 
 
+
+
+
+
+
+
+let shrimp_g = svg.append("g").attr("transform","translate(200,400)");
+
+const shrimp_rice = {
+  start: {
+    x: 15,
+    y: -3
+  },
+  sections: [
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 12, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "white"
+};
+
+// shrimp_g.append("path").attr("fill",shrimp_rice.color).attr("d",generate_path(shrimp_rice));
+
+
+
+const shrimp = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 8, dy: -7, r: -10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -4, r: -10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 2, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 4, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 6, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 10, r: -15, step_size: 1, wiggle_size: 0.5},
+
+    {dx: -4, dy: 4, r: -20, step_size: 1, wiggle_size: 0.5},
+
+    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -11, dy: -3, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "#FFEFEF"
+};
+
+shrimp_g.append("path").attr("fill",shrimp.color).attr("d",generate_path(shrimp));
+
 </script>
 
 </html>
