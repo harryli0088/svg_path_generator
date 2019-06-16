@@ -48,7 +48,7 @@ const board_leg_shadow = {
     {dx: 0, dy: -20, r: 0, step_size: 1, wiggle_size: 0.5},
 
   ],
-  color: "#8D703B"
+  color: "#1C2833"
 };
 
 board_g.append("path").attr("fill",board_leg_shadow.color).attr("d",generate_path(board_leg_shadow)).attr("transform","translate(220,104)");
@@ -69,7 +69,7 @@ const board_top = {
     {dx: -dimensions.length.x, dy: dimensions.length.y, r: 0, step_size: 1, wiggle_size: 0.25}, //length
     {dx: -dimensions.width.x, dy: -dimensions.width.y, r: 0, step_size: 1, wiggle_size: 0.25}, //width
   ],
-  color: "#F1DB55"
+  color: "#566573"
   //D6BE2C
 };
 
@@ -105,7 +105,7 @@ const board_sides = {
     {dx: -dimensions.width.x, dy: -dimensions.width.y, r: 0, step_size: 1, wiggle_size: 0.25}, //width
     {dx: dimensions.height.x, dy: -dimensions.height.y, r: 0, step_size: 1, wiggle_size: 0.25}, //height
   ],
-  color: "#D6BE2C"
+  color: "#2C3E50"
 };
 
 board_g.append("path").attr("fill",board_sides.color).attr("d",generate_path(board_sides));
@@ -115,17 +115,25 @@ board_g.append("path").attr("fill",board_sides.color).attr("d",generate_path(boa
 
 const board_line = {
   start: {
-    x: dimensions.width.x,
-    y: dimensions.length.y + dimensions.width.y - 1
+    x: 1,
+    y: dimensions.length.y
   },
   sections: [
-    {dx: dimensions.height.x, dy: dimensions.height.y, r: 0, step_size: 1, wiggle_size: 0.2}, //height
+    {dx: dimensions.width.x-1, dy: dimensions.width.y-1, r: 0, step_size: 1, wiggle_size: 0.2}, //width
+    {dx: dimensions.length.x, dy: -dimensions.length.y, r: 0, step_size: 1, wiggle_size: 0.2}, //length
 
+    {dx: 0, dy: 1, r: 0, step_size: 1, wiggle_size: 0.5},
+
+    {dx: -dimensions.length.x, dy: dimensions.length.y, r: 0, step_size: 1, wiggle_size: 0.2}, //length
+
+    {dx: dimensions.height.x, dy: dimensions.height.y, r: 0, step_size: 1, wiggle_size: 0.2}, //height
     {dx: -1, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
 
     {dx: dimensions.height.x, dy: -dimensions.height.y, r: 0, step_size: 1, wiggle_size: 0.2}, //height
+
+    {dx: -dimensions.width.x, dy: -dimensions.width.y, r: 0, step_size: 1, wiggle_size: 0.2}, //width
   ],
-  color: "#F1DB55"
+  color: "maroon"
 };
 
 board_g.append("path").attr("fill",board_line.color).attr("d",generate_path(board_line));
