@@ -1,6 +1,9 @@
 ![Ramen Example](/examples/ramen.svg)
 
 
+![Sushi Example](/examples/sushi.svg)
+
+
 # svg_path_generator
 A javascript function that generates a data string for the "d" attribute in a "path" element.
 
