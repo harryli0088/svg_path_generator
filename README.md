@@ -1,7 +1,7 @@
 ![Ramen Example](/examples/ramen.svg)
 
 
-![Sushi Example](/examples/sushi.svg)
+![Sushi Example](/examples/ramen.svg)
 
 
 # svg_path_generator
