@@ -5,7 +5,9 @@
 
 
 # svg_path_generator
-A javascript function that generates a data string for the "d" attribute in a "path" element.
+Draw with SVG
+
+A javascript function that generates a data string for the "d" attribute in an SVG "path" element.
 
 It takes in general straight lines or curves that you want to follow, and can add randomized "wiggles" to give it a hand-drawn effect
 
@@ -13,7 +15,7 @@ It takes in general straight lines or curves that you want to follow, and can ad
 
 ## usage
 the generate_path function takes in a path_data object
-```
+```javascript
 path_data = {
   start: {x: number, y: number},
   sections: [
@@ -29,7 +31,7 @@ path_data = {
 }
 ```
 
-```
+```javascript
 //example path_data
 const path_data = {
    start: {
