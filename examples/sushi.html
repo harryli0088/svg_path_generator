@@ -858,21 +858,21 @@ let shrimp_g = svg.append("g").attr("transform","translate(200,400)");
 
 const shrimp_rice = {
   start: {
-    x: 15,
+    x: 5,
     y: -3
   },
   sections: [
     {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 12, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 3, r: 8, step_size: 1, wiggle_size: 0.5},
+    {dx: 12, dy: 2, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 1, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -10, r: 10, step_size: 1, wiggle_size: 0.5},
   ],
   color: "white"
 };
 
-// shrimp_g.append("path").attr("fill",shrimp_rice.color).attr("d",generate_path(shrimp_rice));
+shrimp_g.append("path").attr("fill",shrimp_rice.color).attr("d",generate_path(shrimp_rice));
 
 
 
@@ -900,7 +900,7 @@ const shrimp = {
     {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
     {dx: -11, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
   ],
-  color: "#FFEFEF"
+  color: "#FFE4D3"
 };
 
 shrimp_g.append("path").attr("fill",shrimp.color).attr("d",generate_path(shrimp));
@@ -934,7 +934,7 @@ shrimp_g.append("path").attr("fill",shrimp_tail.color).attr("d",generate_path(sh
 
 
 
-const shrimp_fold_color = "#F0E4E4";
+const shrimp_fold_color = "#E5DAD2";
 
 const shrimp_fold_bottom_sections = [
   {dx: 0, dy: -4, r: -10, step_size: 1, wiggle_size: 0.25},
