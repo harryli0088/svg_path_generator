@@ -882,8 +882,9 @@ const shrimp = {
     y: 0
   },
   sections: [
-    {dx: 8, dy: -7, r: -10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -4, r: -10, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -3, r: -10, step_size: 1, wiggle_size: 0.5},
+    {dx: 9, dy: -5, r: -8, step_size: 1, wiggle_size: 0.5},
+    {dx: 9, dy: -3, r: -10, step_size: 1, wiggle_size: 0.5},
     {dx: 10, dy: 2, r: -15, step_size: 1, wiggle_size: 0.5},
     {dx: 10, dy: 4, r: -15, step_size: 1, wiggle_size: 0.5},
     {dx: 10, dy: 6, r: -15, step_size: 1, wiggle_size: 0.5},
@@ -895,7 +896,7 @@ const shrimp = {
     {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0.5},
     {dx: -11, dy: -3, r: 15, step_size: 1, wiggle_size: 0.5},
     {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -11, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
   ],
   color: "#FFEFEF"
 };
@@ -928,20 +929,23 @@ shrimp_g.append("path").attr("fill",shrimp_tail.color).attr("d",generate_path(sh
 
 
 
+const shrimp_fold_color = "#F0E4E4";
 
-const shrimp_fold_sections = [
-  {dx: 0, dy: -4, r: -20, step_size: 1, wiggle_size: 0.25},
-  {dx: 4, dy: -4, r: -20, step_size: 1, wiggle_size: 0.25},
+const shrimp_fold_bottom_sections = [
+  {dx: 0, dy: -4, r: -10, step_size: 1, wiggle_size: 0.25},
+  {dx: 5, dy: -5, r: -10, step_size: 1, wiggle_size: 0.25},
   {dx: 12, dy: 2, r: -20, step_size: 1, wiggle_size: 0.25},
   {dx: 0, dy: 1, r: -20, step_size: 1, wiggle_size: 0.25},
   {dx: -12, dy: -2, r: -20, step_size: 1, wiggle_size: 0.25},
-  {dx: -3, dy: 4, r: -20, step_size: 1, wiggle_size: 0.25},
+  {dx: -4, dy: 4, r: -20, step_size: 1, wiggle_size: 0.25},
   {dx: -0, dy: 3, r: -20, step_size: 1, wiggle_size: 0.25},
 ];
 
 const shrimp_folds_bottom = [
-  {x: 11, y: 5, scale: 1},
-  {x: 26, y: 11, scale: 0.9},
+  {x: 11, y: 4, scale: 1},
+  {x: 26, y: 9, scale: 0.9},
+  {x: 48, y: 15, scale: 0.7},
+  {x: 80, y: 24, scale: 0.55},
 ]
 
 shrimp_folds_bottom.forEach(fold => {
@@ -950,11 +954,52 @@ shrimp_folds_bottom.forEach(fold => {
       x: fold.x,
       y: fold.y
     },
-    sections: shrimp_fold_sections
+    sections: shrimp_fold_bottom_sections
   };
 
-  shrimp_g.append("path").attr("fill",tmp_fold.color).attr("d",generate_path(tmp_fold)).attr("fill",'blue').attr("transform","scale("+fold.scale+")");
+  shrimp_g.append("path").attr("fill",tmp_fold.color).attr("d",generate_path(tmp_fold)).attr("fill",shrimp_fold_color).attr("transform","scale("+fold.scale+")");
 });
+
+
+
+
+const shrimp_fold_top_sections = [
+  {dx: -5, dy: -4, r: -10, step_size: 1, wiggle_size: 0.25},
+];
+
+const shrimp_folds_top = [
+  {x: 11, y: 0, scale: 1},
+]
+
+shrimp_folds_top.forEach(fold => {
+  const tmp_fold = {
+    start: {
+      x: fold.x,
+      y: fold.y
+    },
+    sections: shrimp_fold_top_sections
+  };
+
+  shrimp_g.append("path").attr("fill",tmp_fold.color).attr("d",generate_path(tmp_fold)).attr("fill","blue").attr("transform","scale("+fold.scale+")");
+});
+
+
+
+const shrimp_middle = {
+  start: {
+    x: 10,
+    y: -7
+  },
+  sections: [
+    {dx: 1, dy: -1, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: 45, dy: 20, r: -120, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: 1, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -45, dy: -20, r: -100, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: shrimp_fold_color
+};
+
+shrimp_g.append("path").attr("fill",shrimp_middle.color).attr("d",generate_path(shrimp_middle));
 
 
 </script>
