@@ -14,17 +14,22 @@ It takes in general straight lines or curves that you want to follow, and can ad
 
 
 ## usage
+
+1) Provide a starting x and y position
+2) Provide an array of "sections": curves or straight lines to draw
+
+
 the generate_path function takes in a path_data object
 ```javascript
 path_data = {
   start: {x: number, y: number},
   sections: [
     {
-      dx: size in pixels that the end point x coordinate should be,
-      dy: size in pixels that the end point y coordinate should be,
-      r: size in pixels of the radius (smaller radius means more extreme curve, larger radius means less extreme curve, don't make it too small relative to the step size otherwise it won't intersect),
+      dx: change in pixels along the x axis,
+      dy: change in pixels along the y axis (remember that in SVG y increases positively down),
+      r: size in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve, larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
       step_size: size in pixels that each step should be,
-      wiggle_size: size in pixels that the maximum wiggle can be
+      wiggle_size: size in pixels that the maximum wiggle side-to-side can be
     },
     ...
   ]
