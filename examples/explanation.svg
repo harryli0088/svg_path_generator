@@ -1,5 +1,5 @@
-<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="370" height="200" style="background: #aaa">
-  <g transform="translate(-50,10)">
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="750" height="400" style="background: #111">
+  <g transform="translate(-100,10) scale(2)">
     <line x1="70" y1="170" x2="175" y2="100" stroke="green" stroke-width="2"></line>
     <line x1="70" y1="170" x2="100" y2="50" stroke="green" stroke-width="2"></line>
     <line x1="70" y1="170" x2="130" y2="60" stroke="green" stroke-width="2"></line>
