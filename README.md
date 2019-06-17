@@ -27,7 +27,7 @@ path_data = {
     {
       dx: change in pixels along the x axis,
       dy: change in pixels along the y axis (remember that in SVG y increases positively down),
-      r: size in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve, larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
+      r: size in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve; larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
       step_size: size in pixels that each step should be,
       wiggle_size: size in pixels that the maximum wiggle side-to-side can be
     },
@@ -53,6 +53,12 @@ const path_data = {
    ]
  }
  ```
+
+## How it works
+
+![explanation](/examples/explanation.svg)
+
+
 
 ## examples
 Examples can be found in the /examples directory. There is a d3.js file included.
