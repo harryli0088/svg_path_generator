@@ -1,0 +1,170 @@
+<html>
+<!-- made by Harry Li  -->
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="./d3.js"></script>
+<script src="../path_generator.js"></script>
+<script type="text/javascript">
+let svg = d3.select("svg");
+
+//dimentions of the board
+const dimensions = {
+  height: 250,
+  diameter: 100
+};
+
+
+
+let can_g = svg.append("g").attr("transform","translate(200,100)")
+
+const can_bottom = {
+  start: {
+    x: dimensions.diameter/10,
+    y: dimensions.height + 8
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/10, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*3/5, dy: 0, r: dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/10, r: 50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "silver"
+};
+
+can_g.append("path").attr("fill",can_bottom.color).attr("d",generate_path(can_bottom));
+
+
+
+const can = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 0, dy: dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#7DF52D"
+};
+
+can_g.append("path").attr("fill",can.color).attr("d",generate_path(can));
+
+
+
+
+
+const logo_outer_circle = {
+  start: {
+    x: dimensions.diameter/18,
+    y: 100
+  },
+  sections: [
+    {dx: dimensions.diameter*2/9, dy: dimensions.diameter*5/9, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*4/9, dy: 0, r: 45, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*2/9, dy: -dimensions.diameter*5/9, r: 60, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*2/9, dy: -dimensions.diameter*3/10, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*4/9, dy: 0, r: -55, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*2/9, dy: dimensions.diameter*3/10 , r: -40, step_size: 1, wiggle_size: 0},
+
+  ],
+  color: "white"
+};
+
+can_g.append("path").attr("fill",logo_outer_circle.color).attr("d",generate_path(logo_outer_circle));
+
+
+
+const logo_middle_circle = {
+  start: {
+    x: dimensions.diameter*2.25/27,
+    y: logo_outer_circle.start.y-2
+  },
+  sections: [
+    {dx: dimensions.diameter*2/9, dy: dimensions.diameter*14.5/27, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*10.5/27, dy: 0, r: 45, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*2/9, dy: -dimensions.diameter*14.5/27, r: 50, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*2/9, dy: -dimensions.diameter/4, r: -35, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*10.5/27, dy: 0, r: -55, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*2/9, dy: dimensions.diameter/4, r: -35, step_size: 1, wiggle_size: 0},
+
+  ],
+  color: "#008919"
+};
+
+can_g.append("path").attr("fill",logo_middle_circle.color).attr("d",generate_path(logo_middle_circle));
+
+
+const company = {
+  height: 5,
+  width: 35,
+  radius: 80
+}
+const logo_company = {
+  start: {
+    x: dimensions.diameter/2 - company.width/2,
+    y: logo_outer_circle.start.y-dimensions.diameter/4
+  },
+  sections: [
+    {dx: 0, dy: company.height, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: company.width, dy: 0, r: company.radius, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -2, r: 5, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -company.height, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -company.width, dy: 0, r: company.radius, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: -5, step_size: 1, wiggle_size: 0},
+  ],
+  color: "white",
+  opacity: 0.9
+};
+
+can_g.append("path").attr("fill",logo_company.color).attr("d",generate_path(logo_company)).attr("opacity",logo_company.opacity);
+
+
+
+const logo_name = {
+  start: {
+    x: dimensions.diameter/9,
+    y: logo_outer_circle.start.y + 10
+  },
+  sections: [
+    {dx: 10, dy: 25, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: 70, dy: -25, r: 200, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -15, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: -50, dy: 5, r: -200, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 10, r: -50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "white"
+};
+
+can_g.append("path").attr("fill",logo_name.color).attr("d",generate_path(logo_name));
+
+
+
+const logo_yellow = {
+  start: {
+    x: dimensions.diameter/4,
+    y: logo_outer_circle.start.y + 40
+  },
+  sections: [
+    {dx: 9, dy: 10, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: 55, dy: -30, r: 150, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -3, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: -59, dy: 25, r: 200, step_size: 1, wiggle_size: 0},
+  ],
+  color: "yellow"
+};
+
+can_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
+</script>
+
+</html>
