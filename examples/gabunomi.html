@@ -301,6 +301,30 @@ const logo_yellow = {
 };
 
 can_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
+
+
+
+const bottom_text = {
+  start: {
+    x: dimensions.diameter/2,
+    y: dimensions.height + 5
+  },
+  sections: [
+    {dx: 0, dy: 5, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: 43, dy: -10, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -2, r: 5, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -5, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -43, dy: 10, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: -5, step_size: 1, wiggle_size: 0},
+  ],
+  color: "white",
+  opacity: 0.8
+};
+
+can_g.append("path").attr("fill",bottom_text.color).attr("d",generate_path(bottom_text)).attr("opacity",bottom_text.opacity);
 </script>
 
 </html>
