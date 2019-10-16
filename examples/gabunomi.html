@@ -348,6 +348,146 @@ const bottom_text = {
 };
 
 can_g.append("path").attr("fill",bottom_text.color).attr("d",generate_path(bottom_text)).attr("opacity",bottom_text.opacity);
+
+
+
+let seal_g = can_g.append("g").attr("transform","translate(75,150)");
+
+
+
+const seal = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: -5, dy: 5, r: -8, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 7, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+
+    {dx: 8, dy: 2, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: 11, dy: -7, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: -5, dy: -4, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 15, r: -20, step_size: 1, wiggle_size: 0},
+  ],
+  color: "gold"
+};
+
+seal_g.append("path").attr("fill",seal.color).attr("d",generate_path(seal));
+
+
+
+const seal_text_red = {
+  start: {
+    x: 0,
+    y: 1.5
+  },
+  sections: [
+    {dx: -4, dy: 5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 0.5, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+
+    {dx: 15, dy: -7, r: 70, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -9, r: 20, step_size: 1, wiggle_size: 0},
+
+    {dx: -16.5, dy: 10, r: 70, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(255,0,0,0.7 )"
+};
+
+seal_g.append("path").attr("fill",seal_text_red.color).attr("d",generate_path(seal_text_red));
+
+
+
+const seal_text_black = {
+  start: {
+    x: 0,
+    y: 8
+  },
+  sections: [
+    {dx: -2, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: -5, step_size: 1, wiggle_size: 0},
+
+    {dx: 15, dy: -7, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -11, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -5, r: 50, step_size: 1, wiggle_size: 0},
+
+    {dx: -10, dy: 11, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: 7, r: 50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.75)"
+};
+
+seal_g.append("path").attr("fill",seal_text_black.color).attr("d",generate_path(seal_text_black));
+
+
+
+const seal_curve_top = {
+  start: {
+    x: 3,
+    y: -4
+  },
+  sections: [
+    {dx: 7, dy: -8, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 9, dy: -2, r: -15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 1, r: -15, step_size: 1, wiggle_size: 0},
+
+    {dx: -10, dy: 3, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 6, r: -15, step_size: 1, wiggle_size: 0},
+  ],
+  color: seal_text_red.color
+};
+
+seal_g.append("path").attr("fill",seal_curve_top.color).attr("d",generate_path(seal_curve_top));
+
+
+
+const seal_curve_bottom = {
+  start: {
+    x: 5,
+    y: 13
+  },
+  sections: [
+    {dx: 7, dy: 2, r: 13, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: -4, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -12, r: 30, step_size: 1, wiggle_size: 0},
+
+    {dx: -6, dy: 12, r: 30, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: 3, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: -2, r: 13, step_size: 1, wiggle_size: 0},
+  ],
+  color: seal_text_red.color
+};
+
+seal_g.append("path").attr("fill",seal_curve_bottom.color).attr("d",generate_path(seal_curve_bottom));
+
+
+
+const melon = {
+  start: {
+    x: 12,
+    y: -10
+  },
+  sections: [
+    {dx: 3, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
+
+    {dx: 2, dy: 0, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: -11, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -5, r: -7, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -9, dy: 12, r: -15, step_size: 1, wiggle_size: 0},
+  ],
+  color: "lightgreen"
+};
+
+seal_g.append("path").attr("fill",melon.color).attr("d",generate_path(melon));
 </script>
 
 </html>
