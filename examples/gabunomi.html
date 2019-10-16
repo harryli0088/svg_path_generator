@@ -227,6 +227,29 @@ icream_g.append("path").attr("fill",cherry_stem.color).attr("d",generate_path(ch
 
 
 
+let soda = {
+  start: {
+    x: 11,
+    y: icecream.start.y + 17
+  },
+  sections: [
+    {dx: 19, dy: 63, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 13, dy: 38, r:-200, step_size: 1, wiggle_size: 0},
+
+    {dx: 53, dy: -12, r:90, step_size: 1, wiggle_size: 0},
+
+    {dx: -5, dy: -40, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -52, r:400, step_size: 1, wiggle_size: 0},
+
+    {dx: -81, dy: 3, r:65, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgb(0, 255, 0)"
+};
+
+icream_g.append("path").attr("fill",soda.color).attr("d",generate_path(soda));
+
+
+
 let glass = {
   start: {
     x: 8,
@@ -234,10 +257,10 @@ let glass = {
   },
   sections: [
     {dx: 19, dy: 70, r:150, step_size: 1, wiggle_size: 0},
-    {dx: 15, dy: 40, r:-200, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: 42, r:-200, step_size: 1, wiggle_size: 0},
     {dx: 2, dy: 1, r:-200, step_size: 1, wiggle_size: 0},
 
-    {dx: -15, dy: -40, r:-200, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -42, r:-200, step_size: 1, wiggle_size: 0},
     {dx: -19, dy: -70, r:150, step_size: 1, wiggle_size: 0},
 
     {dx: 25, dy: 15, r:40, step_size: 1, wiggle_size: 0},
