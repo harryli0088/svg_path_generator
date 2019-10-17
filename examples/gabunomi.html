@@ -152,6 +152,25 @@ logo.append("path").attr("fill",logo_name.color).attr("d",generate_path(logo_nam
 
 let icream_g = can_g.append("g");
 
+
+
+let splash = {
+  start: {
+    x: 10,
+    y: 170
+  },
+  sections: [
+    {dx: -20, dy: -10, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:-150, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 10, r:-50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "pink"
+};
+
+icream_g.append("path").attr("fill",splash.color).attr("d",generate_path(splash));
+
+
+
 const glass_color = "#3a9800";
 
 let glass_back = {
