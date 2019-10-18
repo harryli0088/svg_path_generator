@@ -9,7 +9,7 @@ let svg = d3.select("svg");
 
 //dimentions of the board
 const dimensions = {
-  height: 250,
+  height: 205,
   diameter: 100
 };
 
@@ -40,15 +40,27 @@ const can = {
     y: 0
   },
   sections: [
-    {dx: 0, dy: dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
-    {dx: dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
-    {dx: dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
-    {dx: dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
 
-    {dx: 0, dy: -dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*7/10+6, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
   ],
   color: "#7DF52D"
 };
@@ -57,7 +69,52 @@ can_g.append("path").attr("fill",can.color).attr("d",generate_path(can));
 
 
 
-let logo = can_g.append("g");
+const can_top_dark = {
+  start: {
+    x: 5,
+    y: -40
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*7/10, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -4, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r: 4, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*8/10-2, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
+
+    {dx: -3, dy: -3, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 4, r: 5, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#aaa"
+};
+
+can_g.append("path").attr("fill",can_top_dark.color).attr("d",generate_path(can_top_dark));
+
+
+
+const can_top_light = {
+  start: {
+    x: 5,
+    y: -40
+  },
+  sections: [
+    {dx: dimensions.diameter*8/10-2, dy: 0, r: -dimensions.diameter, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#ccc"
+};
+
+can_g.append("path").attr("fill",can_top_light.color).attr("d",generate_path(can_top_light));
+
+
+
+
+let logo = can_g.append("g").attr("transform","translate(0,"+(dimensions.height-250)+")");
 
 const logo_outer_circle = {
   start: {
@@ -150,7 +207,7 @@ logo.append("path").attr("fill",logo_name.color).attr("d",generate_path(logo_nam
 
 
 
-let icream_g = can_g.append("g");
+let icream_g = can_g.append("g").attr("transform","translate(0,"+(dimensions.height-250)+")");
 
 
 
@@ -160,11 +217,43 @@ let splash = {
     y: 170
   },
   sections: [
-    {dx: -20, dy: -10, r:-50, step_size: 1, wiggle_size: 0},
-    {dx: 0, dy: -2, r:-150, step_size: 1, wiggle_size: 0},
-    {dx: 20, dy: 10, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -18, r:-100, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -4, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -10, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -7, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 3, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 1, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: -1, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 0, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 2, r:-15, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 0, r:-50, step_size: 1, wiggle_size: 0},
+
+    {dx: 60, dy: 20, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 40, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 20, r:0, step_size: 1, wiggle_size: 0},
   ],
-  color: "pink"
+  color: "#00cc00"
 };
 
 icream_g.append("path").attr("fill",splash.color).attr("d",generate_path(splash));
@@ -196,10 +285,10 @@ let icecream = {
     y: 150
   },
   sections: [
-    {dx: 35, dy: -35, r: -35, step_size: 1, wiggle_size: 0},
-    {dx: 35, dy: 35, r: -35, step_size: 1, wiggle_size: 0},
-    {dx: -35, dy: 35, r: 35, step_size: 1, wiggle_size: 0},
-    {dx: -35, dy: -35, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: 36, dy: -36, r: -36, step_size: 1, wiggle_size: 0},
+    {dx: 36, dy: 36, r: -36, step_size: 1, wiggle_size: 0},
+    {dx: -36, dy: 36, r: 36, step_size: 1, wiggle_size: 0},
+    {dx: -36, dy: -36, r: 36, step_size: 1, wiggle_size: 0},
   ],
   color: "#fffad2"
 };
@@ -262,7 +351,7 @@ let soda = {
 
     {dx: -81, dy: 3, r:65, step_size: 1, wiggle_size: 0},
   ],
-  color: "rgb(0, 255, 0)"
+  color: splash.color
 };
 
 icream_g.append("path").attr("fill",soda.color).attr("d",generate_path(soda));
@@ -342,7 +431,7 @@ const logo_yellow = {
   color: "#cef11e"
 };
 
-can_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
+icream_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
 
 
 
@@ -370,7 +459,7 @@ can_g.append("path").attr("fill",bottom_text.color).attr("d",generate_path(botto
 
 
 
-let seal_g = can_g.append("g").attr("transform","translate(75,150)");
+let seal_g = can_g.append("g").attr("transform","translate(75,152)");
 
 
 
