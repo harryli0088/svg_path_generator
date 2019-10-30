@@ -9,13 +9,13 @@ let svg = d3.select("svg");
 
 //dimentions of the board
 const dimensions = {
-  height: 250,
+  height: 205,
   diameter: 100
 };
 
 
 
-let can_g = svg.append("g").attr("transform","translate(200,100)")
+let can_g = svg.append("g").attr("transform","translate(200,150)")
 
 const can_bottom = {
   start: {
@@ -41,14 +41,26 @@ const can = {
   },
   sections: [
     {dx: 0, dy: dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
+
     {dx: dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
     {dx: dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
     {dx: dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
 
     {dx: 0, dy: -dimensions.height, r: 0, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter/10, dy: dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter*4/5, dy: 0, r: dimensions.diameter, step_size: 1, wiggle_size: 0},
-    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/10, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*7/10+6, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
   ],
   color: "#7DF52D"
 };
@@ -57,7 +69,134 @@ can_g.append("path").attr("fill",can.color).attr("d",generate_path(can));
 
 
 
-let logo = can_g.append("g");
+const can_top_light = {
+  start: {
+    x: 6,
+    y: -44.5
+  },
+  sections: [
+    {dx: dimensions.diameter*2/10, dy: -7, r: -dimensions.diameter/2, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*5/10-2, dy: 0, r: -dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*2/10, dy: 7, r: -dimensions.diameter/2, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 6, r: 0, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*2/10, dy: 7, r: dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*5/10+2, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*2/10, dy: -7, r: dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -6, r: 0, step_size: 1, wiggle_size: 0},
+
+  ],
+  color: "#ccc"
+};
+
+can_g.append("path").attr("fill",can_top_light.color).attr("d",generate_path(can_top_light));
+
+
+
+can_g.append("ellipse").attr("cx",50).attr("cy",-37).attr("rx",15).attr("ry",5).attr("fill","transparent").attr("stroke","#bbb").attr("stroke-width",1)
+
+
+
+const can_top_dark = {
+  start: {
+    x: 5,
+    y: -39
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*7/10, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/15, r: 15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -4, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r: 4, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*8/10-2, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+
+    {dx: -3, dy: -3, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 4, r: 5, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#aaa"
+};
+
+can_g.append("path").attr("fill",can_top_dark.color).attr("d",generate_path(can_top_dark));
+
+
+
+const can_top_dark_1 = {
+  start: {
+    x: 6,
+    y: -39
+  },
+  sections: [
+    {dx: dimensions.diameter*2/10, dy: -7, r: -dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*5/10-2, dy: 0, r: -dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*2/10, dy: 7, r: -dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 1, r: -dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter*2/10, dy: -7, r: -dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*5/10+2, dy: 0, r: -dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*2/10, dy: 7, r: -dimensions.diameter*3/4, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#aaa"
+};
+
+can_g.append("path").attr("fill",can_top_dark_1.color).attr("d",generate_path(can_top_dark_1));
+
+
+
+const tab = {
+  start: {
+    x: 41,
+    y: -44
+  },
+  sections: [
+    {dx: 4, dy: -4, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 4, r: -4, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 3, r: 0, step_size: 1, wiggle_size: 0},
+
+    {dx: -4, dy: 4, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 0, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -4, r: 4, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#999"
+};
+
+can_g.append("path").attr("fill",tab.color).attr("d",generate_path(tab));
+
+
+
+const tab_hole = {
+  start: {
+    x: tab.start.x+2,
+    y: -45
+  },
+  sections: [
+    {dx: 2, dy: -1, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 1, r: -2, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 0, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#ccc"
+};
+
+can_g.append("path").attr("fill",tab_hole.color).attr("d",generate_path(tab_hole));
+can_g.append("path").attr("fill",tab_hole.color).attr("d",generate_path(tab_hole)).attr("transform","translate(0,4)");
+
+
+
+let logo = can_g.append("g").attr("transform","translate(0,"+(dimensions.height-250)+")");
 
 const logo_outer_circle = {
   start: {
@@ -150,7 +289,58 @@ logo.append("path").attr("fill",logo_name.color).attr("d",generate_path(logo_nam
 
 
 
-let icream_g = can_g.append("g");
+let icream_g = can_g.append("g").attr("transform","translate(0,"+(dimensions.height-250)+")");
+
+
+
+let splash = {
+  start: {
+    x: 10,
+    y: 170
+  },
+  sections: [
+    {dx: 0, dy: -18, r:-100, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -4, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -10, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -7, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 3, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 1, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: -1, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 0, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 2, r:-15, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 0, r:-50, step_size: 1, wiggle_size: 0},
+
+    {dx: 60, dy: 20, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 40, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 20, r:0, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#00cc00"
+};
+
+icream_g.append("path").attr("fill",splash.color).attr("d",generate_path(splash));
+
+
 
 const glass_color = "#3a9800";
 
@@ -160,9 +350,9 @@ let glass_back = {
     y: 140
   },
   sections: [
-    {dx: -20, dy: -10, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -10, r:-50, step_size: 1, wiggle_size: 0},
     {dx: 0, dy: -2, r:-150, step_size: 1, wiggle_size: 0},
-    {dx: 20, dy: 10, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 10, r:-50, step_size: 1, wiggle_size: 0},
   ],
   color: glass_color
 };
@@ -177,10 +367,10 @@ let icecream = {
     y: 150
   },
   sections: [
-    {dx: 35, dy: -35, r: -35, step_size: 1, wiggle_size: 0},
-    {dx: 35, dy: 35, r: -35, step_size: 1, wiggle_size: 0},
-    {dx: -35, dy: 35, r: 35, step_size: 1, wiggle_size: 0},
-    {dx: -35, dy: -35, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: 36, dy: -36, r: -36, step_size: 1, wiggle_size: 0},
+    {dx: 36, dy: 36, r: -36, step_size: 1, wiggle_size: 0},
+    {dx: -36, dy: 36, r: 36, step_size: 1, wiggle_size: 0},
+    {dx: -36, dy: -36, r: 36, step_size: 1, wiggle_size: 0},
   ],
   color: "#fffad2"
 };
@@ -195,10 +385,10 @@ let cherry = {
     y: 165
   },
   sections: [
-    {dx: 2, dy: -15, r: -11, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -15, r: -11, step_size: 1, wiggle_size: 0},
     {dx: 15, dy: 0, r: -12, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: 17, r: 11, step_size: 1, wiggle_size: 0},
-    {dx: -15, dy: -2, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 17, r: 11, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -2, r: 10, step_size: 1, wiggle_size: 0},
   ],
   color: "red"
 };
@@ -213,17 +403,40 @@ let cherry_stem = {
     y: 155
   },
   sections: [
-    {dx: -4, dy: -5, r: 40, step_size: 1, wiggle_size: 0},
-    {dx: -13, dy: -18, r: 150, step_size: 1, wiggle_size: 0},
-    {dx: 1, dy: -1, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -5, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: -13, dy: -18, r: 150, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: 60, step_size: 1, wiggle_size: 0},
 
-    {dx: 19, dy: 22, r: 70, step_size: 1, wiggle_size: 0},
-    {dx: -3, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 19, dy: 22, r: 70, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
   ],
   color: "maroon"
 };
 
 icream_g.append("path").attr("fill",cherry_stem.color).attr("d",generate_path(cherry_stem));
+
+
+
+let soda = {
+  start: {
+    x: 11,
+    y: icecream.start.y + 17
+  },
+  sections: [
+    {dx: 19, dy: 63, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 13, dy: 38, r:-200, step_size: 1, wiggle_size: 0},
+
+    {dx: 53, dy: -12, r:90, step_size: 1, wiggle_size: 0},
+
+    {dx: -5, dy: -40, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -52, r:400, step_size: 1, wiggle_size: 0},
+
+    {dx: -81, dy: 3, r:65, step_size: 1, wiggle_size: 0},
+  ],
+  color: splash.color
+};
+
+icream_g.append("path").attr("fill",soda.color).attr("d",generate_path(soda));
 
 
 
@@ -234,27 +447,27 @@ let glass = {
   },
   sections: [
     {dx: 19, dy: 70, r:150, step_size: 1, wiggle_size: 0},
-    {dx: 15, dy: 40, r:-200, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: 42, r:-200, step_size: 1, wiggle_size: 0},
     {dx: 2, dy: 1, r:-200, step_size: 1, wiggle_size: 0},
 
-    {dx: -15, dy: -40, r:-200, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -42, r:-200, step_size: 1, wiggle_size: 0},
     {dx: -19, dy: -70, r:150, step_size: 1, wiggle_size: 0},
 
-    {dx: 25, dy: 15, r:40, step_size: 1, wiggle_size: 0},
-    {dx: 25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
-    {dx: 30, dy: -30, r:40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 15, r:40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: -30, r:40, step_size: 1, wiggle_size: 0},
 
-    {dx: 0, dy: 75, r:-400, step_size: 1, wiggle_size: 0},
-    {dx: 5, dy: 40, r:150, step_size: 1, wiggle_size: 0},
-    {dx: 2, dy: -1, r:100, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 75, r:-400, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: 40, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -1, r:100, step_size: 1, wiggle_size: 0},
 
     {dx: -5, dy: -40, r:150, step_size: 1, wiggle_size: 0},
-    {dx: 0, dy: -76, r:400, step_size: 1, wiggle_size: 0},
-    {dx: -3, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -76, r:400, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -2, r:-5, step_size: 1, wiggle_size: 0},
 
-    {dx: -30, dy: 32, r:40, step_size: 1, wiggle_size: 0},
-    {dx: -25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
-    {dx: -25, dy: -17, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: 32, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -17, r:40, step_size: 1, wiggle_size: 0},
   ],
   color: glass_color
 };
@@ -269,14 +482,14 @@ let glass_1 = {
     y: icecream.start.y + 20
   },
   sections: [
-    {dx: 25, dy: 13, r:40, step_size: 1, wiggle_size: 0},
-    {dx: 25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
-    {dx: 32, dy: -28, r:40, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: -1, r:40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 13, r:40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 0, r:60, step_size: 1, wiggle_size: 0},
+    {dx: 32, dy: -28, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -1, r:40, step_size: 1, wiggle_size: 0},
 
-    {dx: -32, dy: 28, r:40, step_size: 1, wiggle_size: 0},
-    {dx: -25, dy: -1, r:60, step_size: 1, wiggle_size: 0},
-    {dx: -25, dy: -16, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -32, dy: 28, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -1, r:60, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -16, r:40, step_size: 1, wiggle_size: 0},
   ],
   color: glass_color
 };
@@ -300,14 +513,14 @@ const logo_yellow = {
   color: "#cef11e"
 };
 
-can_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
+icream_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
 
 
 
 const bottom_text = {
   start: {
-    x: dimensions.diameter/2,
-    y: dimensions.height + 5
+    x: dimensions.diameter/2,
+    y: dimensions.height + 5
   },
   sections: [
     {dx: 0, dy: 5, r: 0, step_size: 1, wiggle_size: 0},
@@ -325,6 +538,146 @@ const bottom_text = {
 };
 
 can_g.append("path").attr("fill",bottom_text.color).attr("d",generate_path(bottom_text)).attr("opacity",bottom_text.opacity);
+
+
+
+let seal_g = can_g.append("g").attr("transform","translate(75,152)");
+
+
+
+const seal = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: -5, dy: 5, r: -8, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 7, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+
+    {dx: 8, dy: 2, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: 11, dy: -7, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: -5, dy: -4, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 15, r: -20, step_size: 1, wiggle_size: 0},
+  ],
+  color: "gold"
+};
+
+seal_g.append("path").attr("fill",seal.color).attr("d",generate_path(seal));
+
+
+
+const seal_text_red = {
+  start: {
+    x: 0,
+    y: 1.5
+  },
+  sections: [
+    {dx: -4, dy: 5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 0.5, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+
+    {dx: 15, dy: -7, r: 70, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -9, r: 20, step_size: 1, wiggle_size: 0},
+
+    {dx: -16.5, dy: 10, r: 70, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(255,0,0,0.7 )"
+};
+
+seal_g.append("path").attr("fill",seal_text_red.color).attr("d",generate_path(seal_text_red));
+
+
+
+const seal_text_black = {
+  start: {
+    x: 0,
+    y: 8
+  },
+  sections: [
+    {dx: -2, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: -5, step_size: 1, wiggle_size: 0},
+
+    {dx: 15, dy: -7, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -11, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -5, r: 50, step_size: 1, wiggle_size: 0},
+
+    {dx: -10, dy: 11, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: 7, r: 50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.75)"
+};
+
+seal_g.append("path").attr("fill",seal_text_black.color).attr("d",generate_path(seal_text_black));
+
+
+
+const seal_curve_top = {
+  start: {
+    x: 3,
+    y: -4
+  },
+  sections: [
+    {dx: 7, dy: -8, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 9, dy: -2, r: -15, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 1, r: -15, step_size: 1, wiggle_size: 0},
+
+    {dx: -10, dy: 3, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 6, r: -15, step_size: 1, wiggle_size: 0},
+  ],
+  color: seal_text_red.color
+};
+
+seal_g.append("path").attr("fill",seal_curve_top.color).attr("d",generate_path(seal_curve_top));
+
+
+
+const seal_curve_bottom = {
+  start: {
+    x: 5,
+    y: 13
+  },
+  sections: [
+    {dx: 7, dy: 2, r: 13, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: -4, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -12, r: 30, step_size: 1, wiggle_size: 0},
+
+    {dx: -6, dy: 12, r: 30, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: 3, r: 12, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: -2, r: 13, step_size: 1, wiggle_size: 0},
+  ],
+  color: seal_text_red.color
+};
+
+seal_g.append("path").attr("fill",seal_curve_bottom.color).attr("d",generate_path(seal_curve_bottom));
+
+
+
+const melon = {
+  start: {
+    x: 12,
+    y: -10
+  },
+  sections: [
+    {dx: 3, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
+
+    {dx: 2, dy: 0, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: -11, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -5, r: -7, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -9, dy: 12, r: -15, step_size: 1, wiggle_size: 0},
+  ],
+  color: "lightgreen"
+};
+
+seal_g.append("path").attr("fill",melon.color).attr("d",generate_path(melon));
 </script>
 
 </html>
