@@ -4,6 +4,9 @@
 ![Sushi Example](/examples/sushi.svg)
 
 
+![Soda Example](/examples/gabunomi.svg)
+
+
 # svg_path_generator
 Draw with SVG
 
