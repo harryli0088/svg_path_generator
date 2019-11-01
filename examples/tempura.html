@@ -1,0 +1,222 @@
+<html>
+<!-- made by Harry Li  -->
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="./d3.js"></script>
+<script src="../path_generator.js"></script>
+<script type="text/javascript">
+let svg = d3.select("svg");
+
+
+
+let tempura_g = svg.append("g").attr("transform","translate(250,250)");
+
+function tempuraify(obj, g, wiggle, opacity) {
+  const breading = JSON.parse(JSON.stringify(obj));
+  breading.color = "rgba(255,215,0,"+opacity+")";
+  breading.sections.forEach(s => {s.wiggle_size = wiggle})
+  return g.append("path").attr("fill",breading.color).attr("d",generate_path(breading)).attr("stroke","rgba(255,215,0,0.7)").attr("stroke-width","0.75px");
+}
+
+let plate_g = tempura_g.append("g").attr("transform","translate(7,-5)");
+
+
+const plate = {
+  start: {
+    x: -135,
+    y: -33
+  },
+  sections: [
+    {dx: 174, dy: -75, r: 1000, step_size: 1, wiggle_size: 0},
+    {dx: 100, dy: 130, r: 1000, step_size: 1, wiggle_size: 0},
+    {dx: -174, dy: 75, r: 600, step_size: 1, wiggle_size: 0},
+    {dx: -100, dy: -130, r: 600, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#333"
+};
+
+plate_g.append("path").attr("fill",plate.color).attr("d",generate_path(plate));
+
+
+const paper = {
+  start: {
+    x: -40,
+    y: -37
+  },
+  sections: [
+    {dx: 145, dy: 29, r: 1000, step_size: 1, wiggle_size: 0},
+    {dx: -26, dy: 73, r: 1000, step_size: 1, wiggle_size: 0},
+    {dx: -145, dy: -29, r: 1000, step_size: 1, wiggle_size: 0},
+    {dx: 26, dy: -73, r: 1000, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#fff"
+};
+
+plate_g.append("path").attr("fill",paper.color).attr("d",generate_path(paper)).attr("opacity","0.9");
+paper.start.x-=30;
+paper.start.y-=30;
+plate_g.append("path").attr("fill",paper.color).attr("d",generate_path(paper)).attr("opacity","0.9");
+
+
+
+const green_bean = {
+  start: {
+    x: -85,
+    y: 20
+  },
+  sections: [
+    {dx: 5, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -5, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 25, dy: -20, r: 200, step_size: 1, wiggle_size: 0.5},
+
+    {dx: 20, dy: -25, r: 200, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -10, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: -1, dy: -5, r: -10, step_size: 1, wiggle_size: 0.5},
+
+    {dx: -6, dy: 4, r: -9, step_size: 1, wiggle_size: 0.5},
+    {dx: -54, dy: 56, r: 1000, step_size: 1, wiggle_size: 0.5},
+    {dx: -4, dy: 6, r: -10, step_size: 1, wiggle_size: 0.5},
+  ],
+  color: "green"
+};
+
+
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(-10,5) rotate(60)");
+tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(-10,5) rotate(60)");
+
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(5,15) rotate(50)");
+tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(5,15) rotate(50)");
+
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(17,-7) rotate(10)");
+tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(17,-7) rotate(10)");
+
+
+
+
+
+let shrimp_g = tempura_g.append("g").attr("transform","translate(-50,0)")
+
+const shrimp_tail_1 = {
+  start: {
+    x: 140,
+    y: -60
+  },
+  sections: [
+    {dx: 5, dy: -25, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: -12, r: -12, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 30, r: 100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#e74c3c"
+};
+
+shrimp_g.append("path").attr("fill",shrimp_tail_1.color).attr("d",generate_path(shrimp_tail_1));
+
+
+
+const shrimp_tail_2 = {
+  start: {
+    x: 140,
+    y: -60
+  },
+  sections: [
+    {dx: 11, dy: -20, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -15, r: -12, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 2, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: -8, dy: 30, r: -70, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#ec7063"
+};
+
+shrimp_g.append("path").attr("fill",shrimp_tail_2.color).attr("d",generate_path(shrimp_tail_2));
+
+
+
+const shrimp_tail_3 = {
+  start: {
+    x: 125,
+    y: -43
+  },
+  sections: [
+    {dx: 15, dy: -17, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -6, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: -17, dy: 16, r: -50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#dc7633"
+};
+
+shrimp_g.append("path").attr("fill",shrimp_tail_3.color).attr("d",generate_path(shrimp_tail_3));
+
+
+
+const shrimp_body = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 10, dy: 10, r: 250, step_size: 1, wiggle_size: 2},
+    {dx: 20, dy: 0, r: 250, step_size: 1, wiggle_size: 2},
+    {dx: 100, dy: -56, r: 150, step_size: 1, wiggle_size: 2},
+
+    {dx: 0, dy: -5, r: 250, step_size: 1, wiggle_size: 2},
+    {dx: -5, dy: -5, r: 250, step_size: 1, wiggle_size: 2},
+
+    {dx: -5, dy: 0, r: 250, step_size: 1, wiggle_size: 2},
+    {dx: -50, dy: 25, r: 400, step_size: 1, wiggle_size: 2},
+    {dx: -50, dy: 15, r: 200, step_size: 1, wiggle_size: 2},
+    {dx: -20, dy: 5, r: -50, step_size: 1, wiggle_size: 1},
+
+    {dx: 0, dy: 10, r: -50, step_size: 1, wiggle_size: 2},
+  ],
+  color: "gold"
+};
+
+shrimp_g.append("path").attr("fill",shrimp_body.color).attr("d",generate_path(shrimp_body));
+
+
+
+let shiitake_g = tempura_g.append("g").attr("transform","translate(25,5) rotate(-15)");
+
+const shiitake_body = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 34, dy: -34, r: -37, step_size: 1, wiggle_size: 0.2},
+    {dx: 36, dy: 36, r: -34, step_size: 1, wiggle_size: 0.2},
+    {dx: -36, dy: 34, r: 36, step_size: 1, wiggle_size: 0.2},
+    {dx: -34, dy: -36, r: 33, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: "#490d00"
+};
+
+shiitake_g.append("path").attr("fill",shiitake_body.color).attr("d",generate_path(shiitake_body));
+
+
+
+const shiitake_star = {
+  start: {
+    x: 32,
+    y: -2
+  },
+  sections: [
+    {dx: 5, dy: -20, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 5, dy: 20, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 19, dy: 5, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: -19, dy: 5, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: -5, dy: 15, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: -5, dy: -15, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: -17, dy: -5, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 17, dy: -5, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: "tan"
+};
+
+shiitake_g.append("path").attr("fill",shiitake_star.color).attr("d",generate_path(shiitake_star));
+
+tempuraify(shiitake_body, shiitake_g, 1, 0.3);
+</script>
+
+</html>
