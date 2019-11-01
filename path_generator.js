@@ -72,7 +72,7 @@ function generate_path(path_data) {
       //get each point along this curve with a wiggle
       for(let i=1; i<=num_steps; ++i) {
         const p = get_next_curve_point(current_pos,center,end_point); //get the next point p
-        step_unit_vector = get_step_unit_vector(p.x,p.y); //derive a step unit vector
+        step_unit_vector = get_step_unit_vector(p.x-current_pos.x,p.y-current_pos.y); //derive a step unit vector
         current_pos.x = p.x; //get the new x
         current_pos.y = p.y; //get the new y
 
@@ -118,7 +118,7 @@ function generate_path(path_data) {
   //given the step unit vector, return a perpendicular wiggle vector
   function get_wiggle_vector(wiggle_size, step_unit_vector) {
     const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
-    return {x: wiggle*step_unit_vector.y, y:wiggle*step_unit_vector.x}; //calculate the wiggle vector
+    return {x: wiggle*step_unit_vector.y, y:-1*wiggle*step_unit_vector.x}; //calculate the wiggle vector
   }
 
   //given a direction vector, return a unit vector in the same direction
