@@ -118,7 +118,7 @@ function generate_path(path_data) {
   //given the step unit vector, return a perpendicular wiggle vector
   function get_wiggle_vector(wiggle_size, step_unit_vector) {
     const wiggle = wiggle_size*(2*Math.random() - 1); //generate a random number in the range [-wiggle_size, wiggle_size]
-    return {x: wiggle*step_unit_vector.y, y:-1*wiggle*step_unit_vector.x}; //calculate the wiggle vector
+    return {x: wiggle*step_unit_vector.y, y:wiggle*step_unit_vector.x}; //calculate the wiggle vector
   }
 
   //given a direction vector, return a unit vector in the same direction
