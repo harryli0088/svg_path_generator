@@ -6,6 +6,8 @@
 
 ![Soda Example](/examples/gabunomi.svg)
 
+![Tempura Example](/examples/tempura.svg)
+
 
 # svg_path_generator
 Draw with SVG
