@@ -6,6 +6,7 @@
 
 ![Soda Example](/examples/gabunomi.svg)
 
+
 ![Tempura Example](/examples/tempura.svg)
 
 
@@ -30,9 +31,11 @@ path_data = {
   start: {x: number, y: number},
   sections: [
     {
-      dx: change in pixels along the x axis,
-      dy: change in pixels along the y axis (remember that in SVG y increases positively down),
-      r: size in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve; larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
+      x: the absolute x pixel you want to move to,
+      y: the absolute y pixel you want to move to (remember that in SVG y increases positively down),
+      dx: (alternatively, you can provide a relative change in pixels along the x axis),
+      dy: (alternatively, you can provide a relative change in pixels along the y axis (remember that in SVG y increases positively down)),
+      r: length in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve; larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
       step_size: size in pixels that each step should be,
       wiggle_size: size in pixels that the maximum wiggle side-to-side can be
     },
