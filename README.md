@@ -6,7 +6,11 @@
 
 ![Soda Example](/examples/gabunomi.svg)
 
+
 ![Tempura Example](/examples/tempura.svg)
+
+
+![Takoyaki Example](/examples/takoyaki.svg)
 
 
 # svg_path_generator

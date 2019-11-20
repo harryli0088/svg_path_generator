@@ -1,0 +1,507 @@
+<html>
+<!-- made by Harry Li  -->
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="./d3.js"></script>
+<script src="../path_generator.js"></script>
+<script type="text/javascript">
+let svg = d3.select("svg");
+
+let g = svg.append("g").attr("transform","translate(100,250)");
+
+const canoe_stroke_width = 0.25
+const canoe_stroke = "white"
+
+const offsetX = 100
+
+let canoe_back = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 250, dy: -75, r:-600, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 100, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -225, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -25, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#e8d38e"
+};
+
+g.append("path").attr("fill",canoe_back.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_back));
+
+const canoe_middle = {
+  start: {
+    x: 5,
+    y: 2
+  },
+  sections: [
+    //{dx: 238, dy: -79, r:300, step_size: 1, wiggle_size: 0},
+    {dx: 70, dy: 15, r:300, step_size: 1, wiggle_size: 0},
+    {dx: 130, dy: -40, r:500, step_size: 1, wiggle_size: 0},
+    {dx: 38, dy: -54, r:200, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 35, r:-200, step_size: 1, wiggle_size: 0},
+    {dx: -45, dy: 75, r: 500, step_size: 1, wiggle_size: 0},
+    {dx: -130, dy: 25, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -75, dy: -20, r: 500, step_size: 1, wiggle_size: 0},
+    {dx: -28, dy: -36, r: 100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#dec675"
+};
+
+g.append("path").attr("fill",canoe_middle.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_middle));
+
+
+
+const ball_g = g.append("g").attr("transform","translate(85,-15)")
+
+const ball = {
+  start: {
+    x: 50,
+    y: 0
+  },
+  sections: [
+    {dx: 20, dy: -30, r: -30, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 0, r: -30, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 30, r: -30, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 30, r: 30, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: 0, r: 30, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -30, r: 30, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#d89822"
+};
+
+const ball_xOfftset = 55;
+const ball_xRowOfftset = -35;
+const ball_yOffset = 17;
+const ball_yRowOffset = 10;
+const ball_copies = [
+  {x:2*ball_xOfftset+ball_xRowOfftset, y:-2*ball_yOffset+ball_yRowOffset, color:"test"},
+  {x:ball_xOfftset+ball_xRowOfftset-3, y:-ball_yOffset+ball_yRowOffset-5, color:"test"},
+  {x:ball_xRowOfftset, y:ball_yRowOffset, color:"test"},
+  {x:2*ball_xOfftset, y:ball_yOffset, color:"test"},
+  {x:ball_xOfftset, y:ball_yOffset*2, color:"test"},
+  {x:0, y:ball_yOffset*3-5, color:"test"},
+];
+
+const sauces = [
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 50, dy: -28, r: -33, step_size: 1, wiggle_size: 0},
+      {dx: 8, dy: 28, r: -33, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy: 8, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy: 10, r: 33, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy: 15, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy: -15, r: 50, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:10, y:23},
+    sections: [
+      {dx: 0, dy: -40, r: -100, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy: -10, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: -3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: -3, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: 5, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: 10, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy: 20, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 20, r: 50, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy: 8, r: 50, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy: 4, r: 50, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:15, y:28},
+    sections: [
+      {dx: -10, dy: -30, r: 60, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: -25, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: -5, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy:-1, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy:3, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy:6, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy:20, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: -2, dy:20, r: 100, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy:20, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: -30, dy:-3, r: 80, step_size: 1, wiggle_size: 0},
+      {dx: -8, dy:-5, r: 20, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 6, dy:-20, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:-12, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:4, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 7, dy:5, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy:3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: -3, dy:3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -3, dy:0, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy:-2, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy:0, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: -3, dy:2, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy:15, r: -100, step_size: 1, wiggle_size: 0},
+      {dx: -2, dy:5, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy:15, r: 40, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 6, dy:-20, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:-12, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:3, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy:10, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy:10, r: 30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy:40, r: -70, step_size: 1, wiggle_size: 0},
+      {dx: -9, dy:-34, r: -70, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy:-3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy:0, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy:4, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: -6, dy:2, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -6, dy:-2, r: 10, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:-5},
+    sections: [
+      {dx: 8, dy:-15, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:-12, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy:2, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy:12, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy:3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -3, dy:3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -3, dy:0, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy:1, r: 10, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy:7, r: -15, step_size: 1, wiggle_size: 0},
+      {dx: -6, dy:6, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: -8, dy:2, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: -8, dy:-2, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy:-5, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy:-2, r: -15, step_size: 1, wiggle_size: 0},
+    ]
+  }
+]
+
+const mayos = [
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 50, dy: -28, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 3, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: -2, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+      {dx: -47, dy: 28, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 3, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: 43, dy: -34, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: -38, dy: 34, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 20, r: 40, step_size: 1, wiggle_size: 0},
+      {dx: 15, dy: 0, r: 40, step_size: 1, wiggle_size: 0},
+      {dx: 30, dy: -50, r: -60, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: -25, dy: 60, r: -70, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: 17, dy: -55, r: -60, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: -1, dy: 1, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: -35, dy: 40, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 20, dy: -58, r: -70, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 5, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: 15, dy: -25, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 1, dy: 1, r: -1, step_size: 1, wiggle_size: 0},
+      {dx: -13, dy: 30, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: 13, dy: -25, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 1, dy: 1, r: -1, step_size: 1, wiggle_size: 0},
+      {dx: -11, dy: 30, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+      {dx: 25, dy: -38, r: -45, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: -1.5, step_size: 1, wiggle_size: 0},
+      {dx: -20, dy: 30, r: -50, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:40, y:-31},
+    sections: [
+      {dx: -7, dy: 15, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 30, r: 100, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: 4, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: -4, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: -35, r: -100, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: -3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 0, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 3, r: -5, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy: 4, r: 10, step_size: 1, wiggle_size: 0},
+      {dx: -15, dy: 20, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 0, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: -3, r: 5, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy: -18, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 10, dy: -10, r: -40, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 15, dy: -25, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: -1.1, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 2, r: -1.1, step_size: 1, wiggle_size: 0},
+      {dx: -13, dy: 18, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: -2, r: 2, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: -10, r: -15, step_size: 1, wiggle_size: 0},
+      {dx: 7, dy: -5, r: -13, step_size: 1, wiggle_size: 0},
+      {dx: 7, dy: -5, r: 13, step_size: 1, wiggle_size: 0},
+      {dx: 7, dy: -7, r: -13, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: -1.5, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 8, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: 1.5, step_size: 1, wiggle_size: 0},
+      {dx: 1, dy: -2, r: 1.5, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy: -9, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: -1.5, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 6, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 2, r: 1.5, step_size: 1, wiggle_size: 0},
+      {dx: 1, dy: -2, r: 1.5, step_size: 1, wiggle_size: 0},
+      {dx: 7, dy: -8, r: -40, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:0, y:0},
+    sections: [
+      {dx: 15, dy: -25, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: -1.1, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 2, r: -1.1, step_size: 1, wiggle_size: 0},
+      {dx: -10, dy: 13, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 4, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: 0, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: -6, r: 20, step_size: 1, wiggle_size: 0},
+      {dx: 18, dy: -19, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 5, dy: 0, r: -4, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 5, r: -4, step_size: 1, wiggle_size: 0},
+      {dx: -17, dy: 16, r: -60, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 3, r: 10, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 0, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: -5, r: -4, step_size: 1, wiggle_size: 0},
+      {dx: 19, dy: -20, r: -50, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: 0, r: -3, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 4, r: -3, step_size: 1, wiggle_size: 0},
+      {dx: -25, dy: 35, r: -60, step_size: 1, wiggle_size: 0},
+    ]
+  },
+  {
+    offset: {x:41, y:-31},
+    sections: [
+      {dx: -14, dy: 12, r: -30, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy: 4, r: 8, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy: 0, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: -8, r: -10, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: -4, r: 4, step_size: 1, wiggle_size: 0},
+      {dx: -4, dy: 0, r: -4, step_size: 1, wiggle_size: 0},
+      {dx: -5, dy: 5, r: -40, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 2, r: 2, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+      {dx: 4, dy: -4, r: 20, step_size: 1, wiggle_size: 0},
+      {dx: 8, dy: -6, r: -20, step_size: 1, wiggle_size: 0},
+      {dx: 2, dy: 0, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+      {dx: -2, dy: 2, r: -4, step_size: 1, wiggle_size: 0},
+      {dx: 0, dy: 15, r: 15, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: 2, r: 3, step_size: 1, wiggle_size: 0},
+      {dx: 3, dy: -2, r: 3, step_size: 1, wiggle_size: 0},
+      {dx: 17, dy: -18, r: -40, step_size: 1, wiggle_size: 0},
+    ]
+  }
+]
+
+const ball_radius_random = 5;
+const ball_rotate_random = 90;
+const sauce_opacity_random = 0.2;
+ball_copies.forEach(function(ball_copy, i) {
+  let copy = JSON.parse(JSON.stringify(ball));
+
+  copy.sections.forEach(function(s) {
+    s.r += Math.round(Math.random()*2*ball_radius_random-ball_radius_random)
+  })
+
+  copy.start.x = ball_copy.x;
+  copy.start.y = ball_copy.y;
+  ball_g.append("path").attr("fill",copy.color).attr("transform","rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")").attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(copy))
+  .attr("style","filter: drop-shadow( 1px 2px 1px rgba(0, 0, 0, .3));");
+
+  const sauce = {
+    start: {
+      x:copy.start.x+sauces[i].offset.x,
+      y:copy.start.y+sauces[i].offset.y
+    },
+    sections: sauces[i].sections
+  }
+  ball_g.append("path").attr("fill","brown").attr("opacity",0.7+(Math.random()*sauce_opacity_random-sauce_opacity_random/2)).attr("d",generate_path(sauce)).attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .2));");
+
+  const mayo = {
+    start: {
+      x:copy.start.x+mayos[i].offset.x,
+      y:copy.start.y+mayos[i].offset.y
+    },
+    sections: mayos[i].sections
+  }
+  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",generate_path(mayo)).attr("style","filter: drop-shadow( 0px 1px 0.5px rgba(0, 0, 0, .4));");
+})
+
+
+
+const bonito_g = ball_g.append("g").attr("transform","translate(70,-10) rotate(-15) skewX(30)")
+
+const bonito_x_random = 60;
+const bonito_y_random = 30;
+const bonito_rotate_random = 360;
+const bonito_opacity_random = 0.2;
+const bonito_scale_random = 0.5;
+const bonito_colors = ["#ffe174","#ffedab","#fde17e","#f2d56e"]
+
+// bonito_g.append("rect").attr("x",-bonito_x_random).attr("y",-bonito_y_random).attr("width",2*bonito_x_random).attr("height",2*bonito_y_random)
+// .attr("fill","transparent").attr("stroke","tan").attr("stroke-width",2)
+
+const bonito_sections = [
+  [
+    {dx: 3, dy: -3, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: -1, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 5, dy: -5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 6, dy: -6, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -2, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -6, dy: 6, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -3, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 5, dy: -7, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 7, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 3, dy: -3, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 8, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+]
+for(let i=0; i<35; ++i) {
+  bonito_sections.forEach(function(s) {
+  const x = Math.round(Math.random()*2*bonito_x_random - bonito_x_random);
+  const y = Math.round(Math.random()*2*bonito_y_random - bonito_y_random)
+    const bonito = {
+      start: {
+        x: Math.sign(x)*Math.pow(Math.abs(x),.95),
+        y: Math.sign(y)*Math.pow(Math.abs(y),.95)
+      },
+      sections: s
+    }
+console.log(bonito.start);
+    bonito_g.append("path").attr("d",generate_path(bonito)).attr("opacity",0.9+Math.random()*bonito_opacity_random-bonito_opacity_random/2)
+    .attr("fill",bonito_colors[Math.floor(Math.random()*bonito_colors.length)]).attr("transform","rotate("+Math.round(Math.random()*bonito_rotate_random)+","+bonito.start.x+","+bonito.start.y+")")
+    .attr("stroke","#ffeeb3").attr("stroke-width",.2);
+  })
+}
+
+
+
+const nori_g = ball_g.append("g").attr("transform","translate(75,-5) rotate(-15) skewX(30)")
+
+const nori_x_random = 70;
+const nori_y_random = 35;
+const nori_rotate_random = 360;
+
+// nori_g.append("rect").attr("x",-nori_x_random).attr("y",-nori_y_random).attr("width",2*nori_x_random).attr("height",2*nori_y_random).attr("fill","transparent").attr("stroke","black").attr("stroke-width",2)
+
+const nori_sections = [
+  [
+    {dx: 5, dy: -5, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -3, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  [
+    {dx: 5, dy: -5, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: 6, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  [
+    {dx: 4, dy: -4, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: 6, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  [
+    {dx: 0, dy: -4, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 6, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  [
+    {dx: -2, dy: -2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+  [
+    {dx: -2, dy: -3, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -3, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 3, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 3, r: 0, step_size: 1, wiggle_size: 0},
+  ],
+]
+for(let i=0; i<20; ++i) {
+  nori_sections.forEach(function(s) {
+    const nori = {
+      start: {
+        x: Math.round(Math.random()*2*nori_x_random - nori_x_random),
+        y: Math.round(Math.random()*2*nori_y_random - nori_y_random)
+      },
+      sections: s
+    }
+    nori_g.append("path").attr("fill","green").attr("transform","rotate("+Math.round(Math.random()*nori_rotate_random)+","+nori.start.x+","+nori.start.y+")").attr("d",generate_path(nori));
+  })
+}
+
+
+
+const canoe_front = {
+  start: {
+    x: 28,
+    y: 36
+  },
+  sections: [
+    {dx: 80, dy: 15, r: 400, step_size: 1, wiggle_size: 0},
+    {dx: 148, dy: -50, r: 250, step_size: 1, wiggle_size: 0},
+    {dx: 27, dy: -48, r: 150, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 10, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -24, dy: 65, r: 300, step_size: 1, wiggle_size: 0},
+    {dx: -150, dy: 50, r: 500, step_size: 1, wiggle_size: 0},
+    {dx: -80, dy: -42, r: 400, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#e8d38e"
+};
+
+g.append("path").attr("fill",canoe_front.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_front));
+
+</script>
+</html>
