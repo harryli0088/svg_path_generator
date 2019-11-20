@@ -44,6 +44,10 @@ function generate_path(path_data) {
     let step_unit_vector = {x: 0, y: 0}; //the unit vector pointing in the direction of the next step
     let wiggle_vector = {x: 0, y: 0}; //the vector to add to the current_pos to add wiggle to the path
 
+    //if absolute points are provided, calculate the relative points
+    if(section.x) { section.dx = section.x - current_pos.x; }
+    if(section.y) { section.dy = section.y - current_pos.y; }
+
     const starting_point = {x: current_pos.x, y: current_pos.y}; //record our starting point
     const end_point = {x:starting_point.x + section.dx, y:starting_point.y + section.dy}; //record our desired end point
 
