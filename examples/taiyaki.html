@@ -341,7 +341,7 @@ g.append("path").attr("fill",fish_head.color).attr("d",generate_path(fish_head))
 const fish_mouth = {
   start: {
     x: -61,
-    y: -130
+    y: -129
   },
   sections: [
     {dx: 40, dy: 30, r:80, step_size: 1, wiggle_size: 0},
@@ -352,9 +352,9 @@ const fish_mouth = {
     {dx: -2, dy: 0, r:5, step_size: 1, wiggle_size: 0},
     {dx: -1, dy: 1, r:5, step_size: 1, wiggle_size: 0},
 
-    {dx: -24, dy: 23, r:60, step_size: 1, wiggle_size: 0},
-    {dx: -40, dy: -1, r:50, step_size: 1, wiggle_size: 0},
-    {dx: -34, dy: -28, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -24, dy: 20, r:70, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: 0, r:60, step_size: 1, wiggle_size: 0},
+    {dx: -34, dy: -26, r:80, step_size: 1, wiggle_size: 0},
     {dx: -2, dy: 0, r:5, step_size: 1, wiggle_size: 0},
     {dx: -2, dy: 2, r:5, step_size: 1, wiggle_size: 0},
     {dx: 0, dy: 2, r:5, step_size: 1, wiggle_size: 0},
@@ -430,7 +430,7 @@ const taro_under_oreo = {
 
     {dx: -12, dy: 4, r:0, step_size: 1, wiggle_size: 0},
   ],
-  color: "lavender"
+  color: "rgb(230,200,255)"
 };
 
 ice_cream_g.append("path").attr("fill",taro_under_oreo.color).attr("d",generate_path(taro_under_oreo))
@@ -684,15 +684,21 @@ const pocky_stick = {
     {dx: 4, dy: 2, r:-10, step_size: 1, wiggle_size: 0},
     {dx: -16, dy: 37, r:0, step_size: 1, wiggle_size: .1},
   ],
-  color:  batter_color
+  color: light_batter_color
 };
 
+const pocky_shadow_color = "rgba(0,0,0,0.1)"
+
 let pocky_g_1 = ice_cream_g.append("g")
+pocky_g_1.append("ellipse").attr("fill",pocky_shadow_color)
+.attr("cx",pocky.start.x+3).attr("cy",pocky.start.y).attr("rx",4).attr("ry",3).attr("transform","rotate(15,"+pocky.start.x+","+pocky.start.y+")")
 pocky_g_1.append("path").attr("fill",pocky_stick.color).attr("d",generate_path(pocky_stick))
 pocky_g_1.append("path").attr("fill","pink").attr("d",generate_path(pocky))
 
 let pocky_g_2 = ice_cream_g.append("g").attr("transform","rotate(10,10,-138) translate(10,-5)")
+pocky_g_2.append("ellipse").attr("fill",pocky_shadow_color)
+.attr("cx",pocky.start.x+3).attr("cy",pocky.start.y).attr("rx",4).attr("ry",3).attr("transform","rotate(15,"+pocky.start.x+","+pocky.start.y+")")
 pocky_g_2.append("path").attr("fill",pocky_stick.color).attr("d",generate_path(pocky_stick))
-pocky_g_2.append("path").attr("fill","lightgreen").attr("d",generate_path(pocky))
+pocky_g_2.append("path").attr("fill","rgb(150,200,100)").attr("d",generate_path(pocky))
 </script>
 </html>
