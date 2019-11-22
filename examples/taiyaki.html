@@ -1,0 +1,657 @@
+<html>
+<!-- made by Harry Li  -->
+<svg width="500" height="500" style="background: gray"></svg>
+
+<script src="./d3.js"></script>
+<script src="../path_generator.js"></script>
+<script type="text/javascript">
+let svg = d3.select("svg");
+
+let g = svg.append("g").attr("transform","translate(100,250)");
+
+
+
+const fish_back_fin = {
+  start: {
+    x: -65,
+    y: -65
+  },
+  sections: [
+    {dx: -15, dy: 17, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 6, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 5, r:30, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: 5, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 6, r:-15, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 8, r:15, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 4, r:15, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: 2, r:30, step_size: 1, wiggle_size: 0},
+  ],
+  color: "tan"
+};
+
+g.append("path").attr("fill",fish_back_fin.color).attr("d",generate_path(fish_back_fin))
+.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+
+const fish_back_fin_spine = {
+  start: {x:0, y:0},
+  sections: [
+    {dx: 0, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 1, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: -20, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r: 0, step_size: 1, wiggle_size: 0},
+  ]
+}
+
+const fish_back_fin_spines = [
+  {x: -77, y: -48},
+  {x: -70, y: -43},
+  {x: -64, y: -36},
+  {x: -60, y: -28},
+  {x: -55, y: -21},
+]
+
+fish_back_fin_spines.forEach(function(s) {
+  g.append("path").attr("d",generate_path(fish_back_fin_spine)).attr("fill","brown").attr("filter","brightness(1)")
+  .attr("transform","translate("+s.x+","+s.y+")")
+})
+
+
+
+const fish_tail = {
+  start: {x:5, y:-5},
+  sections: [
+    {dx: -5, dy: 50, r: 80, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 10, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 0, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -3, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -8, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -3, r: -3, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 0, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: -3, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -8, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -8, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -5, r: -20, step_size: 1, wiggle_size: 0},
+  ],
+  color: "tan"
+}
+
+g.append("path").attr("fill",fish_tail.color).attr("d",generate_path(fish_tail))
+.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+
+const fish_tail_spine_1 = {
+  start: {x:2,y:0},
+  sections: [
+    {dx: -10, dy: 47, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -5, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -40, r: 60, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_1.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_1))
+
+const fish_tail_spine_2 = {
+  start: {x:-4,y:0},
+  sections: [
+    {dx: -15, dy: 35, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -5, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -13, r: -100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_2.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_2))
+
+const fish_tail_spine_3 = {
+  start: {x:-4,y:0},
+  sections: [
+    {dx: -30, dy: 30, r: -90, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -2, r: 5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -4, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: -13, r: -100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_3.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_3))
+
+
+
+const fish_body = {
+  start: {
+    x: 0,
+    y: 11
+  },
+  sections: [
+    {dx: 20, dy: -10, r:50, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: -80, r:150, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -50, r:-100, step_size: 1, wiggle_size: 0},
+    {dx: -35, dy: 25, r:50, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: 0, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -50, dy: -30, r:90, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 55, r:-100, step_size: 1, wiggle_size: 0},
+    {dx: 38, dy: 83, r:150, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: 8, r:50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "tan"
+};
+
+g.append("path").attr("fill",fish_body.color).attr("d",generate_path(fish_body))
+.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+
+
+
+let fish_scales_g = g.append("g")
+
+const fish_scale = {
+  start: {
+    x: -20,
+    y: -9
+  },
+  sections: [
+    {dx: 0, dy: 3, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 15, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: -15, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -3, r:0, step_size: 1, wiggle_size: 0},
+  ],
+};
+
+const fish_scale_path = generate_path(fish_scale)
+
+let fish_scales = [
+  {x:0, y:0, rotate:0, scale_x:1, scale_y:1},
+  {x:-18, y:2, rotate:10, scale_x:1, scale_y:1},
+
+  {x:0, y:-14, rotate:0, scale_x:1, scale_y:1},
+  {x:-36, y:-1, rotate:25, scale_x:1, scale_y:1},
+
+  {x:18, y:-22, rotate:0, scale_x:.9, scale_y:1},
+  {x:-15, y:-22, rotate:0, scale_x:1, scale_y:1},
+
+  {x:-46, y:-25, rotate:15, scale_x:1, scale_y:.9},
+  {x:0, y:-28, rotate:0, scale_x:.9, scale_y:1},
+  {x:43, y:-32, rotate:-10, scale_x:.7, scale_y:.8},
+
+  {x:17, y:-42, rotate:0, scale_x:.7, scale_y:.9},
+  {x:-20, y:-44, rotate:0, scale_x:.8, scale_y:.9},
+  {x:-78, y:-35, rotate:20, scale_x:.8, scale_y:.8},
+
+  {x:0, y:-70, rotate:0, scale_x:.7, scale_y:.7},
+  {x:-58, y:-57, rotate:15, scale_x:.7, scale_y:.7},
+  {x:-94, y:-53, rotate:15, scale_x:.7, scale_y:.8},
+
+  {x:40, y:-80, rotate:-10, scale_x:.7, scale_y:.7},
+  {x:-15, y:-80, rotate:0, scale_x:.7, scale_y:.7},
+  {x:-73, y:-68, rotate:15, scale_x:.7, scale_y:.7},
+  {x:-117, y:-58, rotate:25, scale_x:.7, scale_y:.7},
+]
+
+fish_scales.forEach(function(s) {
+  fish_scales_g.append("path").attr("d",fish_scale_path).attr("fill","tan").attr("filter","brightness(1)")
+  .attr("style","filter: drop-shadow( 0px 3px 1px rgba(0, 0, 0, .4));")
+  .attr("transform","scale("+s.scale_x+","+s.scale_y+") rotate("+s.rotate+") translate("+s.x+","+s.y+")")
+})
+
+
+
+const fish_side_fin = {
+  start: {x:30, y:-65},
+  sections: [
+    {dx: 10, dy: 0, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 5, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 10, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 1, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -1, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 0, r: -3, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: 4, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -2, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 0, r: -3, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: 5, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -3, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 0, r: -3, step_size: 1, wiggle_size: 0},
+    {dx: -6, dy: 5, r: 10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -3, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -6, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: -20, r: -50, step_size: 1, wiggle_size: 0},
+  ],
+  color: "pink"
+}
+
+g.append("path").attr("fill",fish_side_fin.color).attr("d",generate_path(fish_side_fin))
+.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+
+const side_side_fin_spine_1 = {
+  start: {x:40, y:-61},
+  sections: [
+    {dx: 13, dy: 17, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 0, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: -15, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill",side_side_fin_spine_1.color).attr("d",generate_path(side_side_fin_spine_1))
+
+
+
+const side_side_fin_spine_2 = {
+  start: {x:35, y:-61},
+  sections: [
+    {dx: 4, dy: 19, r: -80, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 0, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -17, r: -80, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill",side_side_fin_spine_2.color).attr("d",generate_path(side_side_fin_spine_2))
+
+
+
+const side_side_fin_spine_3 = {
+  start: {x:31, y:-59},
+  sections: [
+    {dx: -6, dy: 19, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 0, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: -18, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -2, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill",side_side_fin_spine_3.color).attr("d",generate_path(side_side_fin_spine_3))
+
+
+
+const side_side_fin_spine_4 = {
+  start: {x:25, y:-57},
+  sections: [
+    {dx: -13, dy: 19, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 0, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -1, r: 3, step_size: 1, wiggle_size: 0},
+    {dx: 13, dy: -19, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "brown"
+}
+
+g.append("path").attr("fill",side_side_fin_spine_4.color).attr("d",generate_path(side_side_fin_spine_4))
+
+
+
+const fish_head = {
+  start: {
+    x: -71,
+    y: -80
+  },
+  sections: [
+    {dx: 40, dy: 20, r:80, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 0, r:100, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: -20, r:100, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -3, r:2, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -3, r:4, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -2, r:2, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: 23, r:100, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: 1, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -42, dy: -21, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r:2, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 3, r:3, step_size: 1, wiggle_size: 0},
+  ],
+  color: "pink"
+};
+
+g.append("path").attr("fill",fish_head.color).attr("d",generate_path(fish_head))
+.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+.attr("filter","brightness(1)")
+
+
+
+const fish_mouth = {
+  start: {
+    x: -61,
+    y: -133
+  },
+  sections: [
+    {dx: 40, dy: 30, r:80, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: -1, r:60, step_size: 1, wiggle_size: 0},
+    {dx: 26, dy: -24, r:60, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r:2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -1, r:2, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r:2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r:2, step_size: 1, wiggle_size: 0},
+
+    {dx: -24, dy: 23, r:60, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: -1, r:50, step_size: 1, wiggle_size: 0},
+    {dx: -36, dy: -28, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 0, r:2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r:2, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 1, r:2, step_size: 1, wiggle_size: 0},
+  ],
+  color: "pink"
+};
+
+g.append("path").attr("fill",fish_mouth.color).attr("d",generate_path(fish_mouth))
+.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+
+
+
+g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",5).attr("fill","pink")
+.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+
+g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",8).attr("stroke","pink").attr("stroke-width",2).attr("fill","none")
+.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+
+
+
+let ice_cream_g = g.append("g")
+
+
+const vanilla = {
+  start: {
+    x: -22,
+    y: -225
+  },
+  sections: [
+    {dx: 10, dy: 20, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 22, dy: 15, r:-80, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 5, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 7, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r:5, step_size: 1, wiggle_size: 0},
+
+    {dx: 10, dy: 5, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 7, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 10, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r:5, step_size: 1, wiggle_size: 0},
+
+    {dx: 10, dy: 5, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 7, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 10, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: 16, r:40, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: 7, r:30, step_size: 1, wiggle_size: 0},
+    {dx: -9, dy: 0, r:20, step_size: 1, wiggle_size: 0},
+
+    {dx: -7, dy: 3, r:20, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -2, r:30, step_size: 1, wiggle_size: 0},
+
+    {dx: -30, dy: -30, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: -30, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -30, r:0, step_size: 1, wiggle_size: 0},
+  ],
+  color: "white"
+};
+
+ice_cream_g.append("path").attr("fill",vanilla.color).attr("d",generate_path(vanilla))
+
+
+
+const taro_under_oreo = {
+  start: {
+    x: -58,
+    y: -133
+  },
+  sections: [
+    {dx: 5, dy: 7, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -10, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: -20, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: -9, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 4, r:0, step_size: 1, wiggle_size: 0},
+
+    {dx: -12, dy: 4, r:0, step_size: 1, wiggle_size: 0},
+  ],
+  color: "lavender"
+};
+
+ice_cream_g.append("path").attr("fill",taro_under_oreo.color).attr("d",generate_path(taro_under_oreo))
+.attr("filter", "brightness(.8)")
+
+
+
+let oreo_g = ice_cream_g.append("g").attr("transform","translate(0,-7)")
+
+oreo_g.append("ellipse").attr("cx",-150).attr("cy",-60).attr("rx",30).attr("ry",10).attr("transform","rotate(45)").attr("fill","#433")
+
+const oreo_filling = {
+  start: {
+    x: -77,
+    y: -174
+  },
+  sections: [
+    {dx: -5, dy: 5, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:-10, step_size: 1, wiggle_size: 0},
+    {dx: 38, dy: 38, r:75, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -5, r:10, step_size: 1, wiggle_size: 0},
+  ],
+  color: "white"
+};
+
+oreo_g.append("path").attr("fill",oreo_filling.color).attr("d",generate_path(oreo_filling))
+
+oreo_g.append("ellipse").attr("cx",-150).attr("cy",-70).attr("rx",30).attr("ry",10).attr("transform","rotate(45)").attr("fill","#433")
+
+
+
+const taro = {
+  start: {
+    x: -22,
+    y: -225
+  },
+  sections: [
+    {dx: 5, dy: 20, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 20, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 3, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 1, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+
+    {dx: 3, dy: 5, r:10, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 7, r:30, step_size: 1, wiggle_size: 0},
+    {dx: 17, dy: 5, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 4, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: -4, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -4, r:20, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 20, r:-150, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: 10, r:-20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -1, r:15, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -15, r:80, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -10, r:-70, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -2, r:-50, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 5, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 10, r:100, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 13, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 1, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -10, r:50, step_size: 1, wiggle_size: 0},
+    {dx: -13, dy: -13, r:50, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -5, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: -8, r:6, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -10, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -10, r:-30, step_size: 1, wiggle_size: 0},
+
+    {dx: -4, dy: -8, r:15, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -10, r:-15, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: -6, r:-15, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: -1, r:-7, step_size: 1, wiggle_size: 0},
+
+    {dx: -1, dy: -8, r:15, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -8, r:-30, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -18, r:-50, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -3, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: 3, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 5, r:10, step_size: 1, wiggle_size: 0},
+  ],
+  color: taro_under_oreo.color
+};
+
+ice_cream_g.append("path").attr("fill",taro.color).attr("d",generate_path(taro))
+
+
+
+
+
+
+
+const shadow_1 = {
+  start: {
+    x: -10,
+    y: -177
+  },
+  sections: [
+    {dx: 20, dy: 2, r:50, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: -4, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -4, r:0, step_size: 1, wiggle_size: 0},
+
+    {dx: -1, dy: 4, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r:5, step_size: 1, wiggle_size: 0},
+
+    {dx: -19, dy: 1, r:40, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.2)"
+};
+
+ice_cream_g.append("path").attr("fill",shadow_1.color).attr("d",generate_path(shadow_1))
+
+
+
+const shadow_2 = {
+  start: {
+    x: -30,
+    y: -188
+  },
+  sections: [
+    {dx: 20, dy: 8, r:50, step_size: 1, wiggle_size: 0},
+    {dx: -18, dy: -10, r:50, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -3, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -3, r:0, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: 8, r:10, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.1)"
+};
+
+ice_cream_g.append("path").attr("fill",shadow_2.color).attr("d",generate_path(shadow_2))
+
+
+
+const shadow_3 = {
+  start: {
+    x: -40,
+    y: -164
+  },
+  sections: [
+    {dx: 65, dy: 14, r:100, step_size: 1, wiggle_size: 0},
+
+    {dx: 2, dy: -2, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -6, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 3, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 1, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r:10, step_size: 1, wiggle_size: 0},
+
+    {dx: -60, dy: -14, r:80, step_size: 1, wiggle_size: 0},
+
+    {dx: -2, dy: -4, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -6, r:10, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 5, r:10, step_size: 1, wiggle_size: 0},
+    {dx: 1, dy: 4, r:10, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.15)"
+};
+
+ice_cream_g.append("path").attr("fill",shadow_3.color).attr("d",generate_path(shadow_3))
+
+
+
+const shadow_4 = {
+  start: {
+    x: -10,
+    y: -123
+  },
+  sections: [
+    {dx: 16, dy: 16, r:40, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 4, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: -6, r:20, step_size: 1, wiggle_size: 0},
+
+    {dx: -15, dy: 1, r:15, step_size: 1, wiggle_size: 0},
+
+    {dx: -19, dy: -15, r:40, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.15)"
+};
+
+ice_cream_g.append("path").attr("fill",shadow_4.color).attr("d",generate_path(shadow_4))
+
+
+
+const shadow_5 = {
+  start: {
+    x: -46,
+    y: -138
+  },
+  sections: [
+    {dx: 16, dy: 6, r:20, step_size: 1, wiggle_size: 0},
+    {dx: 17, dy: 7, r:-40, step_size: 1, wiggle_size: 0},
+    {dx: 4, dy: 4, r:0, step_size: 1, wiggle_size: 0},
+
+    {dx: -4, dy: -5, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -17, dy: -8, r:-40, step_size: 1, wiggle_size: 0},
+    {dx: -14, dy: -6, r:20, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -6, r:20, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: 8, r:15, step_size: 1, wiggle_size: 0},
+  ],
+  color: "rgba(0,0,0,0.15)"
+};
+
+ice_cream_g.append("path").attr("fill",shadow_5.color).attr("d",generate_path(shadow_5))
+
+</script>
+</html>
