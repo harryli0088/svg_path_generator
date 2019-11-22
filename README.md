@@ -13,6 +13,9 @@
 ![Takoyaki Example](/examples/takoyaki.svg)
 
 
+![Taiyaki Example](/examples/taiyaki.svg)
+
+
 # svg_path_generator
 Draw with SVG
 
