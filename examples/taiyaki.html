@@ -1,6 +1,12 @@
 <html>
 <!-- made by Harry Li  -->
-<svg width="200" height="325" style="background: gray"></svg>
+<svg width="200" height="325" style="background: gray">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy=".5" stdDeviation=".2"/>
+    </filter>
+  </defs>
+</svg>
 
 <script src="./d3.js"></script>
 <script src="../path_generator.js"></script>
@@ -33,7 +39,7 @@ const fish_back_fin = {
 };
 
 g.append("path").attr("fill",fish_back_fin.color).attr("d",generate_path(fish_back_fin))
-.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 const fish_back_fin_spine = {
   start: {x:0, y:0},
@@ -55,7 +61,7 @@ const fish_back_fin_spines = [
 ]
 
 fish_back_fin_spines.forEach(function(s) {
-  g.append("path").attr("d",generate_path(fish_back_fin_spine)).attr("fill",batter_color).attr("filter","brightness(1)")
+  g.append("path").attr("d",generate_path(fish_back_fin_spine)).attr("fill",batter_color)
   .attr("transform","translate("+s.x+","+s.y+")")
 })
 
@@ -81,7 +87,7 @@ const fish_tail = {
 }
 
 g.append("path").attr("fill",fish_tail.color).attr("d",generate_path(fish_tail))
-.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 const fish_tail_spine_1 = {
   start: {x:2,y:0},
@@ -150,7 +156,7 @@ const fish_body = {
 };
 
 g.append("path").attr("fill",fish_body.color).attr("d",generate_path(fish_body))
-.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 
 
@@ -174,6 +180,7 @@ const fish_scale_path = generate_path(fish_scale)
 let fish_scales = [
   {x:0, y:0, rotate:0, scale_x:1, scale_y:1},
   {x:-18, y:2, rotate:10, scale_x:1, scale_y:1},
+  {x:25, y:-10, rotate:-10, scale_x:.7, scale_y:.7},
 
   {x:0, y:-14, rotate:0, scale_x:1, scale_y:1},
   {x:-36, y:-1, rotate:25, scale_x:1, scale_y:1},
@@ -189,19 +196,21 @@ let fish_scales = [
   {x:-20, y:-44, rotate:0, scale_x:.8, scale_y:.9},
   {x:-78, y:-35, rotate:20, scale_x:.8, scale_y:.8},
 
+  {x:75, y:-60, rotate:-20, scale_x:.7, scale_y:.7},
   {x:0, y:-70, rotate:0, scale_x:.7, scale_y:.7},
   {x:-58, y:-57, rotate:15, scale_x:.7, scale_y:.7},
   {x:-94, y:-53, rotate:15, scale_x:.7, scale_y:.8},
 
+  {x:97, y:-73, rotate:-20, scale_x:.6, scale_y:.7},
   {x:40, y:-80, rotate:-10, scale_x:.7, scale_y:.7},
   {x:-15, y:-80, rotate:0, scale_x:.7, scale_y:.7},
   {x:-73, y:-68, rotate:15, scale_x:.7, scale_y:.7},
-  {x:-117, y:-58, rotate:25, scale_x:.7, scale_y:.7},
+  {x:-145, y:-52, rotate:30, scale_x:.6, scale_y:.6},
 ]
 
 fish_scales.forEach(function(s) {
-  fish_scales_g.append("path").attr("d",fish_scale_path).attr("fill", batter_color).attr("filter","brightness(1)")
-  .attr("style","filter: drop-shadow( 0px 3px 1px rgba(0, 0, 0, .2));")
+  fish_scales_g.append("path").attr("d",fish_scale_path).attr("fill", batter_color)
+  .attr("style","filter: url('#shadow');")
   .attr("transform","scale("+s.scale_x+","+s.scale_y+") rotate("+s.rotate+") translate("+s.x+","+s.y+")")
 })
 
@@ -232,7 +241,7 @@ const fish_side_fin = {
 }
 
 g.append("path").attr("fill",fish_side_fin.color).attr("d",generate_path(fish_side_fin))
-.attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 const side_side_fin_spine_1 = {
   start: {x:40, y:-61},
@@ -333,45 +342,44 @@ const fish_head = {
 };
 
 g.append("path").attr("fill",fish_head.color).attr("d",generate_path(fish_head))
-.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
-.attr("filter","brightness(1)")
+.attr("style","filter: url('#shadow');")
 
 
 
 const fish_mouth = {
   start: {
-    x: -61,
+    x: -60,
     y: -129
   },
   sections: [
     {dx: 40, dy: 30, r:80, step_size: 1, wiggle_size: 0},
     {dx: 40, dy: -1, r:60, step_size: 1, wiggle_size: 0},
     {dx: 26, dy: -24, r:60, step_size: 1, wiggle_size: 0},
-    {dx: 0, dy: -3, r:5, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: -2, r:5, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: 0, r:5, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -3, r:3, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -2, r:-3, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
     {dx: -1, dy: 1, r:5, step_size: 1, wiggle_size: 0},
 
     {dx: -24, dy: 20, r:70, step_size: 1, wiggle_size: 0},
     {dx: -40, dy: 0, r:60, step_size: 1, wiggle_size: 0},
     {dx: -34, dy: -26, r:80, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: 0, r:5, step_size: 1, wiggle_size: 0},
-    {dx: -2, dy: 2, r:5, step_size: 1, wiggle_size: 0},
-    {dx: 0, dy: 2, r:5, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r:-3, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 2, r:-3, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r:-3, step_size: 1, wiggle_size: 0},
   ],
   color: light_batter_color
 };
 
 g.append("path").attr("fill",fish_mouth.color).attr("d",generate_path(fish_mouth))
-.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 
 
 g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",6).attr("fill",light_batter_color)
-.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",10).attr("stroke",light_batter_color).attr("stroke-width",2).attr("fill","none")
-.attr("style","filter: drop-shadow( 0px 2px 1px rgba(0, 0, 0, .3));")
+.attr("style","filter: url('#shadow');")
 
 
 
@@ -430,11 +438,10 @@ const taro_under_oreo = {
 
     {dx: -12, dy: 4, r:0, step_size: 1, wiggle_size: 0},
   ],
-  color: "rgb(230,200,255)"
+  color: "rgb(190,160,225)"
 };
 
 ice_cream_g.append("path").attr("fill",taro_under_oreo.color).attr("d",generate_path(taro_under_oreo))
-.attr("filter", "brightness(.8)")
 
 
 
@@ -530,7 +537,7 @@ const taro = {
     {dx: -3, dy: 0, r:-5, step_size: 1, wiggle_size: 0},
     {dx: -3, dy: 5, r:10, step_size: 1, wiggle_size: 0},
   ],
-  color: taro_under_oreo.color
+  color: "rgb(230,200,255)"
 };
 
 ice_cream_g.append("path").attr("fill",taro.color).attr("d",generate_path(taro))
