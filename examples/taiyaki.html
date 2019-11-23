@@ -1,11 +1,6 @@
 <html>
 <!-- made by Harry Li  -->
 <svg width="200" height="325" style="background: gray">
-  <defs>
-    <filter id="shadow">
-      <feDropShadow dx="0" dy=".5" stdDeviation=".2"/>
-    </filter>
-  </defs>
 </svg>
 
 <script src="./d3.js"></script>
@@ -18,6 +13,7 @@ let g = svg.append("g").attr("transform","translate(100,260)");
 const batter_color = "rgb(205,140,70)"
 const light_batter_color = "rgb(240,180,90)"
 const dark_batter_color = "rgb(180,100,40)"
+const shadow_color = "rgba(0,0,0,.2)"
 
 
 const fish_back_fin = {
@@ -38,8 +34,8 @@ const fish_back_fin = {
   color:  dark_batter_color
 };
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_back_fin)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_back_fin.color).attr("d",generate_path(fish_back_fin))
-.attr("style","filter: url('#shadow');")
 
 const fish_back_fin_spine = {
   start: {x:0, y:0},
@@ -86,8 +82,8 @@ const fish_tail = {
   color: dark_batter_color
 }
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_tail)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_tail.color).attr("d",generate_path(fish_tail))
-.attr("style","filter: url('#shadow');")
 
 const fish_tail_spine_1 = {
   start: {x:2,y:0},
@@ -155,8 +151,8 @@ const fish_body = {
   color: batter_color
 };
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_body)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_body.color).attr("d",generate_path(fish_body))
-.attr("style","filter: url('#shadow');")
 
 
 
@@ -201,16 +197,18 @@ let fish_scales = [
   {x:-58, y:-57, rotate:15, scale_x:.7, scale_y:.7},
   {x:-94, y:-53, rotate:15, scale_x:.7, scale_y:.8},
 
-  {x:97, y:-73, rotate:-20, scale_x:.6, scale_y:.7},
-  {x:40, y:-80, rotate:-10, scale_x:.7, scale_y:.7},
+  {x:111, y:-67, rotate:-20, scale_x:.5, scale_y:.7},
+  {x:40, y:-78, rotate:-10, scale_x:.7, scale_y:.7},
   {x:-15, y:-80, rotate:0, scale_x:.7, scale_y:.7},
   {x:-73, y:-68, rotate:15, scale_x:.7, scale_y:.7},
   {x:-145, y:-52, rotate:30, scale_x:.6, scale_y:.6},
 ]
 
 fish_scales.forEach(function(s) {
+  fish_scales_g.append("path").attr("d",fish_scale_path).attr("fill", shadow_color)
+  .attr("transform","scale("+s.scale_x+","+s.scale_y+") rotate("+s.rotate+") translate("+s.x+","+(s.y+1)+")")
+
   fish_scales_g.append("path").attr("d",fish_scale_path).attr("fill", batter_color)
-  .attr("style","filter: url('#shadow');")
   .attr("transform","scale("+s.scale_x+","+s.scale_y+") rotate("+s.rotate+") translate("+s.x+","+s.y+")")
 })
 
@@ -240,8 +238,8 @@ const fish_side_fin = {
   color: dark_batter_color
 }
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_side_fin)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_side_fin.color).attr("d",generate_path(fish_side_fin))
-.attr("style","filter: url('#shadow');")
 
 const side_side_fin_spine_1 = {
   start: {x:40, y:-61},
@@ -341,8 +339,8 @@ const fish_head = {
   color: light_batter_color
 };
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_head)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_head.color).attr("d",generate_path(fish_head))
-.attr("style","filter: url('#shadow');")
 
 
 
@@ -370,16 +368,15 @@ const fish_mouth = {
   color: light_batter_color
 };
 
+g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_mouth)).attr("transform","translate(0,1)")
 g.append("path").attr("fill",fish_mouth.color).attr("d",generate_path(fish_mouth))
-.attr("style","filter: url('#shadow');")
 
 
-
+g.append("circle").attr("cx",-35).attr("cy",-85+1).attr("r",6).attr("fill",shadow_color)
 g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",6).attr("fill",light_batter_color)
-.attr("style","filter: url('#shadow');")
 
+g.append("circle").attr("cx",-35).attr("cy",-85+1).attr("r",10).attr("stroke",shadow_color).attr("stroke-width",2).attr("fill","none")
 g.append("circle").attr("cx",-35).attr("cy",-85).attr("r",10).attr("stroke",light_batter_color).attr("stroke-width",2).attr("fill","none")
-.attr("style","filter: url('#shadow');")
 
 
 
