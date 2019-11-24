@@ -95,13 +95,44 @@ const green_bean = {
   color: "green"
 };
 
+const green_bean_1_shadow_1 = {
+  start: {
+    x: -27,
+    y: -20
+  },
+  sections: [
+    {dx: 5, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
+
+    {dx: 2, dy: -12, r: -7, step_size: 1, wiggle_size: 0.75},
+    {dx: -10, dy: 0, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 5, r: 0, step_size: 1, wiggle_size: 0},
+  ]
+};
+
+const green_bean_1_shadow_2 = {
+  start: {
+    x: -85,
+    y: 20
+  },
+  sections: [
+    {dx: 5, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: -5, r: 20, step_size: 1, wiggle_size: 0.5},
+    {dx: 40, dy: -25, r: 200, step_size: 1, wiggle_size: 0.5},
+
+
+    {dx: 2, dy: -12, r: -8, step_size: 1, wiggle_size: 0.75},
+    {dx: -5, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
+  ]
+};
 
 tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(-10,5) rotate(60)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(-10,5) rotate(60)");
 
+tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean_1_shadow_1)).attr("transform","translate(17,-7) rotate(10)");
 tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(5,15) rotate(50)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(5,15) rotate(50)");
 
+tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean_1_shadow_2)).attr("transform","translate(17,-7) rotate(10)");
 tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(17,-7) rotate(10)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(17,-7) rotate(10)");
 
