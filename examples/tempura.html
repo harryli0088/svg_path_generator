@@ -7,7 +7,7 @@
 <script type="text/javascript">
 let svg = d3.select("svg");
 
-const shadow_color = "rgba(0,0,0,0.2)";
+const shadow_color = "rgba(0,0,0,0.18)";
 
 
 
@@ -97,7 +97,7 @@ const green_bean = {
 
 const green_bean_1_shadow_1 = {
   start: {
-    x: -27,
+    x: -28,
     y: -20
   },
   sections: [
@@ -125,10 +125,12 @@ const green_bean_1_shadow_2 = {
   ]
 };
 
+tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean)).attr("transform","translate(-5,12) rotate(50)");
 tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(-10,5) rotate(60)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(-10,5) rotate(60)");
 
 tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean_1_shadow_1)).attr("transform","translate(17,-7) rotate(10)");
+tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean)).attr("transform","translate(13,6) rotate(30) scale(1,0.6)");
 tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(5,15) rotate(50)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(5,15) rotate(50)");
 
