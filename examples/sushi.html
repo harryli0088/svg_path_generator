@@ -7,7 +7,7 @@
 <script type="text/javascript">
 let svg = d3.select("svg");
 
-
+const rice_color = "#eee";
 
 let board_g = svg.append("g").attr("transform","translate(25,25)");
 
@@ -171,14 +171,14 @@ const tuna_rice = {
     y: -3
   },
   sections: [
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 7, r: 15, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 4, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 4, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 tuna_g.append("path").attr("fill",tuna_rice.color).attr("d",generate_path(tuna_rice));
@@ -191,14 +191,15 @@ const tuna = {
     y: 0
   },
   sections: [
-    {dx: 15, dy: -7, r: 30, step_size: 1, wiggle_size: 0.5},
-    {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 10, r: 14, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
-    {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0.5},
-    {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -2, r: -5, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: -7, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 20, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 5, r: -2.6, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: -10, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -45, dy: -15, r: -70, step_size: 1, wiggle_size: 0},
+
+    {dx: 0, dy: -3, r: -1.6, step_size: 1, wiggle_size: 0},
   ],
   color: "#E74C3C"
 };
@@ -224,15 +225,15 @@ const salmon_rice = {
     y: 8
   },
   sections: [
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 6, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 6, dy: 4, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 12, dy: 4, r: 12, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 3, r: 13, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -3, r: 13, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -5, r: 13, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 6, r: 8, step_size: 1, wiggle_size: 0.4},
+    {dx: 6, dy: 4, r: 8, step_size: 1, wiggle_size: 0.4},
+    {dx: 12, dy: 4, r: 12, step_size: 1, wiggle_size: 0.4},
+    {dx: 9, dy: 3, r: 13, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: -3, r: 13, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -5, r: 13, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 salmon_g.append("path").attr("fill",salmon_rice.color).attr("d",generate_path(salmon_rice));
@@ -247,18 +248,18 @@ const salmon = {
     y: 0
   },
   sections: [
-    {dx: 5, dy: -0, r: 40, step_size: 1, wiggle_size: 0.5},
-    {dx: 40, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
-    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 10, r: -6, step_size: 1, wiggle_size: 0.5},
-    {dx: -10, dy: 8, r: 50, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: 0, r: 6, step_size: 1, wiggle_size: 0.5},
-    {dx: -10, dy: -8, r: 25, step_size: 1, wiggle_size: 0.5},
-    {dx: -20, dy: -20, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: -30, dy: -5, r: -40, step_size: 1, wiggle_size: 0.5},
-    {dx: -15, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
-    {dx: 15, dy: -10, r: -40, step_size: 1, wiggle_size: 0.5}
+    {dx: 5, dy: -0, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 0, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 10, r: -6, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 8, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 0, r: 6, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -8, r: 25, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: -5, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: -5, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: 15, dy: -10, r: -40, step_size: 1, wiggle_size: 0}
   ],
   color: "#FF9300"
 };
@@ -271,17 +272,17 @@ salmon_g.append("path").attr("fill",salmon.color).attr("d",generate_path(salmon)
 const salmon_stripe_0 = {
   start: {
     x: 72,
-    y: 27
+    y: 28
   },
   sections: [
-    {dx: 1, dy: 15, r: 30, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: -1, dy: -15, r: 30, step_size: 1, wiggle_size: 0.5},
+    {dx: 1, dy: 14, r: 30, step_size: 1, wiggle_size: 0},
+    {dx: -1.5, dy: 1, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -16.5, r: 30, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_0.color).attr("d",generate_path(salmon_stripe_0)).attr("opacity",0.5);
+salmon_g.append("path").attr("fill",salmon_stripe_0.color).attr("d",generate_path(salmon_stripe_0)).attr("opacity",0.4);
 
 
 
@@ -289,19 +290,19 @@ salmon_g.append("path").attr("fill",salmon_stripe_0.color).attr("d",generate_pat
 const salmon_stripe_1 = {
   start: {
     x: 55,
-    y: 6
+    y: 7
   },
   sections: [
-    {dx: 2, dy: 20, r: -28, step_size: 1, wiggle_size: 0.5},
-    {dx: 2, dy: 20, r: 35, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: -20, r: 35, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: -20, r: -26, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 20, r: -28, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 20, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -20, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -22, r: -26, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_1.color).attr("d",generate_path(salmon_stripe_1)).attr("opacity",0.6);
+salmon_g.append("path").attr("fill",salmon_stripe_1.color).attr("d",generate_path(salmon_stripe_1)).attr("opacity",0.4);
 
 
 
@@ -309,19 +310,19 @@ salmon_g.append("path").attr("fill",salmon_stripe_1.color).attr("d",generate_pat
 const salmon_stripe_2 = {
   start: {
     x: 35,
-    y: -5
+    y: -4
   },
   sections: [
-    {dx: 8, dy: 20, r: -28, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 15, r: -0, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -15, r: -0, step_size: 1, wiggle_size: 0.5},
-    {dx: -8, dy: -20, r: -26, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 20, r: -28, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 15, r: -0, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -15, r: -0, step_size: 1, wiggle_size: 0},
+    {dx: -9.5, dy: -21.5, r: -26, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_2.color).attr("d",generate_path(salmon_stripe_2)).attr("opacity",0.6);
+salmon_g.append("path").attr("fill",salmon_stripe_2.color).attr("d",generate_path(salmon_stripe_2)).attr("opacity",0.4);
 
 
 
@@ -329,17 +330,17 @@ salmon_g.append("path").attr("fill",salmon_stripe_2.color).attr("d",generate_pat
 const salmon_stripe_3 = {
   start: {
     x: 18,
-    y: -6
+    y: -5
   },
   sections: [
-    {dx: 8, dy: 24, r: -22, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: -8, dy: -24, r: -22, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 24, r: -22, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -8, dy: -24, r: -22, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_3.color).attr("d",generate_path(salmon_stripe_3)).attr("opacity",0.6);
+salmon_g.append("path").attr("fill",salmon_stripe_3.color).attr("d",generate_path(salmon_stripe_3)).attr("opacity",0.4);
 
 
 
@@ -347,17 +348,17 @@ salmon_g.append("path").attr("fill",salmon_stripe_3.color).attr("d",generate_pat
 const salmon_stripe_4 = {
   start: {
     x: 5,
-    y: -1
+    y: -0.5
   },
   sections: [
-    {dx: 3, dy: 15, r: -25, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: -3, dy: -15, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: 3, dy: 15, r: -25, step_size: 1, wiggle_size: 0},
+    {dx: -1.5, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -14, r: -25, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_4.color).attr("d",generate_path(salmon_stripe_4)).attr("opacity",0.6);
+salmon_g.append("path").attr("fill",salmon_stripe_4.color).attr("d",generate_path(salmon_stripe_4)).attr("opacity",0.4);
 
 
 
@@ -368,14 +369,14 @@ const salmon_stripe_5 = {
     y: 5
   },
   sections: [
-    {dx: 0, dy: 7, r: -25, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 0, r: 2, step_size: 1, wiggle_size: 0.5},
-    {dx: -0, dy: -7, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: 7, r: -25, step_size: 1, wiggle_size: 0},
+    {dx: -1.5, dy: 0, r: 2, step_size: 1, wiggle_size: 0},
+    {dx: -0, dy: -6, r: -25, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
 
-salmon_g.append("path").attr("fill",salmon_stripe_5.color).attr("d",generate_path(salmon_stripe_5)).attr("opacity",0.6);
+salmon_g.append("path").attr("fill",salmon_stripe_5.color).attr("d",generate_path(salmon_stripe_5)).attr("opacity",0.4);
 
 
 
@@ -396,14 +397,14 @@ const squid_rice = {
     y: 5
   },
   sections: [
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
-    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.4},
+    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.4},
+    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 squid_g.append("path").attr("fill",squid_rice.color).attr("d",generate_path(squid_rice));
@@ -416,16 +417,17 @@ const squid = {
     y: 0
   },
   sections: [
-    {dx: 40, dy: 0, r: -40, step_size: 1, wiggle_size: 0.5},
-    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: 5, dy: 10, r: 25, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 2, r: -6, step_size: 1, wiggle_size: 0.5},
-    {dx: -15, dy: 7, r: 50, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: -2, r: 25, step_size: 1, wiggle_size: 0.5},
-    {dx: -20, dy: -20, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: -35, dy: -5, r: -40, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: -1, r: 40, step_size: 1, wiggle_size: 0.5},
-    {dx: 13, dy: -10, r: -40, step_size: 1, wiggle_size: 0.5}
+    {dx: 40, dy: 0, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: 10, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 2, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: -15, dy: 7, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: -2, r: 25, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -37, dy: -5, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: -1, r: 4, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r: -2, step_size: 1, wiggle_size: 0},
+    {dx: 12, dy: -8, r: -40, step_size: 1, wiggle_size: 0}
   ],
   color: "#E3F4F3"
 };
@@ -441,13 +443,13 @@ const squid_stripe_1 = {
     y: 0
   },
   sections: [
-    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0.25},
-    {dx: 25, dy: 20, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: 8, dy: 15, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0.25},
-    {dx: -8, dy: -15, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -25, dy: -20, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0.25},
+    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 15, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: -8, dy: -15, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0},
   ],
   color: "#C5D2D1"
 };
@@ -463,13 +465,13 @@ const squid_stripe_2 = {
     y: 2
   },
   sections: [
-    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0.25},
-    {dx: 26, dy: 22, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: 7, dy: 13, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0.25},
-    {dx: -7, dy: -13, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -26, dy: -22, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0.25},
+    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 26, dy: 22, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 13, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: -13, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -26, dy: -22, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0},
   ],
   color: "#C5D2D1"
 };
@@ -485,13 +487,13 @@ const squid_stripe_3 = {
     y: 5
   },
   sections: [
-    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0.25},
-    {dx: 25, dy: 18, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: 9, dy: 15, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0.25},
-    {dx: -9, dy: -15, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -25, dy: -18, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0.25},
+    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 18, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 9, dy: 15, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: -9, dy: -15, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -18, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0},
   ],
   color: "#C5D2D1"
 };
@@ -507,13 +509,13 @@ const squid_stripe_4 = {
     y: 8
   },
   sections: [
-    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0.25},
-    {dx: 25, dy: 20, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: 8, dy: 12, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0.25},
-    {dx: -8, dy: -12, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -25, dy: -20, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0.25},
+    {dx: 30, dy: -2, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 12, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: 1, r: -4, step_size: 1, wiggle_size: 0},
+    {dx: -8, dy: -12, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -25, dy: -20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -30, dy: 2, r: -40, step_size: 1, wiggle_size: 0},
   ],
   color: "#C5D2D1"
 };
@@ -538,14 +540,14 @@ const yellowtail_rice = {
     y: -3
   },
   sections: [
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 4, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 5, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 12, dy: 6, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 6, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 5, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 12, dy: 4, r: 12, step_size: 1, wiggle_size: 0.4},
+    {dx: 9, dy: 3, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: -3, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 yellowtail_g.append("path").attr("fill",yellowtail_rice.color).attr("d",generate_path(yellowtail_rice));
@@ -558,13 +560,13 @@ const yellowtail_bottom = {
     y: 0
   },
   sections: [
-    {dx: 15, dy: -7, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: -40, dy: -5, r: 67, step_size: 1, wiggle_size: 0.5},
-    {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -2, r: -5, step_size: 1, wiggle_size: 0.5},
+    {dx: 15, dy: -7, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 40, dy: 0, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 20, dy: 20, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 10, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: -5, r: 67, step_size: 1, wiggle_size: 0},
+    {dx: -45, dy: -15, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r: -2, step_size: 1, wiggle_size: 0},
   ],
   color: "#FAE4E2"
 };
@@ -580,10 +582,10 @@ const yellowtail_top = {
     y: 23
   },
   sections: [
-    {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0.5},
-    {dx: -40, dy: -11, r: 60, step_size: 1, wiggle_size: 0.25},
-    {dx: -10, dy: -8, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: 48, dy: 13, r: 80, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 5, r: -3, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: -11, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -8, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 48, dy: 13, r: 80, step_size: 1, wiggle_size: 0},
   ],
   color: "#FF7468"
 };
@@ -599,11 +601,11 @@ const yellowtail_stripe_1 = {
     y: 5
   },
   sections: [
-    {dx: 40, dy: 8, r: -100, step_size: 1, wiggle_size: 0.25},
-    {dx: 12, dy: 3, r: 60, step_size: 1, wiggle_size: 0.25},
-    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -12, dy: -3, r: 60, step_size: 1, wiggle_size: 0.25},
-    {dx: -40, dy: -9, r: -100, step_size: 1, wiggle_size: 0.25},
+    {dx: 40, dy: 8, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: 12, dy: 3, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: 1.5, dy: 2, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: -3, r: 60, step_size: 1, wiggle_size: 0},
+    {dx: -40, dy: -9, r: -100, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
@@ -619,9 +621,9 @@ const yellowtail_stripe_2 = {
     y: 1
   },
   sections: [
-    {dx: 57, dy: 7, r: -80, step_size: 1, wiggle_size: 0.25},
-    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -57, dy: -8, r: -80, step_size: 1, wiggle_size: 0.25},
+    {dx: 57, dy: 7, r: -80, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -57, dy: -8, r: -80, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
@@ -637,9 +639,9 @@ const yellowtail_stripe_3 = {
     y: -4
   },
   sections: [
-    {dx: 57, dy: 2, r: -80, step_size: 1, wiggle_size: 0.25},
-    {dx: 2, dy: 2, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -57, dy: -3, r: -80, step_size: 1, wiggle_size: 0.25},
+    {dx: 56.5, dy: 2, r: -80, step_size: 1, wiggle_size: 0},
+    {dx: 1.5, dy: 2, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -57, dy: -3, r: -80, step_size: 1, wiggle_size: 0},
   ],
   color: "white"
 };
@@ -702,14 +704,14 @@ const roe_seaweed = {
     y: 0
   },
   sections: [
-    {dx: 5, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 43, dy: 5, r: 50, step_size: 1, wiggle_size: 0.5},
-    {dx: 2, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 25, r: 0, step_size: 1, wiggle_size: 0.5},
-    {dx: -2, dy: 4, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -43, dy: -5, r: 50, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: -7, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -25, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: 7, r: 10, step_size: 1, wiggle_size: 0.25},
+    {dx: 43, dy: 5, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: 2, dy: -4, r: 15, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 25, r: 0, step_size: 1, wiggle_size: 0.25},
+    {dx: -2, dy: 4, r: 15, step_size: 1, wiggle_size: 0.25},
+    {dx: -43, dy: -5, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: -5, dy: -7, r: 10, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: -25, r: 0, step_size: 1, wiggle_size: 0.25},
   ],
   color: "black"
 };
@@ -737,14 +739,14 @@ const shrimp_rice = {
     y: -3
   },
   sections: [
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 7, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 10, dy: 3, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 12, dy: 2, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 1, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 5, dy: -10, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 7, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 3, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 12, dy: 2, r: 12, step_size: 1, wiggle_size: 0.4},
+    {dx: 8, dy: 0, r: 15, step_size: 1, wiggle_size: 0.4},
+    {dx: 5, dy: -10, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 shrimp_g.append("path").attr("fill",shrimp_rice.color).attr("d",generate_path(shrimp_rice));
@@ -757,23 +759,23 @@ const shrimp = {
     y: 0
   },
   sections: [
-    {dx: 0, dy: -3, r: -10, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: -5, r: -8, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -2, r: -10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: -4, r: -10, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 3, r: -15, step_size: 1, wiggle_size: 0.5},
-    {dx: 12, dy: 6, r: -15, step_size: 1, wiggle_size: 0.5},
-    {dx: 9, dy: 6, r: -15, step_size: 1, wiggle_size: 0.5},
-    {dx: 6, dy: 5, r: -15, step_size: 1, wiggle_size: 0.5},
-    {dx: 7, dy: 6, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: 0, dy: -3, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 9, dy: -5, r: -8, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -2, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: -4, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 3, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 12, dy: 6, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 9, dy: 6, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 6, dy: 5, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: 7, dy: 6, r: -15, step_size: 1, wiggle_size: 0},
 
-    {dx: -4, dy: 4, r: -15, step_size: 1, wiggle_size: 0.5},
+    {dx: -4, dy: 4, r: -15, step_size: 1, wiggle_size: 0},
 
-    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -11, dy: -3, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -11, dy: -4, r: 15, step_size: 1, wiggle_size: 0.5},
+    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -2, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -11, dy: -3, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: -4, r: 15, step_size: 1, wiggle_size: 0},
+    {dx: -11, dy: -4, r: 15, step_size: 1, wiggle_size: 0},
   ],
   color: "#FFE4D3"
 };
@@ -791,10 +793,10 @@ const shrimp_tail_1 = {
     y: 4
   },
   sections: [
-    {dx: 15, dy: 3, r: -40, step_size: 1, wiggle_size: 0.25},
+    {dx: 15, dy: 3, r: -40, step_size: 1, wiggle_size: 0},
 
-    {dx: 5, dy: 5, r: -15, step_size: 1, wiggle_size: 0.25},
-    {dx: -7, dy: 0, r: 20, step_size: 1, wiggle_size: 0.25},
+    {dx: 5, dy: 5, r: -15, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: 0, r: 20, step_size: 1, wiggle_size: 0},
   ],
   color: "#FA5220"
 };
@@ -810,14 +812,14 @@ const shrimp_tail_2 = {
     y: 0
   },
   sections: [
-    {dx: 8, dy: 4, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: 8, dy: 4, r: -60, step_size: 1, wiggle_size: 0},
 
-    {dx: 14, dy: 8, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: -18, dy: -4, r: 80, step_size: 1, wiggle_size: 0.25},
+    {dx: 14, dy: 8, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: -18, dy: -4, r: 80, step_size: 1, wiggle_size: 0},
 
-    {dx: -8, dy: -2, r: 40, step_size: 1, wiggle_size: 0.25},
-    {dx: 0, dy: -4, r: -5, step_size: 1, wiggle_size: 0.25},
-    {dx: 3, dy: -2, r: -5, step_size: 1, wiggle_size: 0.25},
+    {dx: -8, dy: -2, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -4, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: 3, dy: -2, r: -5, step_size: 1, wiggle_size: 0},
   ],
   color: "#E73E0C"
 };
@@ -833,10 +835,10 @@ const shrimp_tail_3 = {
     y: 12
   },
   sections: [
-    {dx: 5, dy: 5, r: -20, step_size: 1, wiggle_size: 0.25},
-    {dx: -7, dy: 0, r: 20, step_size: 1, wiggle_size: 0.25},
+    {dx: 5, dy: 5, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: -7, dy: 0, r: 20, step_size: 1, wiggle_size: 0},
 
-    {dx: -17, dy: -11, r: 40, step_size: 1, wiggle_size: 0.25},
+    {dx: -17, dy: -11, r: 40, step_size: 1, wiggle_size: 0},
   ],
   color: "#FA5220"
 };
@@ -952,14 +954,14 @@ const red_clam_rice = {
     y: 20
   },
   sections: [
-    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
-    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.4},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 15, dy: 10, r: 20, step_size: 1, wiggle_size: 0.4},
+    {dx: 17, dy: 5, r: 20, step_size: 1, wiggle_size: 0.4},
+    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 red_clam_g.append("path").attr("fill",red_clam_rice.color).attr("d",generate_path(red_clam_rice));
@@ -972,10 +974,10 @@ const red_clam_top = {
     y: 0
   },
   sections: [
-    {dx: 25, dy: 17, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -16, dy: 15, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -12, dy: -32, r: 35, step_size: 1, wiggle_size: 0.5},
-    {dx: 2, dy: -1, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: 25, dy: 17, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -16, dy: 15, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -12, dy: -32, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -1, r: -1.5, step_size: 1, wiggle_size: 0},
   ],
   color: "#E92F1C"
 };
@@ -991,12 +993,12 @@ const red_clam_bottom = {
     y: 17
   },
   sections: [
-    {dx: 10, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: 8, dy: 8, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 7, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -5, dy: 0, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: -24, dy: -10, r: 100, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: 8, dy: 8, r: -20, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 7, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 5, r: 20, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 0, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -24, dy: -10, r: 100, step_size: 1, wiggle_size: 0},
 
   ],
   color: "#ece7cf"
@@ -1013,12 +1015,12 @@ const red_clam_seaweed = {
     y: 17
   },
   sections: [
-    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: -20, dy: 15, r: -25, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: 10, r: 15, step_size: 1, wiggle_size: 0.5},
-    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -10, r: -15, step_size: 1, wiggle_size: 0.5},
-    {dx: 20, dy: -15, r: -25, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -20, dy: 15, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 10, r: 15, step_size: 1, wiggle_size: 0.25},
+    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: -10, r: -15, step_size: 1, wiggle_size: 0.25},
+    {dx: 20, dy: -15, r: -25, step_size: 1, wiggle_size: 0.25},
   ],
   color: "black"
 };
@@ -1054,15 +1056,15 @@ const octopus_rice = {
     y: 15
   },
   sections: [
-    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.5},
-    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 18, dy: 10, r: 20, step_size: 1, wiggle_size: 0.7},
-    {dx: 10, dy: 1, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 7, dy: -2, r: 8, step_size: 1, wiggle_size: 0.5},
-    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
-    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 100, step_size: 1, wiggle_size: 0.4},
+    {dx: 2, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 18, dy: 10, r: 20, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 1, r: 8, step_size: 1, wiggle_size: 0.4},
+    {dx: 7, dy: -2, r: 8, step_size: 1, wiggle_size: 0.4},
+    {dx: 5, dy: -5, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -5, r: 10, step_size: 1, wiggle_size: 0.4},
   ],
-  color: "white"
+  color: rice_color
 };
 
 octopus_g.append("path").attr("fill",octopus_rice.color).attr("d",generate_path(octopus_rice));
@@ -1075,20 +1077,20 @@ const octopus_outside = {
     y: 0
   },
   sections: [
-    {dx: 15, dy: 0, r: -40, step_size: 1, wiggle_size: 0.25},
-    {dx: 30, dy: 15, r: -80, step_size: 1, wiggle_size: 0.25},
-    {dx: 10, dy: 20, r: -50, step_size: 1, wiggle_size: 0.25},
-    {dx: -4, dy: 4, r: -7, step_size: 1, wiggle_size: 0.25},
-    {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -10, dy: 0, r: -7, step_size: 1, wiggle_size: 0.25},
-    {dx: -1, dy: -1, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -8, dy: -5, r: -10, step_size: 1, wiggle_size: 0.25},
-    {dx: -4, dy: -1, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -3, dy: -3, r: -4, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -2, dy: 2, r: -6, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -20, dy: -6, r: 80, step_size: 1, wiggle_size: 0.25},
-    {dx: -16, dy: -10, r: 80, step_size: 1, wiggle_size: 0.25},
-    {dx: 5, dy: -10, r: 80, step_size: 1, wiggle_size: 0.25},
+    {dx: 15, dy: 0, r: -40, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: 15, r: -80, step_size: 1, wiggle_size: 0},
+    {dx: 10, dy: 20, r: -50, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: 4, r: -7, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 0, r: -7, step_size: 1, wiggle_size: 0},
+    {dx: -1, dy: -1, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -8, dy: -5, r: -10, step_size: 1, wiggle_size: 0},
+    {dx: -4, dy: -1, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -3, r: -4, step_size: 0.5, wiggle_size: 0},
+    {dx: -2, dy: 2, r: -6, step_size: 0.5, wiggle_size: 0},
+    {dx: -20, dy: -6, r: 80, step_size: 1, wiggle_size: 0},
+    {dx: -16, dy: -10, r: 80, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: -10, r: 80, step_size: 1, wiggle_size: 0},
   ],
   color: octopus_color
 };
@@ -1105,23 +1107,23 @@ const octopus_inside = {
     y: 1
   },
   sections: [
-    {dx: 15, dy: 0, r: -60, step_size: 1, wiggle_size: 0.25},
-    {dx: 25, dy: 11, r: -100, step_size: 1, wiggle_size: 0.25},
-    {dx: 5, dy: 5, r: -70, step_size: 1, wiggle_size: 0.25},
-    {dx: 0, dy: 5, r: -70, step_size: 1, wiggle_size: 0.25},
-    {dx: -5, dy: 5, r: -70, step_size: 1, wiggle_size: 0.25},
-    {dx: -10, dy: 1, r: -70, step_size: 1, wiggle_size: 0.25},
-    {dx: -10, dy: -2, r: 40, step_size: 1, wiggle_size: 0.25},
-    {dx: -20, dy: -8, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -3, dy: 2, r: 3, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -2, dy: -3, r: 3, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -2, dy: -2, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: 0, dy: -3, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0.25},
-    {dx: -2, dy: 1, r: 100, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -1, dy: 0, r: 100, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -2, dy: -1, r: 100, step_size: 0.5, wiggle_size: 0.25},
-    {dx: -2, dy: 0, r: 100, step_size: 0.5, wiggle_size: 0.25},
+    {dx: 15, dy: 0, r: -60, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 11, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: 5, dy: 5, r: -30, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: 5, r: -5, step_size: 1, wiggle_size: 0},
+    {dx: -5, dy: 5, r: -70, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: 1, r: -70, step_size: 1, wiggle_size: 0},
+    {dx: -10, dy: -2, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: -20, dy: -8, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 2, r: 3, step_size: 0.5, wiggle_size: 0},
+    {dx: -2, dy: -3, r: 3, step_size: 0.5, wiggle_size: 0},
+    {dx: -2, dy: -2, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: 0, dy: -3, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: -2, dy: 1, r: 100, step_size: 0.5, wiggle_size: 0},
+    {dx: -1, dy: 0, r: 100, step_size: 0.5, wiggle_size: 0},
+    {dx: -2, dy: -1, r: 100, step_size: 0.5, wiggle_size: 0},
+    {dx: -2, dy: 0, r: 100, step_size: 0.5, wiggle_size: 0},
 
 
     {dx: 11, dy: -10, r: -20, step_size: 1, wiggle_size: 0.5},
@@ -1219,12 +1221,12 @@ const octopus_seaweed = {
     y: 3
   },
   sections: [
-    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.5},
-    {dx: -23, dy: 20, r: -30, step_size: 1, wiggle_size: 0.5},
-    {dx: 3, dy: 13, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.5},
-    {dx: -3, dy: -13, r: 20, step_size: 1, wiggle_size: 0.5},
-    {dx: 23, dy: -20, r: -30, step_size: 1, wiggle_size: 0.5},
+    {dx: 10, dy: 5, r: -60, step_size: 1, wiggle_size: 0.25},
+    {dx: -23, dy: 20, r: -30, step_size: 1, wiggle_size: 0.25},
+    {dx: 3, dy: 13, r: 20, step_size: 1, wiggle_size: 0.25},
+    {dx: -10, dy: -5, r: 40, step_size: 1, wiggle_size: 0.25},
+    {dx: -3, dy: -13, r: 20, step_size: 1, wiggle_size: 0.25},
+    {dx: 23, dy: -20, r: -30, step_size: 1, wiggle_size: 0.25},
   ],
   color: "black"
 };

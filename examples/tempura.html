@@ -30,11 +30,10 @@ const plate_edge = {
     {dx: 100, dy: 130, r: 1000, step_size: 1, wiggle_size: 0},
     {dx: 174, dy: -75, r: 1000, step_size: 1, wiggle_size: 0},
     {dx: 0, dy: -plate_edge_offset, r: 3, step_size: 1, wiggle_size: 0},
-  ],
-  color: "pink"
+  ]
 }
 
-plate_g.append("path").attr("fill",plate_edge).attr("d",generate_path(plate_edge));
+plate_g.append("path").attr("d",generate_path(plate_edge));
 
 const plate = {
   start: {
@@ -240,7 +239,7 @@ let shiitake_g = tempura_g.append("g").attr("transform","translate(25,5) rotate(
 const shiitake_shadow = {
   start: {
     x: -4,
-    y: 0
+    y: 25
   },
   sections: [
     {dx: 34, dy: -34, r: -37, step_size: 1, wiggle_size: 1},
@@ -250,7 +249,7 @@ const shiitake_shadow = {
   ]
 }
 
-shiitake_g.append("path").attr("fill",shadow_color).attr("d",generate_path(shiitake_shadow)).attr("transform","rotate(15) scale(1,0.7)");
+shiitake_g.append("path").attr("fill",shadow_color).attr("d",generate_path(shiitake_shadow)).attr("transform","rotate(15) scale(0.8,0.4)");
 
 const shiitake_body = {
   start: {
