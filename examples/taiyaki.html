@@ -3,8 +3,8 @@
 <svg width="200" height="325" style="background: gray">
 </svg>
 
-<script src="./d3.js"></script>
-<script src="../path_generator.js"></script>
+<script src="../node_modules/d3/dist/d3.js"></script>
+<script src="../index.js"></script>
 <script type="text/javascript">
 let svg = d3.select("svg");
 
@@ -34,8 +34,8 @@ const fish_back_fin = {
   color:  dark_batter_color
 };
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_back_fin)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_back_fin.color).attr("d",generate_path(fish_back_fin))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_back_fin)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_back_fin.color).attr("d",svg_path_generator(fish_back_fin))
 
 const fish_back_fin_spine = {
   start: {x:0, y:0},
@@ -57,7 +57,7 @@ const fish_back_fin_spines = [
 ]
 
 fish_back_fin_spines.forEach(function(s) {
-  g.append("path").attr("d",generate_path(fish_back_fin_spine)).attr("fill",batter_color)
+  g.append("path").attr("d",svg_path_generator(fish_back_fin_spine)).attr("fill",batter_color)
   .attr("transform","translate("+s.x+","+s.y+")")
 })
 
@@ -82,8 +82,8 @@ const fish_tail = {
   color: dark_batter_color
 }
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_tail)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_tail.color).attr("d",generate_path(fish_tail))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_tail)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_tail.color).attr("d",svg_path_generator(fish_tail))
 
 const fish_tail_spine_1 = {
   start: {x:2,y:0},
@@ -98,7 +98,7 @@ const fish_tail_spine_1 = {
   color: batter_color
 }
 
-g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_1.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_1))
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_1.color).attr("stroke-width",2).attr("d",svg_path_generator(fish_tail_spine_1))
 
 const fish_tail_spine_2 = {
   start: {x:-4,y:0},
@@ -113,7 +113,7 @@ const fish_tail_spine_2 = {
   color: batter_color
 }
 
-g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_2.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_2))
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_2.color).attr("stroke-width",2).attr("d",svg_path_generator(fish_tail_spine_2))
 
 const fish_tail_spine_3 = {
   start: {x:-4,y:0},
@@ -128,7 +128,7 @@ const fish_tail_spine_3 = {
   color: batter_color
 }
 
-g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_3.color).attr("stroke-width",2).attr("d",generate_path(fish_tail_spine_3))
+g.append("path").attr("fill","none").attr("stroke",fish_tail_spine_3.color).attr("stroke-width",2).attr("d",svg_path_generator(fish_tail_spine_3))
 
 
 
@@ -151,8 +151,8 @@ const fish_body = {
   color: batter_color
 };
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_body)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_body.color).attr("d",generate_path(fish_body))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_body)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_body.color).attr("d",svg_path_generator(fish_body))
 
 
 
@@ -171,7 +171,7 @@ const fish_scale = {
   ],
 };
 
-const fish_scale_path = generate_path(fish_scale)
+const fish_scale_path = svg_path_generator(fish_scale)
 
 let fish_scales = [
   {x:0, y:0, rotate:0, scale_x:1, scale_y:1},
@@ -238,8 +238,8 @@ const fish_side_fin = {
   color: dark_batter_color
 }
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_side_fin)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_side_fin.color).attr("d",generate_path(fish_side_fin))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_side_fin)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_side_fin.color).attr("d",svg_path_generator(fish_side_fin))
 
 const side_side_fin_spine_1 = {
   start: {x:40, y:-61},
@@ -257,7 +257,7 @@ const side_side_fin_spine_1 = {
   color: batter_color
 }
 
-g.append("path").attr("fill",side_side_fin_spine_1.color).attr("d",generate_path(side_side_fin_spine_1))
+g.append("path").attr("fill",side_side_fin_spine_1.color).attr("d",svg_path_generator(side_side_fin_spine_1))
 
 
 
@@ -277,7 +277,7 @@ const side_side_fin_spine_2 = {
   color: batter_color
 }
 
-g.append("path").attr("fill",side_side_fin_spine_2.color).attr("d",generate_path(side_side_fin_spine_2))
+g.append("path").attr("fill",side_side_fin_spine_2.color).attr("d",svg_path_generator(side_side_fin_spine_2))
 
 
 
@@ -296,7 +296,7 @@ const side_side_fin_spine_3 = {
   color: batter_color
 }
 
-g.append("path").attr("fill",side_side_fin_spine_3.color).attr("d",generate_path(side_side_fin_spine_3))
+g.append("path").attr("fill",side_side_fin_spine_3.color).attr("d",svg_path_generator(side_side_fin_spine_3))
 
 
 
@@ -314,7 +314,7 @@ const side_side_fin_spine_4 = {
   color: batter_color
 }
 
-g.append("path").attr("fill",side_side_fin_spine_4.color).attr("d",generate_path(side_side_fin_spine_4))
+g.append("path").attr("fill",side_side_fin_spine_4.color).attr("d",svg_path_generator(side_side_fin_spine_4))
 
 
 
@@ -339,8 +339,8 @@ const fish_head = {
   color: light_batter_color
 };
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_head)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_head.color).attr("d",generate_path(fish_head))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_head)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_head.color).attr("d",svg_path_generator(fish_head))
 
 
 
@@ -368,8 +368,8 @@ const fish_mouth = {
   color: light_batter_color
 };
 
-g.append("path").attr("fill",shadow_color).attr("d",generate_path(fish_mouth)).attr("transform","translate(0,1)")
-g.append("path").attr("fill",fish_mouth.color).attr("d",generate_path(fish_mouth))
+g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(fish_mouth)).attr("transform","translate(0,1)")
+g.append("path").attr("fill",fish_mouth.color).attr("d",svg_path_generator(fish_mouth))
 
 
 g.append("circle").attr("cx",-35).attr("cy",-85+1).attr("r",6).attr("fill",shadow_color)
@@ -417,7 +417,7 @@ const vanilla = {
   color: "white"
 };
 
-ice_cream_g.append("path").attr("fill",vanilla.color).attr("d",generate_path(vanilla))
+ice_cream_g.append("path").attr("fill",vanilla.color).attr("d",svg_path_generator(vanilla))
 
 
 
@@ -438,7 +438,7 @@ const taro_under_oreo = {
   color: "rgb(190,160,225)"
 };
 
-ice_cream_g.append("path").attr("fill",taro_under_oreo.color).attr("d",generate_path(taro_under_oreo))
+ice_cream_g.append("path").attr("fill",taro_under_oreo.color).attr("d",svg_path_generator(taro_under_oreo))
 
 
 
@@ -460,7 +460,7 @@ const oreo_filling = {
   color: "white"
 };
 
-oreo_g.append("path").attr("fill",oreo_filling.color).attr("d",generate_path(oreo_filling))
+oreo_g.append("path").attr("fill",oreo_filling.color).attr("d",svg_path_generator(oreo_filling))
 
 oreo_g.append("ellipse").attr("cx",-150).attr("cy",-70).attr("rx",30).attr("ry",10).attr("transform","rotate(45)").attr("fill","#433")
 
@@ -537,7 +537,7 @@ const taro = {
   color: "rgb(230,200,255)"
 };
 
-ice_cream_g.append("path").attr("fill",taro.color).attr("d",generate_path(taro))
+ice_cream_g.append("path").attr("fill",taro.color).attr("d",svg_path_generator(taro))
 
 
 
@@ -564,7 +564,7 @@ const shadow_1 = {
   color: "rgba(0,0,0,0.2)"
 };
 
-ice_cream_g.append("path").attr("fill",shadow_1.color).attr("d",generate_path(shadow_1))
+ice_cream_g.append("path").attr("fill",shadow_1.color).attr("d",svg_path_generator(shadow_1))
 
 
 
@@ -584,7 +584,7 @@ const shadow_2 = {
   color: "rgba(0,0,0,0.1)"
 };
 
-ice_cream_g.append("path").attr("fill",shadow_2.color).attr("d",generate_path(shadow_2))
+ice_cream_g.append("path").attr("fill",shadow_2.color).attr("d",svg_path_generator(shadow_2))
 
 
 
@@ -613,7 +613,7 @@ const shadow_3 = {
   color: "rgba(0,0,0,0.15)"
 };
 
-ice_cream_g.append("path").attr("fill",shadow_3.color).attr("d",generate_path(shadow_3))
+ice_cream_g.append("path").attr("fill",shadow_3.color).attr("d",svg_path_generator(shadow_3))
 
 
 
@@ -634,7 +634,7 @@ const shadow_4 = {
   color: "rgba(0,0,0,0.15)"
 };
 
-ice_cream_g.append("path").attr("fill",shadow_4.color).attr("d",generate_path(shadow_4))
+ice_cream_g.append("path").attr("fill",shadow_4.color).attr("d",svg_path_generator(shadow_4))
 
 
 
@@ -658,7 +658,7 @@ const shadow_5 = {
   color: "rgba(0,0,0,0.15)"
 };
 
-ice_cream_g.append("path").attr("fill",shadow_5.color).attr("d",generate_path(shadow_5))
+ice_cream_g.append("path").attr("fill",shadow_5.color).attr("d",svg_path_generator(shadow_5))
 
 
 
@@ -696,13 +696,13 @@ const pocky_shadow_color = "rgba(0,0,0,0.1)"
 let pocky_g_1 = ice_cream_g.append("g")
 pocky_g_1.append("ellipse").attr("fill",pocky_shadow_color)
 .attr("cx",pocky.start.x+3).attr("cy",pocky.start.y).attr("rx",4).attr("ry",3).attr("transform","rotate(15,"+pocky.start.x+","+pocky.start.y+")")
-pocky_g_1.append("path").attr("fill",pocky_stick.color).attr("d",generate_path(pocky_stick))
-pocky_g_1.append("path").attr("fill","pink").attr("d",generate_path(pocky))
+pocky_g_1.append("path").attr("fill",pocky_stick.color).attr("d",svg_path_generator(pocky_stick))
+pocky_g_1.append("path").attr("fill","pink").attr("d",svg_path_generator(pocky))
 
 let pocky_g_2 = ice_cream_g.append("g").attr("transform","rotate(10,10,-138) translate(10,-5)")
 pocky_g_2.append("ellipse").attr("fill",pocky_shadow_color)
 .attr("cx",pocky.start.x+3).attr("cy",pocky.start.y).attr("rx",4).attr("ry",3).attr("transform","rotate(15,"+pocky.start.x+","+pocky.start.y+")")
-pocky_g_2.append("path").attr("fill",pocky_stick.color).attr("d",generate_path(pocky_stick))
-pocky_g_2.append("path").attr("fill","rgb(150,200,100)").attr("d",generate_path(pocky))
+pocky_g_2.append("path").attr("fill",pocky_stick.color).attr("d",svg_path_generator(pocky_stick))
+pocky_g_2.append("path").attr("fill","rgb(150,200,100)").attr("d",svg_path_generator(pocky))
 </script>
 </html>

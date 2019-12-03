@@ -25,25 +25,33 @@ It takes in general straight lines or curves that you want to follow, and can ad
 
 
 
-## usage
+## Usage
+```
+npm install --save harryli0088/svg_path_generator
+```
+
+```javascript
+import svg_path_generator from "svg_path_generator"
+```
+
 
 1) Provide a starting x and y position
-2) Provide an array of "sections": curves or straight lines to draw
+2) Provide an array of "sections", which are curves or straight lines to draw
 
 
 the generate_path function takes in a path_data object
-```javascript
-path_data = {
+```
+const path_data = {
   start: {x: number, y: number},
   sections: [
     {
       x: the absolute x pixel you want to move to,
-      y: the absolute y pixel you want to move to (remember that in SVG y increases positively down),
+      y: the absolute y pixel you want to move to (remember that in SVG, y increases positively down),
       dx: (alternatively, you can provide a relative change in pixels along the x axis),
-      dy: (alternatively, you can provide a relative change in pixels along the y axis (remember that in SVG y increases positively down)),
+      dy: (alternatively, you can provide a relative change in pixels along the y axis (remember that in SVG, y increases positively down)),
       r: length in pixels of the radius of the curve. 0 produces a straight line. Change the sign of the radius to change the curve direction. Smaller radius means more extreme curve; larger radius means less extreme curve. Do not make the radius too small; you can only draw a semicircle at most. If you need a bigger curve, combine two smaller curves to make a bigger one,
       step_size: size in pixels that each step should be,
-      wiggle_size: size in pixels that the maximum wiggle side-to-side can be
+      wiggle_size: size in pixels that the maximum wiggle side-to-side can be (wiggles are randomized, so each render will be slightly different)
     },
     ...
   ]
@@ -53,20 +61,22 @@ path_data = {
 ```javascript
 //example path_data
 const path_data = {
-   start: {
-     x: 200,
-     y: 300,
-   },
-   sections: [
-     {dx: 0, dy: -50, r: 0, step_size: 4, wiggle_size: 1},
-     {dx: 10, dy: -10, r: -30, step_size: 1, wiggle_size: 1},
-     {dx: 10, dy:0, r: 0, step_size: 5, wiggle_size: 1},
-     {dx: 10, dy:10, r: -30, step_size: 1, wiggle_size: 1},
-     {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
-     {dx: -30, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
-   ]
- }
- ```
+  start: {
+    x: 200,
+    y: 300,
+  },
+  sections: [
+    {dx: 0, dy: -50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: 10, dy: -10, r: -30, step_size: 1, wiggle_size: 1},
+    {dx: 10, dy:0, r: 0, step_size: 5, wiggle_size: 1},
+    {dx: 10, dy:10, r: -30, step_size: 1, wiggle_size: 1},
+    {dx: 0, dy: 50, r: 0, step_size: 4, wiggle_size: 1},
+    {dx: -30, dy: 0, r: 50, step_size: 3, wiggle_size: 1},
+  ]
+}
+
+svg_path_generator(path_data); //returns the "d" attribute string to put into your SVG "path"
+```
 
 ## How it works
 
@@ -74,9 +84,8 @@ const path_data = {
 
 
 
-## examples
-Examples can be found in the /examples directory. There is a d3.js file included.
-/examples/ramen.html is a full example of how every part of the ramen is created!
+## Examples
+Examples can be found in the /examples directory. You can install d3.js as a peer dependency.
 
 
 ## License

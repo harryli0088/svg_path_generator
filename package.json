@@ -1,0 +1,21 @@
+{
+  "name": "svg_path_generator",
+  "version": "1.0.0",
+  "description": "draw with svg",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "devDependencies": {
+    "d3": "^5.9.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/harryli0088/svg_path_generator.git"
+  },
+  "author": "Harry Li (https://harryxli.com)",
+  "license": "MIT"
+}

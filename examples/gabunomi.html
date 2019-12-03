@@ -4,8 +4,8 @@
 <!-- made by Harry Li github.com/harryli0088 -->
 </svg>
 
-<script src="./d3.js"></script>
-<script src="../path_generator.js"></script>
+<script src="../node_modules/d3/dist/d3.js"></script>
+<script src="../index.js"></script>
 <script type="text/javascript">
 let svg = d3.select("svg");
 
@@ -32,7 +32,7 @@ const can_bottom = {
   color: "silver"
 };
 
-can_g.append("path").attr("fill",can_bottom.color).attr("d",generate_path(can_bottom));
+can_g.append("path").attr("fill",can_bottom.color).attr("d",svg_path_generator(can_bottom));
 
 
 
@@ -67,7 +67,7 @@ const can = {
   color: "#7DF52D"
 };
 
-can_g.append("path").attr("fill",can.color).attr("d",generate_path(can));
+can_g.append("path").attr("fill",can.color).attr("d",svg_path_generator(can));
 
 
 
@@ -93,7 +93,7 @@ const can_top_light = {
   color: "#ccc"
 };
 
-can_g.append("path").attr("fill",can_top_light.color).attr("d",generate_path(can_top_light));
+can_g.append("path").attr("fill",can_top_light.color).attr("d",svg_path_generator(can_top_light));
 
 
 
@@ -126,7 +126,7 @@ const can_top_dark = {
   color: "#aaa"
 };
 
-can_g.append("path").attr("fill",can_top_dark.color).attr("d",generate_path(can_top_dark));
+can_g.append("path").attr("fill",can_top_dark.color).attr("d",svg_path_generator(can_top_dark));
 
 
 
@@ -149,7 +149,7 @@ const can_top_dark_1 = {
   color: "#aaa"
 };
 
-can_g.append("path").attr("fill",can_top_dark_1.color).attr("d",generate_path(can_top_dark_1));
+can_g.append("path").attr("fill",can_top_dark_1.color).attr("d",svg_path_generator(can_top_dark_1));
 
 
 
@@ -172,7 +172,7 @@ const tab = {
   color: "#999"
 };
 
-can_g.append("path").attr("fill",tab.color).attr("d",generate_path(tab));
+can_g.append("path").attr("fill",tab.color).attr("d",svg_path_generator(tab));
 
 
 
@@ -193,8 +193,8 @@ const tab_hole = {
   color: "#ccc"
 };
 
-can_g.append("path").attr("fill",tab_hole.color).attr("d",generate_path(tab_hole));
-can_g.append("path").attr("fill",tab_hole.color).attr("d",generate_path(tab_hole)).attr("transform","translate(0,4)");
+can_g.append("path").attr("fill",tab_hole.color).attr("d",svg_path_generator(tab_hole));
+can_g.append("path").attr("fill",tab_hole.color).attr("d",svg_path_generator(tab_hole)).attr("transform","translate(0,4)");
 
 
 
@@ -218,7 +218,7 @@ const logo_outer_circle = {
   color: "white"
 };
 
-logo.append("path").attr("fill",logo_outer_circle.color).attr("d",generate_path(logo_outer_circle));
+logo.append("path").attr("fill",logo_outer_circle.color).attr("d",svg_path_generator(logo_outer_circle));
 
 
 
@@ -240,7 +240,7 @@ const logo_middle_circle = {
   color: "#008919"
 };
 
-logo.append("path").attr("fill",logo_middle_circle.color).attr("d",generate_path(logo_middle_circle));
+logo.append("path").attr("fill",logo_middle_circle.color).attr("d",svg_path_generator(logo_middle_circle));
 
 
 const company = {
@@ -268,7 +268,7 @@ const logo_company = {
   opacity: 0.9
 };
 
-logo.append("path").attr("fill",logo_company.color).attr("d",generate_path(logo_company)).attr("opacity",logo_company.opacity);
+logo.append("path").attr("fill",logo_company.color).attr("d",svg_path_generator(logo_company)).attr("opacity",logo_company.opacity);
 
 
 
@@ -287,7 +287,7 @@ const logo_name = {
   color: "white"
 };
 
-logo.append("path").attr("fill",logo_name.color).attr("d",generate_path(logo_name));
+logo.append("path").attr("fill",logo_name.color).attr("d",svg_path_generator(logo_name));
 
 
 
@@ -340,7 +340,7 @@ let splash = {
   color: "#00cc00"
 };
 
-icream_g.append("path").attr("fill",splash.color).attr("d",generate_path(splash));
+icream_g.append("path").attr("fill",splash.color).attr("d",svg_path_generator(splash));
 
 
 
@@ -359,7 +359,7 @@ let glass_back = {
   color: glass_color
 };
 
-icream_g.append("path").attr("fill",glass_back.color).attr("d",generate_path(glass_back));
+icream_g.append("path").attr("fill",glass_back.color).attr("d",svg_path_generator(glass_back));
 
 
 
@@ -377,7 +377,7 @@ let icecream = {
   color: "#fffad2"
 };
 
-icream_g.append("path").attr("fill",icecream.color).attr("d",generate_path(icecream));
+icream_g.append("path").attr("fill",icecream.color).attr("d",svg_path_generator(icecream));
 
 
 
@@ -395,7 +395,7 @@ let cherry = {
   color: "red"
 };
 
-icream_g.append("path").attr("fill",cherry.color).attr("d",generate_path(cherry));
+icream_g.append("path").attr("fill",cherry.color).attr("d",svg_path_generator(cherry));
 
 
 
@@ -415,7 +415,7 @@ let cherry_stem = {
   color: "maroon"
 };
 
-icream_g.append("path").attr("fill",cherry_stem.color).attr("d",generate_path(cherry_stem));
+icream_g.append("path").attr("fill",cherry_stem.color).attr("d",svg_path_generator(cherry_stem));
 
 
 
@@ -438,7 +438,7 @@ let soda = {
   color: splash.color
 };
 
-icream_g.append("path").attr("fill",soda.color).attr("d",generate_path(soda));
+icream_g.append("path").attr("fill",soda.color).attr("d",svg_path_generator(soda));
 
 
 
@@ -474,7 +474,7 @@ let glass = {
   color: glass_color
 };
 
-icream_g.append("path").attr("fill",glass.color).attr("d",generate_path(glass));
+icream_g.append("path").attr("fill",glass.color).attr("d",svg_path_generator(glass));
 
 
 
@@ -496,7 +496,7 @@ let glass_1 = {
   color: glass_color
 };
 
-icream_g.append("path").attr("fill",glass_1.color).attr("d",generate_path(glass_1));
+icream_g.append("path").attr("fill",glass_1.color).attr("d",svg_path_generator(glass_1));
 
 
 
@@ -515,7 +515,7 @@ const logo_yellow = {
   color: "#cef11e"
 };
 
-icream_g.append("path").attr("fill",logo_yellow.color).attr("d",generate_path(logo_yellow));
+icream_g.append("path").attr("fill",logo_yellow.color).attr("d",svg_path_generator(logo_yellow));
 
 
 
@@ -539,7 +539,7 @@ const bottom_text = {
   opacity: 0.8
 };
 
-can_g.append("path").attr("fill",bottom_text.color).attr("d",generate_path(bottom_text)).attr("opacity",bottom_text.opacity);
+can_g.append("path").attr("fill",bottom_text.color).attr("d",svg_path_generator(bottom_text)).attr("opacity",bottom_text.opacity);
 
 
 
@@ -567,7 +567,7 @@ const seal = {
   color: "gold"
 };
 
-seal_g.append("path").attr("fill",seal.color).attr("d",generate_path(seal));
+seal_g.append("path").attr("fill",seal.color).attr("d",svg_path_generator(seal));
 
 
 
@@ -588,7 +588,7 @@ const seal_text_red = {
   color: "rgba(255,0,0,0.7 )"
 };
 
-seal_g.append("path").attr("fill",seal_text_red.color).attr("d",generate_path(seal_text_red));
+seal_g.append("path").attr("fill",seal_text_red.color).attr("d",svg_path_generator(seal_text_red));
 
 
 
@@ -612,7 +612,7 @@ const seal_text_black = {
   color: "rgba(0,0,0,0.75)"
 };
 
-seal_g.append("path").attr("fill",seal_text_black.color).attr("d",generate_path(seal_text_black));
+seal_g.append("path").attr("fill",seal_text_black.color).attr("d",svg_path_generator(seal_text_black));
 
 
 
@@ -633,7 +633,7 @@ const seal_curve_top = {
   color: seal_text_red.color
 };
 
-seal_g.append("path").attr("fill",seal_curve_top.color).attr("d",generate_path(seal_curve_top));
+seal_g.append("path").attr("fill",seal_curve_top.color).attr("d",svg_path_generator(seal_curve_top));
 
 
 
@@ -654,7 +654,7 @@ const seal_curve_bottom = {
   color: seal_text_red.color
 };
 
-seal_g.append("path").attr("fill",seal_curve_bottom.color).attr("d",generate_path(seal_curve_bottom));
+seal_g.append("path").attr("fill",seal_curve_bottom.color).attr("d",svg_path_generator(seal_curve_bottom));
 
 
 
@@ -679,7 +679,7 @@ const melon = {
   color: "lightgreen"
 };
 
-seal_g.append("path").attr("fill",melon.color).attr("d",generate_path(melon));
+seal_g.append("path").attr("fill",melon.color).attr("d",svg_path_generator(melon));
 </script>
 
 </html>

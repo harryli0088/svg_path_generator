@@ -2,8 +2,8 @@
 <!-- made by Harry Li  -->
 <svg width="290" height="220" style="background: gray"></svg>
 
-<script src="./d3.js"></script>
-<script src="../path_generator.js"></script>
+<script src="../node_modules/d3/dist/d3.js"></script>
+<script src="../index.js"></script>
 <script type="text/javascript">
 let svg = d3.select("svg");
 
@@ -17,7 +17,7 @@ function tempuraify(obj, g, wiggle, opacity) {
   const breading = JSON.parse(JSON.stringify(obj));
   breading.color = "rgba(255,215,0,"+opacity+")";
   breading.sections.forEach(s => {s.wiggle_size = wiggle})
-  return g.append("path").attr("fill",breading.color).attr("d",generate_path(breading)).attr("stroke","rgba(255,215,0,0.7)").attr("stroke-width","0.75px");
+  return g.append("path").attr("fill",breading.color).attr("d",svg_path_generator(breading)).attr("stroke","rgba(255,215,0,0.7)").attr("stroke-width","0.75px");
 }
 
 let plate_g = tempura_g.append("g").attr("transform","scale(1,.8) translate(7,-5)");
@@ -33,7 +33,7 @@ const plate_edge = {
   ]
 }
 
-plate_g.append("path").attr("d",generate_path(plate_edge));
+plate_g.append("path").attr("d",svg_path_generator(plate_edge));
 
 const plate = {
   start: {
@@ -49,7 +49,7 @@ const plate = {
   color: "#782202"
 };
 
-plate_g.append("path").attr("fill",plate.color).attr("d",generate_path(plate));
+plate_g.append("path").attr("fill",plate.color).attr("d",svg_path_generator(plate));
 
 
 const paper = {
@@ -66,10 +66,10 @@ const paper = {
   color: "#fff"
 };
 
-plate_g.append("path").attr("fill",paper.color).attr("d",generate_path(paper)).attr("opacity","0.9");
+plate_g.append("path").attr("fill",paper.color).attr("d",svg_path_generator(paper)).attr("opacity","0.9");
 paper.start.x-=30;
 paper.start.y-=30;
-plate_g.append("path").attr("fill",paper.color).attr("d",generate_path(paper)).attr("opacity","0.9");
+plate_g.append("path").attr("fill",paper.color).attr("d",svg_path_generator(paper)).attr("opacity","0.9");
 
 
 
@@ -124,17 +124,17 @@ const green_bean_1_shadow_2 = {
   ]
 };
 
-tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean)).attr("transform","translate(-5,12) rotate(50)");
-tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(-10,5) rotate(60)");
+tempura_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(green_bean)).attr("transform","translate(-5,12) rotate(50)");
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",svg_path_generator(green_bean)).attr("transform","translate(-10,5) rotate(60)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(-10,5) rotate(60)");
 
-tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean_1_shadow_1)).attr("transform","translate(17,-7) rotate(10)");
-tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean)).attr("transform","translate(13,6) rotate(30) scale(1,0.6)");
-tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(5,15) rotate(50)");
+tempura_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(green_bean_1_shadow_1)).attr("transform","translate(17,-7) rotate(10)");
+tempura_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(green_bean)).attr("transform","translate(13,6) rotate(30) scale(1,0.6)");
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",svg_path_generator(green_bean)).attr("transform","translate(5,15) rotate(50)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(5,15) rotate(50)");
 
-tempura_g.append("path").attr("fill",shadow_color).attr("d",generate_path(green_bean_1_shadow_2)).attr("transform","translate(17,-7) rotate(10)");
-tempura_g.append("path").attr("fill",green_bean.color).attr("d",generate_path(green_bean)).attr("transform","translate(17,-7) rotate(10)");
+tempura_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(green_bean_1_shadow_2)).attr("transform","translate(17,-7) rotate(10)");
+tempura_g.append("path").attr("fill",green_bean.color).attr("d",svg_path_generator(green_bean)).attr("transform","translate(17,-7) rotate(10)");
 tempuraify(green_bean, tempura_g, 1, 0.4).attr("transform","translate(17,-7) rotate(10)");
 
 
@@ -157,7 +157,7 @@ const shrimp_tail_1 = {
   color: "#e74c3c"
 };
 
-shrimp_g.append("path").attr("fill",shrimp_tail_1.color).attr("d",generate_path(shrimp_tail_1));
+shrimp_g.append("path").attr("fill",shrimp_tail_1.color).attr("d",svg_path_generator(shrimp_tail_1));
 
 
 
@@ -175,7 +175,7 @@ const shrimp_tail_2 = {
   color: "#ec7063"
 };
 
-shrimp_g.append("path").attr("fill",shrimp_tail_2.color).attr("d",generate_path(shrimp_tail_2));
+shrimp_g.append("path").attr("fill",shrimp_tail_2.color).attr("d",svg_path_generator(shrimp_tail_2));
 
 
 
@@ -192,7 +192,7 @@ const shrimp_tail_3 = {
   color: "#dc7633"
 };
 
-shrimp_g.append("path").attr("fill",shrimp_tail_3.color).attr("d",generate_path(shrimp_tail_3));
+shrimp_g.append("path").attr("fill",shrimp_tail_3.color).attr("d",svg_path_generator(shrimp_tail_3));
 
 
 
@@ -228,9 +228,9 @@ const shrimp_shadow_right = {
   ]
 }
 
-shrimp_g.append("path").attr("fill",shadow_color).attr("d",generate_path(shrimp_body)).attr("transform","scale(1,0.6) translate(-3,20) rotate(-6)");
-shrimp_g.append("path").attr("fill",shadow_color).attr("d",generate_path(shrimp_shadow_right));
-shrimp_g.append("path").attr("fill",shrimp_body.color).attr("d",generate_path(shrimp_body));
+shrimp_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(shrimp_body)).attr("transform","scale(1,0.6) translate(-3,20) rotate(-6)");
+shrimp_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(shrimp_shadow_right));
+shrimp_g.append("path").attr("fill",shrimp_body.color).attr("d",svg_path_generator(shrimp_body));
 
 
 
@@ -249,7 +249,7 @@ const shiitake_shadow = {
   ]
 }
 
-shiitake_g.append("path").attr("fill",shadow_color).attr("d",generate_path(shiitake_shadow)).attr("transform","rotate(15) scale(0.8,0.4)");
+shiitake_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(shiitake_shadow)).attr("transform","rotate(15) scale(0.8,0.4)");
 
 const shiitake_body = {
   start: {
@@ -265,7 +265,7 @@ const shiitake_body = {
   color: "#490d00"
 };
 
-shiitake_g.append("path").attr("fill",shiitake_body.color).attr("d",generate_path(shiitake_body));
+shiitake_g.append("path").attr("fill",shiitake_body.color).attr("d",svg_path_generator(shiitake_body));
 
 
 
@@ -287,7 +287,7 @@ const shiitake_star = {
   color: "tan"
 };
 
-shiitake_g.append("path").attr("fill",shiitake_star.color).attr("d",generate_path(shiitake_star));
+shiitake_g.append("path").attr("fill",shiitake_star.color).attr("d",svg_path_generator(shiitake_star));
 
 tempuraify(shiitake_body, shiitake_g, 1, 0.3);
 </script>

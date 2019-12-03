@@ -2,8 +2,8 @@
 <!-- made by Harry Li  -->
 <svg width="500" height="500" style="background: gray"></svg>
 
-<script src="./d3.js"></script>
-<script src="../path_generator.js"></script>
+<script src="../node_modules/d3/dist/d3.js"></script>
+<script src="../index.js"></script>
 <script type="text/javascript">
   let svg = d3.select("svg");
 
@@ -215,7 +215,7 @@
   };
 
   noodles_g.append("path").attr("fill",noodles.color)
-  .attr("d",generate_path(noodles));
+  .attr("d",svg_path_generator(noodles));
 
 
 
@@ -234,7 +234,7 @@
   };
 
   noodles_g.append("path").attr("fill",strand_1.color)
-  .attr("d",generate_path(strand_1));
+  .attr("d",svg_path_generator(strand_1));
 
 
 
@@ -253,7 +253,7 @@
   };
 
   noodles_g.append("path").attr("fill",strand_2.color)
-  .attr("d",generate_path(strand_2));
+  .attr("d",svg_path_generator(strand_2));
 
 
 
@@ -273,7 +273,7 @@
   };
 
   noodles_g.append("path").attr("fill",strand_3.color)
-  .attr("d",generate_path(strand_3));
+  .attr("d",svg_path_generator(strand_3));
 
 
 
@@ -325,7 +325,7 @@
   };
 
   pork_g.append("path").attr("fill",pork_skin.color)
-  .attr("d",generate_path(pork_skin));
+  .attr("d",svg_path_generator(pork_skin));
 
 
 
@@ -344,7 +344,7 @@
   };
 
   pork_g.append("path").attr("fill",pork.color)
-  .attr("d",generate_path(pork));
+  .attr("d",svg_path_generator(pork));
 
 
 
@@ -367,32 +367,32 @@
   };
 
   pork_g.append("path").attr("fill",pork_spiral.color)
-  .attr("d",generate_path(pork_spiral));
+  .attr("d",svg_path_generator(pork_spiral));
 
 
   let pork_g_2 = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2 + 4)+","+(bowl.y + 2)+") rotate(30) skewX(-10)");
 
   pork_g_2.append("path").attr("fill",pork_skin.color)
-  .attr("d",generate_path(pork_skin));
+  .attr("d",svg_path_generator(pork_skin));
 
   pork_g_2.append("path").attr("fill",pork.color)
-  .attr("d",generate_path(pork));
+  .attr("d",svg_path_generator(pork));
 
   pork_g_2.append("path").attr("fill",pork_spiral.color)
-  .attr("d",generate_path(pork_spiral));
+  .attr("d",svg_path_generator(pork_spiral));
 
 
 
   let pork_g_3 = svg.append("g").attr("transform","translate("+(bowl.x + bowl.w/2 - 15)+","+(bowl.y + 5)+") rotate(30) skewX(-10)");
 
   pork_g_3.append("path").attr("fill",pork_skin.color)
-  .attr("d",generate_path(pork_skin));
+  .attr("d",svg_path_generator(pork_skin));
 
   pork_g_3.append("path").attr("fill",pork.color)
-  .attr("d",generate_path(pork));
+  .attr("d",svg_path_generator(pork));
 
   pork_g_3.append("path").attr("fill",pork_spiral.color)
-  .attr("d",generate_path(pork_spiral));
+  .attr("d",svg_path_generator(pork_spiral));
 </script>
 
 </html>

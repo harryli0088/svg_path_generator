@@ -2,8 +2,8 @@
 <!-- made by Harry Li  -->
 <svg width="500" height="500" style="background: gray"></svg>
 
-<script src="./d3.js"></script>
-<script src="../path_generator.js"></script>
+<script src="../node_modules/d3/dist/d3.js"></script>
+<script src="../index.js"></script>
 <script type="text/javascript">
 let svg = d3.select("svg");
 
@@ -28,7 +28,7 @@ let canoe_back = {
   color: "#e8d38e"
 };
 
-g.append("path").attr("fill",canoe_back.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_back));
+g.append("path").attr("fill",canoe_back.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(canoe_back));
 
 const canoe_middle = {
   start: {
@@ -49,7 +49,7 @@ const canoe_middle = {
   color: "#dec675"
 };
 
-g.append("path").attr("fill",canoe_middle.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_middle));
+g.append("path").attr("fill",canoe_middle.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(canoe_middle));
 
 
 
@@ -336,7 +336,7 @@ ball_copies.forEach(function(ball_copy, i) {
 
   copy.start.x = ball_copy.x;
   copy.start.y = ball_copy.y;
-  ball_g.append("path").attr("fill",copy.color).attr("transform","rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")").attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(copy))
+  ball_g.append("path").attr("fill",copy.color).attr("transform","rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")").attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(copy))
   .attr("style","filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, .3));");
 
   const sauce = {
@@ -346,7 +346,7 @@ ball_copies.forEach(function(ball_copy, i) {
     },
     sections: sauces[i].sections
   }
-  ball_g.append("path").attr("fill","brown").attr("opacity",(0.7+(Math.random()*sauce_opacity_random-sauce_opacity_random/2)).toFixed(2)).attr("d",generate_path(sauce)).attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .2));");
+  ball_g.append("path").attr("fill","brown").attr("opacity",(0.7+(Math.random()*sauce_opacity_random-sauce_opacity_random/2)).toFixed(2)).attr("d",svg_path_generator(sauce)).attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .2));");
 
   const mayo = {
     start: {
@@ -355,7 +355,7 @@ ball_copies.forEach(function(ball_copy, i) {
     },
     sections: mayos[i].sections
   }
-  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",generate_path(mayo)).attr("style","filter: drop-shadow( 0px 1px 0.5px rgba(0, 0, 0, .4));");
+  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",svg_path_generator(mayo)).attr("style","filter: drop-shadow( 0px 1px 0.5px rgba(0, 0, 0, .4));");
 })
 
 
@@ -413,7 +413,7 @@ for(let i=0; i<35; ++i) {
       },
       sections: s
     }
-    bonito_g.append("path").attr("class","bonito").attr("d",generate_path(bonito)).attr("opacity",(0.9+Math.random()*bonito_opacity_random-bonito_opacity_random/2).toFixed(2))
+    bonito_g.append("path").attr("class","bonito").attr("d",svg_path_generator(bonito)).attr("opacity",(0.9+Math.random()*bonito_opacity_random-bonito_opacity_random/2).toFixed(2))
     .attr("fill",bonito_colors[Math.floor(Math.random()*bonito_colors.length)]).attr("transform","rotate("+Math.round(Math.random()*bonito_rotate_random)+","+bonito.start.x.toFixed(2)+","+bonito.start.y.toFixed(2)+")")
     .attr("stroke","#ffeeb3").attr("stroke-width",.2);
   })
@@ -477,7 +477,7 @@ for(let i=0; i<20; ++i) {
       },
       sections: s
     }
-    nori_g.append("path").attr("fill","green").attr("transform","rotate("+Math.round(Math.random()*nori_rotate_random)+","+nori.start.x.toFixed(2)+","+nori.start.y.toFixed(2)+")").attr("d",generate_path(nori));
+    nori_g.append("path").attr("fill","green").attr("transform","rotate("+Math.round(Math.random()*nori_rotate_random)+","+nori.start.x.toFixed(2)+","+nori.start.y.toFixed(2)+")").attr("d",svg_path_generator(nori));
   })
 }
 
@@ -500,7 +500,7 @@ const canoe_front = {
   color: "#e8d38e"
 };
 
-g.append("path").attr("fill",canoe_front.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",generate_path(canoe_front));
+g.append("path").attr("fill",canoe_front.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(canoe_front));
 
 
 const max_acceleration = 1;
