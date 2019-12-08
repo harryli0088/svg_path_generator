@@ -78,12 +78,12 @@ const ball_xRowOfftset = -35;
 const ball_yOffset = 17;
 const ball_yRowOffset = 10;
 const ball_copies = [
-  {x:2*ball_xOfftset+ball_xRowOfftset, y:-2*ball_yOffset+ball_yRowOffset},
-  {x:ball_xOfftset+ball_xRowOfftset-3, y:-ball_yOffset+ball_yRowOffset-5},
-  {x:ball_xRowOfftset, y:ball_yRowOffset},
-  {x:2*ball_xOfftset-2, y:ball_yOffset-2},
-  {x:ball_xOfftset, y:ball_yOffset*2},
-  {x:0, y:ball_yOffset*3-5},
+  {x:2*ball_xOfftset+ball_xRowOfftset, y:-2*ball_yOffset+ball_yRowOffset, shadowScaleX:1.02,shadowScaleY:1.02, shadowTranslateX:15, shadowTranslateY:15},
+  {x:ball_xOfftset+ball_xRowOfftset-3, y:-ball_yOffset+ball_yRowOffset-5, shadowScaleX:1.02,shadowScaleY:1.02, shadowTranslateX:4, shadowTranslateY:4},
+  {x:ball_xRowOfftset, y:ball_yRowOffset, shadowScaleX:1.02,shadowScaleY:0.5, shadowTranslateX:9, shadowTranslateY:56},
+  {x:2*ball_xOfftset-2, y:ball_yOffset-2, shadowScaleX:1.02,shadowScaleY:1.02, shadowTranslateX:5, shadowTranslateY:4},
+  {x:ball_xOfftset, y:ball_yOffset*2, shadowScaleX:1.02,shadowScaleY:1.02, shadowTranslateX:3, shadowTranslateY:4},
+  {x:0, y:ball_yOffset*3-5, shadowScaleX:1.02,shadowScaleY:1.02, shadowTranslateX:3, shadowTranslateY:4},
 ];
 
 const sauces = [
@@ -340,7 +340,7 @@ ball_copies.forEach(function(ball_copy, i) {
   copy.start.y = ball_copy.y;
   const ball_rotate = "rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")"
   const ball_d = svg_path_generator(copy)
-  ball_g.append("path").attr("fill","rgba(0,0,0,0.15)").attr("transform","scale(1.02,1.02) translate(2,4) "+ball_rotate).attr("d",ball_d)
+  ball_g.append("path").attr("fill","rgba(0,0,0,0.15)").attr("transform","scale("+ball_copy.shadowScaleX+","+ball_copy.shadowScaleY+") translate("+ball_copy.shadowTranslateX+","+ball_copy.shadowTranslateY+") "+ball_rotate).attr("d",ball_d)
   ball_g.append("path").attr("fill",copy.color).attr("transform",ball_rotate).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",ball_d)
 
   const sauce = {
@@ -364,7 +364,7 @@ ball_copies.forEach(function(ball_copy, i) {
   }
   const mayo_d = svg_path_generator(mayo)
   ball_g.append("path").attr("fill","none").attr("stroke","rgba(0,0,0,0.3)").attr("stroke-width",1.5).attr("d",mayo_d).attr("transform","translate(1,1)");
-  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",mayo_d);
+  ball_g.append("path").attr("fill","none").attr("stroke","rgb(255,255,230)").attr("stroke-width",1.5).attr("d",mayo_d);
 })
 
 
@@ -513,8 +513,8 @@ const canoe_front = {
 g.append("path").attr("fill",canoe_front.color).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(canoe_front));
 
 
-const max_acceleration = 1;
-const max_velocity = 1.5;
+const max_acceleration = 0.5;
+const max_velocity = 2;
 const velocity_min = 0.5;
 function init() {
   let dancing_bonito = document.getElementsByClassName("bonito");
