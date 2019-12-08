@@ -78,12 +78,12 @@ const ball_xRowOfftset = -35;
 const ball_yOffset = 17;
 const ball_yRowOffset = 10;
 const ball_copies = [
-  {x:2*ball_xOfftset+ball_xRowOfftset, y:-2*ball_yOffset+ball_yRowOffset, color:"test"},
-  {x:ball_xOfftset+ball_xRowOfftset-3, y:-ball_yOffset+ball_yRowOffset-5, color:"test"},
-  {x:ball_xRowOfftset, y:ball_yRowOffset, color:"test"},
-  {x:2*ball_xOfftset, y:ball_yOffset, color:"test"},
-  {x:ball_xOfftset, y:ball_yOffset*2, color:"test"},
-  {x:0, y:ball_yOffset*3-5, color:"test"},
+  {x:2*ball_xOfftset+ball_xRowOfftset, y:-2*ball_yOffset+ball_yRowOffset},
+  {x:ball_xOfftset+ball_xRowOfftset-3, y:-ball_yOffset+ball_yRowOffset-5},
+  {x:ball_xRowOfftset, y:ball_yRowOffset},
+  {x:2*ball_xOfftset-2, y:ball_yOffset-2},
+  {x:ball_xOfftset, y:ball_yOffset*2},
+  {x:0, y:ball_yOffset*3-5},
 ];
 
 const sauces = [
@@ -340,7 +340,7 @@ ball_copies.forEach(function(ball_copy, i) {
   copy.start.y = ball_copy.y;
   const ball_rotate = "rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")"
   const ball_d = svg_path_generator(copy)
-  ball_g.append("path").attr("fill","rgba(0,0,0,0.3)").attr("transform","translate(1,1) "+ball_rotate).attr("d",ball_d)
+  ball_g.append("path").attr("fill","rgba(0,0,0,0.15)").attr("transform","scale(1.02,1.02) translate(2,4) "+ball_rotate).attr("d",ball_d)
   ball_g.append("path").attr("fill",copy.color).attr("transform",ball_rotate).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",ball_d)
 
   const sauce = {
@@ -477,6 +477,7 @@ const nori_sections = [
     {dx: 2, dy: 3, r: 0, step_size: 1, wiggle_size: 0},
   ],
 ]
+const nori_color_random = 80;
 for(let i=0; i<20; ++i) {
   nori_sections.forEach(function(s) {
     const nori = {
@@ -486,7 +487,7 @@ for(let i=0; i<20; ++i) {
       },
       sections: s
     }
-    nori_g.append("path").attr("fill","green").attr("transform","rotate("+Math.round(Math.random()*nori_rotate_random)+","+nori.start.x.toFixed(2)+","+nori.start.y.toFixed(2)+")").attr("d",svg_path_generator(nori));
+    nori_g.append("path").attr("fill","rgb(0,"+(100 + Math.round(Math.random()*nori_color_random-nori_color_random/2))+",0)").attr("transform","rotate("+Math.round(Math.random()*nori_rotate_random)+","+nori.start.x.toFixed(2)+","+nori.start.y.toFixed(2)+")").attr("d",svg_path_generator(nori));
   })
 }
 
@@ -513,7 +514,7 @@ g.append("path").attr("fill",canoe_front.color).attr("stroke",canoe_stroke).attr
 
 
 const max_acceleration = 1;
-const max_velocity = 2;
+const max_velocity = 1.5;
 const velocity_min = 0.5;
 function init() {
   let dancing_bonito = document.getElementsByClassName("bonito");
