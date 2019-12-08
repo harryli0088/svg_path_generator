@@ -1,13 +1,15 @@
 <html>
 <!-- made by Harry Li  -->
-<svg width="500" height="500" style="background: gray"></svg>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="400" height="250" style="background: gray">
+  <!-- made by Harry Li github.com/harryli0088 -->
+</svg>
 
 <script src="../node_modules/d3/dist/d3.js"></script>
 <script src="../index.js"></script>
 <script type="text/javascript">
 let svg = d3.select("svg");
 
-let g = svg.append("g").attr("transform","translate(100,250)");
+let g = svg.append("g").attr("transform","translate(50,125)");
 
 const canoe_stroke_width = 0.25
 const canoe_stroke = "white"
@@ -187,7 +189,7 @@ const sauces = [
 
 const mayos = [
   {
-    offset: {x:0, y:0},
+    offset: {x:-1, y:0},
     sections: [
       {dx: 50, dy: -28, r: -40, step_size: 1, wiggle_size: 0},
       {dx: 2, dy: 3, r: -2, step_size: 1, wiggle_size: 0},
@@ -326,7 +328,7 @@ const mayos = [
 
 const ball_radius_random = 5;
 const ball_rotate_random = 90;
-const sauce_opacity_random = 0.2;
+const sauce_opacity_random = 0.1;
 ball_copies.forEach(function(ball_copy, i) {
   let copy = JSON.parse(JSON.stringify(ball));
 
@@ -336,8 +338,10 @@ ball_copies.forEach(function(ball_copy, i) {
 
   copy.start.x = ball_copy.x;
   copy.start.y = ball_copy.y;
-  ball_g.append("path").attr("fill",copy.color).attr("transform","rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")").attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",svg_path_generator(copy))
-  .attr("style","filter: drop-shadow( 2px 2px 1px rgba(0, 0, 0, .3));");
+  const ball_rotate = "rotate("+Math.round(Math.random()*ball_rotate_random)+","+(copy.start.x+32)+","+copy.start.y+")"
+  const ball_d = svg_path_generator(copy)
+  ball_g.append("path").attr("fill","rgba(0,0,0,0.3)").attr("transform","translate(1,1) "+ball_rotate).attr("d",ball_d)
+  ball_g.append("path").attr("fill",copy.color).attr("transform",ball_rotate).attr("stroke",canoe_stroke).attr("stroke-width",canoe_stroke_width).attr("d",ball_d)
 
   const sauce = {
     start: {
@@ -346,7 +350,10 @@ ball_copies.forEach(function(ball_copy, i) {
     },
     sections: sauces[i].sections
   }
-  ball_g.append("path").attr("fill","brown").attr("opacity",(0.7+(Math.random()*sauce_opacity_random-sauce_opacity_random/2)).toFixed(2)).attr("d",svg_path_generator(sauce)).attr("style","filter: drop-shadow( 0px 1px 1px rgba(0, 0, 0, .2));");
+  const sauce_d = svg_path_generator(sauce)
+  const sauce_constant = 1 + (Math.random()*sauce_opacity_random)
+  ball_g.append("path").attr("fill","rgba(0,0,0,0.3)").attr("d",sauce_d).attr("transform","translate(1,1)");
+  ball_g.append("path").attr("fill","rgb("+Math.round(150*sauce_constant)+","+Math.round(40*sauce_constant)+","+Math.round(40*sauce_constant)+")").attr("d",sauce_d)
 
   const mayo = {
     start: {
@@ -355,7 +362,9 @@ ball_copies.forEach(function(ball_copy, i) {
     },
     sections: mayos[i].sections
   }
-  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",svg_path_generator(mayo)).attr("style","filter: drop-shadow( 0px 1px 0.5px rgba(0, 0, 0, .4));");
+  const mayo_d = svg_path_generator(mayo)
+  ball_g.append("path").attr("fill","none").attr("stroke","rgba(0,0,0,0.3)").attr("stroke-width",1.5).attr("d",mayo_d).attr("transform","translate(1,1)");
+  ball_g.append("path").attr("fill","none").attr("stroke","white").attr("stroke-width",1.5).attr("d",mayo_d);
 })
 
 
