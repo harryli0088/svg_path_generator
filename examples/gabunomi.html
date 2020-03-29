@@ -333,9 +333,9 @@ let splash = {
     {dx: 7, dy: 2, r:-15, step_size: 1, wiggle_size: 0},
     {dx: 10, dy: 0, r:-50, step_size: 1, wiggle_size: 0},
 
-    {dx: 60, dy: 20, r:0, step_size: 1, wiggle_size: 0},
+    {dx: 61, dy: 20, r:0, step_size: 1, wiggle_size: 0},
     {dx: 0, dy: 40, r:0, step_size: 1, wiggle_size: 0},
-    {dx: -20, dy: 20, r:0, step_size: 1, wiggle_size: 0},
+    {dx: -21, dy: 20, r:0, step_size: 1, wiggle_size: 0},
   ],
   color: "#00cc00"
 };
@@ -680,6 +680,80 @@ const melon = {
 };
 
 seal_g.append("path").attr("fill",melon.color).attr("d",svg_path_generator(melon));
+
+
+
+const shadow_color = "rgba(0,0,0,0.07)"
+
+const neck_shadow_1 = {
+  start: {
+    x: 6.5,
+    y: -30.5
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*7/10-3, dy: 0, r: dimensions.diameter*4/3, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: 1, r: -1, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*7/10 + 1, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: -1, r: -1, step_size: 1, wiggle_size: 0},
+  ]
+};
+
+can_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(neck_shadow_1));
+
+
+
+const neck_shadow_2 = {
+  start: {
+    x: 4.5,
+    y: -20.5
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*7/10+1, dy: 0, r: dimensions.diameter*4/3, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: 1, r: -1, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*7/10 - 3, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: -1, r: -1, step_size: 1, wiggle_size: 0},
+  ]
+};
+
+can_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(neck_shadow_2));
+
+
+
+const neck_shadow_3 = {
+  start: {
+    x: 2.5,
+    y: -10.5
+  },
+  sections: [
+    {dx: dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter*7/10+5, dy: 0, r: dimensions.diameter*4/3, step_size: 1, wiggle_size: 0},
+    {dx: dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: 1, r: -1, step_size: 1, wiggle_size: 0},
+
+    {dx: -dimensions.diameter/10, dy: dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter*7/10 - 7, dy: 0, r: dimensions.diameter*3/2, step_size: 1, wiggle_size: 0},
+    {dx: -dimensions.diameter/10, dy: -dimensions.diameter/20, r: 40, step_size: 1, wiggle_size: 0},
+
+    {dx: 1, dy: -1, r: -1, step_size: 1, wiggle_size: 0},
+  ]
+};
+
+can_g.append("path").attr("fill",shadow_color).attr("d",svg_path_generator(neck_shadow_3));
 </script>
 
 </html>
