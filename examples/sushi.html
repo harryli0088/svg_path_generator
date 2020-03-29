@@ -8,6 +8,8 @@
 let svg = d3.select("svg");
 
 const rice_color = "#eee";
+const shadow_color = "rgba(0,0,0,0.15)";
+const seaweed_color = "#121";
 
 let board_g = svg.append("g").attr("transform","translate(25,25)");
 
@@ -165,6 +167,27 @@ board_g.append("path").attr("fill",board_line.color).attr("d",svg_path_generator
 
 let tuna_g = svg.append("g").attr("transform","translate(175,38)");
 
+const tuna_shadow = {
+  start: {
+    x: 13,
+    y: 2
+  },
+  sections: [
+    {dx: -7, dy: 3, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 7, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 4, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 30, dy: 2, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 0, dy: -10, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+tuna_g.append("path").attr("fill",tuna_shadow.color).attr("d",svg_path_generator(tuna_shadow));
+
+
+
 const tuna_rice = {
   start: {
     x: 15,
@@ -218,6 +241,28 @@ tuna_g.append("path").attr("fill",tuna.color).attr("d",svg_path_generator(tuna))
 
 
 let salmon_g = svg.append("g").attr("transform","translate(142,53) scale(0.9)");
+
+const salmon_shadow = {
+  start: {
+    x: -7,
+    y: 9
+  },
+  sections: [
+    {dx: -7, dy: 3, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 7, r: 100, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 4, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 4, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 30, dy: 2, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 0, dy: -10, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+salmon_g.append("path").attr("fill",salmon_shadow.color).attr("d",svg_path_generator(salmon_shadow));
+
+
 
 const salmon_rice = {
   start: {
@@ -391,6 +436,28 @@ salmon_g.append("path").attr("fill",salmon_stripe_5.color).attr("d",svg_path_gen
 
 let squid_g = svg.append("g").attr("transform","translate(98,74)");
 
+const squid_shadow = {
+  start: {
+    x: -7,
+    y: 8
+  },
+  sections: [
+    {dx: -7, dy: 3, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 6, r: 100, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 4, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 30, dy: 2, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 0, dy: -10, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+squid_g.append("path").attr("fill",squid_shadow.color).attr("d",svg_path_generator(squid_shadow));
+
+
+
 const squid_rice = {
   start: {
     x: 2,
@@ -534,6 +601,28 @@ squid_g.append("path").attr("fill",squid_stripe_4.color).attr("d",svg_path_gener
 
 let yellowtail_g = svg.append("g").attr("transform","translate(35,100)");
 
+const yellowtail_shadow = {
+  start: {
+    x: 9,
+    y: 0
+  },
+  sections: [
+    {dx: -7, dy: 3, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 6, r: 100, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 40, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 40, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 40, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 4, r: 40, step_size: 1, wiggle_size: 0.2},
+    {dx: 33, dy: 0, r: 60, step_size: 1, wiggle_size: 0.2},
+    {dx: 0, dy: -5, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+yellowtail_g.append("path").attr("fill",yellowtail_shadow.color).attr("d",svg_path_generator(yellowtail_shadow));
+
+
+
 const yellowtail_rice = {
   start: {
     x: 15,
@@ -675,6 +764,26 @@ function shuffle(a) {
 
 let roes_g = svg.append("g").attr("transform","translate(270,50)");
 
+const row_shadow = {
+  start: {
+    x: 2,
+    y: 25
+  },
+  sections: [
+    {dx: -3, dy: 3, r: -3, step_size: 1, wiggle_size: 0.2},
+    {dx: 1, dy: 2, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 8, dy: 6, r: 30, step_size: 1, wiggle_size: 0.2},
+    {dx: 40, dy: 2, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: 3, dy: -4, r: 3, step_size: 1, wiggle_size: 0.25},
+    {dx: -2, dy: -4, r: 3, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: shadow_color
+};
+
+roes_g.append("path").attr("fill",row_shadow.color).attr("d",svg_path_generator(row_shadow));
+
+
+
 //roes are ordered first by x, then by y
 let roes = [
   {x:5, y:2, r:4.5, color: "#F5770C"},
@@ -713,7 +822,7 @@ const roe_seaweed = {
     {dx: -5, dy: -7, r: 10, step_size: 1, wiggle_size: 0.25},
     {dx: 0, dy: -25, r: 0, step_size: 1, wiggle_size: 0.25},
   ],
-  color: "black"
+  color: seaweed_color
 };
 
 roes_g.append("path").attr("fill",roe_seaweed.color).attr("d",svg_path_generator(roe_seaweed));
@@ -732,6 +841,30 @@ roes_g.append("path").attr("fill",roe_seaweed.color).attr("d",svg_path_generator
 
 
 let shrimp_g = svg.append("g").attr("transform","translate(220,80)");
+
+const shrimp_shadow = {
+  start: {
+    x: 9,
+    y: 5
+  },
+  sections: [
+    {dx: -7, dy: 5, r: -10, step_size: 1, wiggle_size: 0.2},
+    {dx: 1, dy: 2, r: -5, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 5, r: 20, step_size: 1, wiggle_size: 0.2},
+    {dx: 13, dy: 4, r: 20, step_size: 1, wiggle_size: 0.2},
+    {dx: 13, dy: 3, r: 20, step_size: 1, wiggle_size: 0.2},
+    {dx: 13, dy: 2, r: 20, step_size: 1, wiggle_size: 0.2},
+    {dx: 9, dy: 4, r: 100, step_size: 1, wiggle_size: 0.2},
+    {dx: 6, dy: -2, r: 100, step_size: 1, wiggle_size: 0.2},
+    {dx: -10, dy: -6, r: -50, step_size: 1, wiggle_size: 0.2},
+    {dx: -6, dy: -5, r: -20, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+shrimp_g.append("path").attr("fill",shrimp_shadow.color).attr("d",svg_path_generator(shrimp_shadow));
+
+
 
 const shrimp_rice = {
   start: {
@@ -948,6 +1081,27 @@ shrimp_g.append("path").attr("fill",shrimp_middle.color).attr("d",svg_path_gener
 
 let red_clam_g = svg.append("g").attr("transform","translate(185,80)");
 
+const red_clam_shadow = {
+  start: {
+    x: -4,
+    y: 17
+  },
+  sections: [
+    {dx: -1, dy: 1, r: 2, step_size: 1, wiggle_size: 0.2},
+    {dx: 5, dy: 20, r: 30, step_size: 1, wiggle_size: 0.2},
+    {dx: 30, dy: 15, r: 60, step_size: 1, wiggle_size: 0.2},
+    {dx: 9, dy: -7, r: 10, step_size: 1, wiggle_size: 0.2},
+    {dx: 0, dy: -1, r: -10, step_size: 1, wiggle_size: 0.2},
+    {dx: -5, dy: -5, r: -10, step_size: 1, wiggle_size: 0.2},
+    {dx: -10, dy: 0, r: 0, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+red_clam_g.append("path").attr("fill",red_clam_shadow.color).attr("d",svg_path_generator(red_clam_shadow));
+
+
+
 const red_clam_rice = {
   start: {
     x: 0,
@@ -971,13 +1125,13 @@ red_clam_g.append("path").attr("fill",red_clam_rice.color).attr("d",svg_path_gen
 const red_clam_top = {
   start: {
     x: 0,
-    y: 0
+    y: 4
   },
   sections: [
-    {dx: 25, dy: 17, r: 100, step_size: 1, wiggle_size: 0},
+    {dx: 25, dy: 14, r: 100, step_size: 1, wiggle_size: 0},
     {dx: -16, dy: 15, r: 100, step_size: 1, wiggle_size: 0},
-    {dx: -12, dy: -32, r: 35, step_size: 1, wiggle_size: 0},
-    {dx: 2, dy: -1, r: -1.5, step_size: 1, wiggle_size: 0},
+    {dx: -11, dy: -27, r: 35, step_size: 1, wiggle_size: 0},
+    {dx: 2, dy: -2, r: -2, step_size: 1, wiggle_size: 0},
   ],
   color: "#E92F1C"
 };
@@ -1011,7 +1165,7 @@ red_clam_g.append("path").attr("fill",red_clam_bottom.color).attr("d",svg_path_g
 
 const red_clam_seaweed = {
   start: {
-    x: 26,
+    x: 25,
     y: 17
   },
   sections: [
@@ -1022,7 +1176,7 @@ const red_clam_seaweed = {
     {dx: 0, dy: -10, r: -15, step_size: 1, wiggle_size: 0.25},
     {dx: 20, dy: -15, r: -25, step_size: 1, wiggle_size: 0.25},
   ],
-  color: "black"
+  color: seaweed_color
 };
 
 red_clam_g.append("path").attr("fill",red_clam_seaweed.color).attr("d",svg_path_generator(red_clam_seaweed));
@@ -1049,6 +1203,28 @@ red_clam_g.append("path").attr("fill",red_clam_seaweed.color).attr("d",svg_path_
 const octopus_color = "#BB174F";
 const octopus_dark_color = "#590924";
 let octopus_g = svg.append("g").attr("transform","translate(135,105)");
+
+const octopus_shadow = {
+  start: {
+    x: -2,
+    y: 18
+  },
+  sections: [
+    {dx: -10, dy: 8, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 1, dy: 2, r: 0, step_size: 1, wiggle_size: 0.2},
+    {dx: 8, dy: 6, r: 30, step_size: 1, wiggle_size: 0.2},
+    {dx: 5, dy: 2, r: 5, step_size: 1, wiggle_size: 0.2},
+    {dx: 20, dy: 8, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 5, dy: 1, r: -4, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 3, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: 14, dy: -5, r: 50, step_size: 1, wiggle_size: 0.2},
+    {dx: -10, dy: -8, r: -30, step_size: 1, wiggle_size: 0.2},
+  ],
+  color: shadow_color
+};
+
+octopus_g.append("path").attr("fill",octopus_shadow.color).attr("d",svg_path_generator(octopus_shadow));
+
 
 const octopus_rice = {
   start: {
@@ -1228,7 +1404,7 @@ const octopus_seaweed = {
     {dx: -3, dy: -13, r: 20, step_size: 1, wiggle_size: 0.25},
     {dx: 23, dy: -20, r: -30, step_size: 1, wiggle_size: 0.25},
   ],
-  color: "black"
+  color: seaweed_color
 };
 
 octopus_g.append("path").attr("fill",octopus_seaweed.color).attr("d",svg_path_generator(octopus_seaweed));
