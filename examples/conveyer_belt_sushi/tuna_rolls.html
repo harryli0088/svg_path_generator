@@ -1,0 +1,255 @@
+<html>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
+<!-- made by Harry Li github.com/harryli0088 -->
+</svg>
+
+<script src="../../node_modules/d3/dist/d3.js"></script>
+<script src="../../index.js"></script>
+<script type="text/javascript">
+const svg = d3.select("svg")
+
+const g = svg.append("g").attr("transform","translate(150,150)")
+
+//plate
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#eee")
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",2)
+
+const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
+const roll_group = rotate_group.append("g").attr("transform","translate(-27,-36)")
+
+const group_1 = roll_group.append("g")
+const group_2 = roll_group.append("g").attr("transform","translate(38,0)")
+const group_3 = roll_group.append("g").attr("transform","translate(0,38)")
+const group_4 = roll_group.append("g").attr("transform","translate(38,38)")
+
+const seaweed_rice_1 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 10, r: -10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: 15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: -15, dy: 0, r: 50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: -10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 11, dy: -10, r: -10, step_size: 1, wiggle_size: 0.4},
+  ],
+  color: "white"
+};
+group_1.append("path").attr("fill",seaweed_rice_1.color).attr("d",svg_path_generator(seaweed_rice_1)).attr("stroke","#003503").attr("stroke-width",1.5)
+
+
+
+const wasabi_1 = {
+  start: {
+    x: 3,
+    y: 9
+  },
+  sections: [
+    {dx: 10, dy: 1, r: -10, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 1, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -10, dy: -1, r: 10, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: 0, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "green"
+};
+group_1.append("path").attr("fill",wasabi_1.color).attr("d",svg_path_generator(wasabi_1)).attr("opacity","0.4")
+
+
+
+const tuna_1 = {
+  start: {
+    x: 0,
+    y: 10
+  },
+  sections: [
+    {dx: 15, dy: 1, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: 15, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -15, dy: -1, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: 1, dy: -15, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "#FFA0A0"
+};
+group_1.append("path").attr("fill",tuna_1.color).attr("d",svg_path_generator(tuna_1))
+
+
+
+
+
+
+const seaweed_rice_2 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -30, step_size: 1, wiggle_size: 0.2},
+    {dx: 10, dy: 10, r: -10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: 14, r: -50, step_size: 1, wiggle_size: 0.2},
+    {dx: -10, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: -14, dy: 1, r: 50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: -10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: -1, dy: -15, r: 100, step_size: 1, wiggle_size: 0.4},
+    {dx: 12, dy: -10, r: -10, step_size: 1, wiggle_size: 0.4},
+  ],
+  color: "white"
+};
+group_2.append("path").attr("fill",seaweed_rice_2.color).attr("d",svg_path_generator(seaweed_rice_2)).attr("stroke","#003503").attr("stroke-width",1.5)
+
+
+
+const wasabi_2 = {
+  start: {
+    x: 3,
+    y: 8
+  },
+  sections: [
+    {dx: 10, dy: 1, r: -10, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 1, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -12, dy: 0, r: 0, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: -1, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "green"
+};
+group_2.append("path").attr("fill",wasabi_2.color).attr("d",svg_path_generator(wasabi_2)).attr("opacity","0.3")
+
+
+const tuna_2 = {
+  start: {
+    x: 0,
+    y: 10
+  },
+  sections: [
+    {dx: 16, dy: -1, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: -2, dy: 16, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -14, dy: 0, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: -15, r: -50, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "#FFA0A0"
+};
+group_2.append("path").attr("fill",tuna_2.color).attr("d",svg_path_generator(tuna_2))
+
+
+
+
+
+
+const seaweed_rice_3 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 10, r: -10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: 15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: -15, dy: 0, r: 50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: -10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 11, dy: -10, r: -10, step_size: 1, wiggle_size: 0.4},
+  ],
+  color: "white"
+};
+group_3.append("path").attr("fill",seaweed_rice_3.color).attr("d",svg_path_generator(seaweed_rice_3)).attr("stroke","#003503").attr("stroke-width",1.5)
+
+
+
+const wasabi_3 = {
+  start: {
+    x: 5,
+    y: 9
+  },
+  sections: [
+    {dx: 7, dy: 1, r: -6, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 1, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -8, dy: -1, r: 10, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: 0, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "green"
+};
+group_3.append("path").attr("fill",wasabi_3.color).attr("d",svg_path_generator(wasabi_3)).attr("opacity","0.4")
+
+
+const tuna_3 = {
+  start: {
+    x: -1,
+    y: 11
+  },
+  sections: [
+    {dx: 15, dy: -1, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: 1, dy: 15, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: -15, dy: 1, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: -15, r: 40, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "#FFA0A0"
+};
+group_3.append("path").attr("fill",tuna_3.color).attr("d",svg_path_generator(tuna_3))
+
+
+
+
+
+
+const seaweed_rice_4 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 10, dy: 10, r: -10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: 15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: 10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: -15, dy: 0, r: 50, step_size: 1, wiggle_size: 0.4},
+    {dx: -10, dy: -10, r: 10, step_size: 1, wiggle_size: 0.4},
+    {dx: 0, dy: -15, r: -50, step_size: 1, wiggle_size: 0.4},
+    {dx: 11, dy: -10, r: -10, step_size: 1, wiggle_size: 0.4},
+  ],
+  color: "white"
+};
+group_4.append("path").attr("fill",seaweed_rice_4.color).attr("d",svg_path_generator(seaweed_rice_4)).attr("stroke","#003503").attr("stroke-width",1.5)
+
+
+
+const wasabi_4 = {
+  start: {
+    x: 3,
+    y: 9
+  },
+  sections: [
+    {dx: 10, dy: 1, r: -10, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 1, r: 25, step_size: 1, wiggle_size: 0.25},
+    {dx: -10, dy: -1, r: 10, step_size: 1, wiggle_size: 0.25},
+    {dx: -1, dy: 0, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "green"
+};
+group_4.append("path").attr("fill",wasabi_4.color).attr("d",svg_path_generator(wasabi_4)).attr("opacity","0.5")
+
+
+const tuna_4 = {
+  start: {
+    x: 0,
+    y: 10
+  },
+  sections: [
+    {dx: 15, dy: 0, r: -25, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: 15, r: -50, step_size: 1, wiggle_size: 0.25},
+    {dx: -15, dy: 0, r: 50, step_size: 1, wiggle_size: 0.25},
+    {dx: 0, dy: -15, r: -25, step_size: 1, wiggle_size: 0.25},
+  ],
+  color: "#FFA0A0"
+};
+group_4.append("path").attr("fill",tuna_4.color).attr("d",svg_path_generator(tuna_4))
+
+
+
+// g.append("circle").attr("cx",0).attr("cy",0).attr("r",5).attr("fill","red")
+
+</script>
+
+</html>

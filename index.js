@@ -97,7 +97,7 @@ function svg_path_generator(path_data) {
 
   //given the current position and a wiggle vector, return the next point as a string "x y "
   function next_point(current_pos, wiggle_vector) {
-    return (current_pos.x + wiggle_vector.x).toFixed(2) + " " + (current_pos.y + wiggle_vector.y).toFixed(2) + " "; //add the next point with some wiggle
+    return (current_pos.x + wiggle_vector.x).toFixed(1) + " " + (current_pos.y + wiggle_vector.y).toFixed(1) + " "; //add the next point with some wiggle
   }
 
 
