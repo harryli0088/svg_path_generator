@@ -1,0 +1,59 @@
+<html>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
+<!-- made by Harry Li github.com/harryli0088 -->
+</svg>
+
+<script src="../../node_modules/d3/dist/d3.js"></script>
+<script src="../../index.js"></script>
+<script type="text/javascript">
+const svg = d3.select("svg")
+
+const g = svg.append("g").attr("transform","translate(150,150)")
+
+//plate
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#eee")
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",2)
+
+// const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
+const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
+
+const group_1 = nigiri_group.append("g")
+const group_2 = nigiri_group.append("g").attr("transform","translate(60,0)")
+
+const tuna_1 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 50, dy: 10, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: 100, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: -50, dy: -10, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
+
+  ],
+  color: "#FF4242"
+};
+group_1.append("path").attr("fill",tuna_1.color).attr("d",svg_path_generator(tuna_1))
+
+
+const tuna_2 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 48, dy: 8, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 2, dy: 102, r: -800, step_size: 3, wiggle_size: 0},
+    {dx: -50, dy: -8, r: 80, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -102, r: -1000, step_size: 3, wiggle_size: 0},
+
+  ],
+  color: "#FF4242"
+};
+group_2.append("path").attr("fill",tuna_2.color).attr("d",svg_path_generator(tuna_2))
+
+
+</script>
+
+</html>
