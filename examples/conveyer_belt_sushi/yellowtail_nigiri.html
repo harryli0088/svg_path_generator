@@ -1,0 +1,128 @@
+<html>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
+<!-- made by Harry Li github.com/harryli0088 -->
+</svg>
+
+<script src="../../node_modules/d3/dist/d3.js"></script>
+<script src="../../index.js"></script>
+<script type="text/javascript">
+const svg = d3.select("svg")
+
+const g = svg.append("g").attr("transform","translate(150,150)")
+
+//plate
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#eee")
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",2)
+
+// const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
+const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
+
+const group_1 = nigiri_group.append("g").attr("transform","translate(50,0) scale(-1,1)")
+const group_2 = nigiri_group.append("g").attr("transform","translate(110,-20) scale(-1,1)")
+
+const yellowtail_1 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 45, dy: 20, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 5, dy: 70, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: 40, r: 1000, step_size: 3, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "#FFE7C9"
+};
+group_1.append("path").attr("fill",yellowtail_1.color).attr("d",svg_path_generator(yellowtail_1))
+
+
+
+const red_1 = {
+  start: {
+    x: -1,
+    y: 30
+  },
+  sections: [
+    {dx: 6, dy: 50, r: 300, step_size: 3, wiggle_size: 0},
+    {dx: 10, dy: 35, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -15, dy: -15, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -1, dy: -70, r: 1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "#FF5353"
+};
+group_1.append("path").attr("fill",red_1.color).attr("d",svg_path_generator(red_1))
+
+
+const silver_1 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 2, dy: 102, r: 1000, step_size: 3, wiggle_size: 0},
+    {dx: -3, dy: -3, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -98, r: -1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "silver"
+};
+group_1.append("path").attr("fill",silver_1.color).attr("d",svg_path_generator(silver_1))
+
+
+
+
+
+
+const yellowtail_2 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 45, dy: 20, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 5, dy: 70, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: 40, r: 1000, step_size: 3, wiggle_size: 0},
+    {dx: -1, dy: 1, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "#FFE7C9"
+};
+group_2.append("path").attr("fill",yellowtail_2.color).attr("d",svg_path_generator(yellowtail_2))
+
+
+
+const red_2 = {
+  start: {
+    x: -1,
+    y: 30
+  },
+  sections: [
+    {dx: 6, dy: 50, r: 300, step_size: 3, wiggle_size: 0},
+    {dx: 10, dy: 35, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -15, dy: -15, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -1, dy: -70, r: 1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "#FF5353"
+};
+group_2.append("path").attr("fill",red_2.color).attr("d",svg_path_generator(red_2))
+
+
+const silver_2 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 2, dy: 102, r: 1000, step_size: 3, wiggle_size: 0},
+    {dx: -3, dy: -3, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -98, r: -1000, step_size: 3, wiggle_size: 0},
+  ],
+  color: "silver"
+};
+group_2.append("path").attr("fill",silver_2.color).attr("d",svg_path_generator(silver_2))
+
+</script>
+
+</html>

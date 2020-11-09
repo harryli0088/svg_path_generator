@@ -17,8 +17,8 @@ g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").a
 // const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
 const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
 
-const group_1 = nigiri_group.append("g")
-const group_2 = nigiri_group.append("g").attr("transform","translate(60,0)")
+const group_1 = nigiri_group.append("g").attr("transform","translate(0,-10)")
+const group_2 = nigiri_group.append("g").attr("transform","translate(60,10)")
 
 const tuna_1 = {
   start: {
@@ -37,6 +37,71 @@ const tuna_1 = {
 group_1.append("path").attr("fill",tuna_1.color).attr("d",svg_path_generator(tuna_1))
 
 
+
+const line_1_1 = {
+  start: {
+    x: -1,
+    y: 20
+  },
+  sections: [
+    {dx: 52, dy: 13, r: -150, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_1.append("path").attr("fill",line_1_1.color).attr("d",removeZ(svg_path_generator(line_1_1)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+const line_2_1 = {
+  start: {
+    x: -1,
+    y: 40
+  },
+  sections: [
+    {dx: 52, dy: 13, r: -250, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_1.append("path").attr("fill",line_2_1.color).attr("d",removeZ(svg_path_generator(line_2_1)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+
+const line_3_1 = {
+  start: {
+    x: -1,
+    y: 63
+  },
+  sections: [
+    {dx: 52, dy: 13, r: 250, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_1.append("path").attr("fill",line_3_1.color).attr("d",removeZ(svg_path_generator(line_3_1)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+const line_4_1 = {
+  start: {
+    x: -1,
+    y: 85
+  },
+  sections: [
+    {dx: 52, dy: 13, r: 150, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_1.append("path").attr("fill",line_4_1.color).attr("d",removeZ(svg_path_generator(line_4_1)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+
+
+
 const tuna_2 = {
   start: {
     x: 0,
@@ -53,6 +118,71 @@ const tuna_2 = {
 };
 group_2.append("path").attr("fill",tuna_2.color).attr("d",svg_path_generator(tuna_2))
 
+
+
+const line_1_2 = {
+  start: {
+    x: -1,
+    y: 17
+  },
+  sections: [
+    {dx: 52, dy: 13, r: -150, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_2.append("path").attr("fill",line_1_2.color).attr("d",removeZ(svg_path_generator(line_1_2)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+const line_2_2 = {
+  start: {
+    x: -1,
+    y: 40
+  },
+  sections: [
+    {dx: 52, dy: 13, r: -250, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_2.append("path").attr("fill",line_2_2.color).attr("d",removeZ(svg_path_generator(line_2_2)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+
+const line_3_2 = {
+  start: {
+    x: -1,
+    y: 60
+  },
+  sections: [
+    {dx: 52, dy: 14, r: 250, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_2.append("path").attr("fill",line_3_2.color).attr("d",removeZ(svg_path_generator(line_3_2)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+
+const line_4_2 = {
+  start: {
+    x: -1,
+    y: 80
+  },
+  sections: [
+    {dx: 52, dy: 14, r: 150, step_size: 3, wiggle_size: 0},
+  ],
+  color: "none"
+};
+group_2.append("path").attr("fill",line_4_2.color).attr("d",removeZ(svg_path_generator(line_4_2)))
+.attr("opacity","0.4").attr("stroke","white").attr("stroke-width",2)
+
+
+function removeZ(str) {
+  return str.slice(0, str.indexOf("Z"))
+}
 
 </script>
 
