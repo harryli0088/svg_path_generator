@@ -1,6 +1,30 @@
 <html>
 <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
-<!-- made by Harry Li github.com/harryli0088 -->
+  <!-- made by Harry Li github.com/harryli0088 -->
+  <defs>
+    <linearGradient id="skin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DFDFDF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5A6362;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <defs>
+    <linearGradient id="red_nw_se" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9393;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CB0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <defs>
+    <linearGradient id="red_ne_sw" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9393;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CB0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <defs>
+    <linearGradient id="ginger" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF9B7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAB200;stop-opacity:1" />
+    </linearGradient>
+  </defs>
 </svg>
 
 <script src="../../node_modules/d3/dist/d3.js"></script>
@@ -22,25 +46,25 @@ const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
 const group_1 = nigiri_group.append("g").attr("transform","translate(0,-10)")
 const group_2 = nigiri_group.append("g").attr("transform","translate(60,10)")
 
-const silver_1 = {
+const skin_1 = {
   start: {
     x: 0,
     y: 0
   },
   sections: [
-    {dx: 50, dy: 5, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 50, dy: 15, r: -100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: 100, r: -1000, step_size: 3, wiggle_size: 0},
-    {dx: -50, dy: -5, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: -50, dy: -15, r: 100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
 
   ],
-  color: "#6E7B80"
+  color: "url(#skin)"
 }
-group_1.append("path").attr("fill",silver_1.color).attr("d",svg_path_generator(silver_1))
+group_1.append("path").attr("fill",skin_1.color).attr("d",svg_path_generator(skin_1))
 
 
 
-const line_white_1 = {
+const line_white_1_1 = {
   start: {
     x: 10,
     y: 0
@@ -51,39 +75,39 @@ const line_white_1 = {
   ],
   color: "white"
 }
-group_1.append("path").attr("fill",line_white_1.color).attr("d",svg_path_generator(line_white_1))
+group_1.append("path").attr("fill",line_white_1_1.color).attr("d",svg_path_generator(line_white_1_1))
 .attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
 
-const line_white_2 = {
+const line_white_2_1 = {
   start: {
     x: 20,
-    y: 0
+    y: 4
   },
   sections: [
     {dx: 0, dy: 105, r: 0, step_size: 1, wiggle_size: 1},
   ],
   color: "white"
 }
-group_1.append("path").attr("fill",line_white_2.color).attr("d",svg_path_generator(line_white_2))
+group_1.append("path").attr("fill",line_white_2_1.color).attr("d",svg_path_generator(line_white_2_1))
 .attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
 
-const line_white_3 = {
+const line_white_3_1 = {
   start: {
     x: 30,
-    y: 0
+    y: 7
   },
   sections: [
     {dx: 0, dy: 105, r: 0, step_size: 1, wiggle_size: 1},
   ],
   color: "white"
 }
-group_1.append("path").attr("fill",line_white_3.color).attr("d",svg_path_generator(line_white_3))
+group_1.append("path").attr("fill",line_white_3_1.color).attr("d",svg_path_generator(line_white_3_1))
 .attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
 
-const line_white_4 = {
+const line_white_4_1 = {
   start: {
     x: 40,
-    y: 0
+    y: 10
   },
   sections: [
     {dx: 0, dy: 105, r: -1000, step_size: 1, wiggle_size: 1},
@@ -91,7 +115,7 @@ const line_white_4 = {
   ],
   color: "white"
 }
-group_1.append("path").attr("fill",line_white_4.color).attr("d",svg_path_generator(line_white_4))
+group_1.append("path").attr("fill",line_white_4_1.color).attr("d",svg_path_generator(line_white_4_1))
 .attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
 
 
@@ -102,10 +126,10 @@ const red_1_1 = {
     y: 10
   },
   sections: [
-    {dx: 30, dy: 85, r: -150, step_size: 3, wiggle_size: 0},
-    {dx: -30, dy: -85, r: -300, step_size: 3, wiggle_size: 0},
+    {dx: 30, dy: 95, r: -180, step_size: 3, wiggle_size: 0},
+    {dx: -30, dy: -95, r: -300, step_size: 3, wiggle_size: 0},
   ],
-  color: "#B00101"
+  color: "url(#red_nw_se)"
 }
 group_1.append("path").attr("fill",red_1_1.color).attr("d",svg_path_generator(red_1_1))
 
@@ -114,26 +138,179 @@ group_1.append("path").attr("fill",red_1_1.color).attr("d",svg_path_generator(re
 const red_2_1 = {
   start: {
     x: 40,
-    y: 15
+    y: 20
   },
   sections: [
     {dx: -30, dy: 75, r: -150, step_size: 3, wiggle_size: 0},
     {dx: 30, dy: -75, r: -300, step_size: 3, wiggle_size: 0},
   ],
-  color: "#B00101"
+  color: "url(#red_ne_sw)"
 }
 group_1.append("path").attr("fill",red_2_1.color).attr("d",svg_path_generator(red_2_1))
 
 
 
+const ginger_1 = {
+  start: {
+    x: 20,
+    y: 50
+  },
+  sections: [
+    {dx: 10, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: 10, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: -10, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: -10, r: -8, step_size: 2, wiggle_size: 1},
+  ],
+  color: "url(#ginger)"
+}
+group_1.append("path").attr("fill",ginger_1.color).attr("d",svg_path_generator(ginger_1))
+
+
 const scallion_group_1 = group_1.append("g")
-for(let i=0; i<7; ++i) {
+for(let i=0; i<12; ++i) {
   scallion_group_1.append("rect").attr("x",0).attr("y",0).attr("width",5).attr("height",3)
   .attr("transform",`scale(${1.25 - 0.5*Math.random()}) translate(${25},${50}) rotate(${(Math.round(Math.random() * 360))})`)
   .attr("fill", scallion_color_scale(Math.random()))
 }
-for(let i=0; i<7; ++i) {
+for(let i=0; i<12; ++i) {
   scallion_group_1.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 1)
+  .attr("transform",`translate(${Math.round(Math.random() * 15)},${Math.round(Math.random() * 15)})`)
+  .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 0.75)
+}
+
+
+
+
+
+
+const skin_2 = {
+  start: {
+    x: 0,
+    y: 0
+  },
+  sections: [
+    {dx: 50, dy: 15, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: 100, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: -50, dy: -15, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
+
+  ],
+  color: "url(#skin)"
+}
+group_2.append("path").attr("fill",skin_2.color).attr("d",svg_path_generator(skin_2))
+
+
+
+const line_white_1_2 = {
+  start: {
+    x: 10,
+    y: 0
+  },
+  sections: [
+    {dx: 0, dy: 105, r: 1000, step_size: 1, wiggle_size: 1},
+    {dx: 0, dy: -105, r: -1000, step_size: 1, wiggle_size: 1},
+  ],
+  color: "white"
+}
+group_2.append("path").attr("fill",line_white_1_2.color).attr("d",svg_path_generator(line_white_1_2))
+.attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
+
+const line_white_2_2 = {
+  start: {
+    x: 20,
+    y: 3
+  },
+  sections: [
+    {dx: 0, dy: 105, r: 0, step_size: 1, wiggle_size: 1},
+  ],
+  color: "white"
+}
+group_2.append("path").attr("fill",line_white_2_2.color).attr("d",svg_path_generator(line_white_2_2))
+.attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
+
+const line_white_3_2 = {
+  start: {
+    x: 30,
+    y: 7
+  },
+  sections: [
+    {dx: 0, dy: 105, r: 0, step_size: 1, wiggle_size: 1},
+  ],
+  color: "white"
+}
+group_2.append("path").attr("fill",line_white_3_2.color).attr("d",svg_path_generator(line_white_3_2))
+.attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
+
+const line_white_4_2 = {
+  start: {
+    x: 40,
+    y: 10
+  },
+  sections: [
+    {dx: 0, dy: 105, r: -1000, step_size: 1, wiggle_size: 1},
+    {dx: 0, dy: -105, r: 1000, step_size: 1, wiggle_size: 1},
+  ],
+  color: "white"
+}
+group_2.append("path").attr("fill",line_white_4_2.color).attr("d",svg_path_generator(line_white_4_2))
+.attr("opacity","0.2").attr("stroke","white").attr("stroke-width",1)
+
+
+
+const red_1_2 = {
+  start: {
+    x: 10,
+    y: 10
+  },
+  sections: [
+    {dx: 30, dy: 95, r: -180, step_size: 3, wiggle_size: 0},
+    {dx: -30, dy: -95, r: -300, step_size: 3, wiggle_size: 0},
+  ],
+  color: "url(#red_nw_se)"
+}
+group_2.append("path").attr("fill",red_1_2.color).attr("d",svg_path_generator(red_1_2))
+
+
+
+const red_2_2 = {
+  start: {
+    x: 42,
+    y: 22
+  },
+  sections: [
+    {dx: -35, dy: 75, r: -150, step_size: 3, wiggle_size: 0},
+    {dx: 35, dy: -75, r: -300, step_size: 3, wiggle_size: 0},
+  ],
+  color: "url(#red_ne_sw)"
+}
+group_2.append("path").attr("fill",red_2_2.color).attr("d",svg_path_generator(red_2_2))
+
+
+
+const ginger_2 = {
+  start: {
+    x: 18,
+    y: 55
+  },
+  sections: [
+    {dx: 10, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: 10, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: -10, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: -10, r: -8, step_size: 2, wiggle_size: 1},
+  ],
+  color: "url(#ginger)"
+}
+group_2.append("path").attr("fill",ginger_2.color).attr("d",svg_path_generator(ginger_2))
+
+
+const scallion_group_2 = group_2.append("g").attr("transform","translate(80,30) rotate(90)")
+for(let i=0; i<12; ++i) {
+  scallion_group_2.append("rect").attr("x",0).attr("y",0).attr("width",5).attr("height",3)
+  .attr("transform",`scale(${1.25 - 0.5*Math.random()}) translate(${25},${50}) rotate(${(Math.round(Math.random() * 360))})`)
+  .attr("fill", scallion_color_scale(Math.random()))
+}
+for(let i=0; i<12; ++i) {
+  scallion_group_2.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 1)
   .attr("transform",`translate(${Math.round(Math.random() * 15)},${Math.round(Math.random() * 15)})`)
   .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 0.75)
 }

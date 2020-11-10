@@ -1,0 +1,349 @@
+<html>
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
+<!-- made by Harry Li github.com/harryli0088 -->
+</svg>
+
+<script src="../../node_modules/d3/dist/d3.js"></script>
+<script src="../../index.js"></script>
+<script type="text/javascript">
+const svg = d3.select("svg")
+
+const g = svg.append("g").attr("transform","translate(150,150)")
+
+//plate
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#eee")
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",2)
+
+// const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
+const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
+
+const group_1 = nigiri_group.append("g").attr("transform","translate(0,-10)")
+const group_2 = nigiri_group.append("g").attr("transform","translate(110,120) rotate(180)")
+
+const meat_1 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: 40, dy: 40, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: -40, dy: 90, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: -30, dy: -50, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 30, dy: -80, r: -200, step_size: 3, wiggle_size: 0},
+
+  ],
+  color: "#FFADAD"
+}
+group_1.append("path").attr("fill",meat_1.color).attr("d",svg_path_generator(meat_1))
+
+
+
+const skin_1 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: 12, dy: 8, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: -39, dy: 83, r: -300, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -12, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: -79, r: -200, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF7272"
+}
+group_1.append("path").attr("fill",skin_1.color).attr("d",svg_path_generator(skin_1))
+
+
+
+//vertical-ish lines
+const line_1_1 = {
+  start: {
+    x: -6,
+    y: 63
+  },
+  sections: [
+    {dx: 0, dy: 23, r: 100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_1_1)))
+.attr("fill","none").attr("stroke",line_1_1.color).attr("stroke-width",1)
+
+
+
+const line_2_1 = {
+  start: {
+    x: 5,
+    y: 30
+  },
+  sections: [
+    {dx: -5, dy: 40, r: -150, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_2_1)))
+.attr("fill","none").attr("stroke",line_2_1.color).attr("stroke-width",1)
+
+
+
+const line_3_1 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: -12, dy: 50, r: -150, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_3_1)))
+.attr("fill","none").attr("stroke",line_3_1.color).attr("stroke-width",1)
+
+
+
+const line_4_1 = {
+  start: {
+    x: 26,
+    y: 4
+  },
+  sections: [
+    {dx: -6, dy: 23, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_4_1)))
+.attr("fill","none").attr("stroke",line_4_1.color).attr("stroke-width",1)
+
+
+
+//diagonal-er lines
+const line_5_1 = {
+  start: {
+    x: 28,
+    y: 5
+  },
+  sections: [
+    {dx: -21, dy: 20, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_5_1)))
+.attr("fill","none").attr("stroke",line_5_1.color).attr("stroke-width",1)
+
+
+
+const line_6_1 = {
+  start: {
+    x: 24,
+    y: 20
+  },
+  sections: [
+    {dx: -26, dy: 26, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_6_1)))
+.attr("fill","none").attr("stroke",line_6_1.color).attr("stroke-width",1)
+
+
+
+const line_7_1 = {
+  start: {
+    x: 13,
+    y: 41
+  },
+  sections: [
+    {dx: -20, dy: 22, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_7_1)))
+.attr("fill","none").attr("stroke",line_7_1.color).attr("stroke-width",1)
+
+
+
+const line_8_1 = {
+  start: {
+    x: 3,
+    y: 63
+  },
+  sections: [
+    {dx: -13, dy: 16, r: -70, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_1.append("path").attr("d",removeZ(svg_path_generator(line_8_1)))
+.attr("fill","none").attr("stroke",line_8_1.color).attr("stroke-width",1)
+
+
+
+
+
+
+const meat_2 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: 40, dy: 40, r: -100, step_size: 3, wiggle_size: 0},
+    {dx: -40, dy: 90, r: -1000, step_size: 3, wiggle_size: 0},
+    {dx: -30, dy: -50, r: 100, step_size: 3, wiggle_size: 0},
+    {dx: 30, dy: -80, r: -200, step_size: 3, wiggle_size: 0},
+
+  ],
+  color: "#FFADAD"
+}
+group_2.append("path").attr("fill",meat_2.color).attr("d",svg_path_generator(meat_2))
+
+
+
+const skin_2 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: 12, dy: 8, r: -100, step_size: 1, wiggle_size: 0},
+    {dx: -39, dy: 83, r: -300, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: -12, r: 50, step_size: 1, wiggle_size: 0},
+    {dx: 30, dy: -79, r: -200, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF7272"
+}
+group_2.append("path").attr("fill",skin_2.color).attr("d",svg_path_generator(skin_2))
+
+
+
+//vertical-ish lines
+const line_1_2 = {
+  start: {
+    x: -6,
+    y: 63
+  },
+  sections: [
+    {dx: 0, dy: 23, r: 100, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_1_2)))
+.attr("fill","none").attr("stroke",line_1_2.color).attr("stroke-width",1)
+
+
+
+const line_2_2 = {
+  start: {
+    x: 5,
+    y: 30
+  },
+  sections: [
+    {dx: -5, dy: 40, r: -150, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_2_2)))
+.attr("fill","none").attr("stroke",line_2_2.color).attr("stroke-width",1)
+
+
+
+const line_3_2 = {
+  start: {
+    x: 20,
+    y: 0
+  },
+  sections: [
+    {dx: -12, dy: 50, r: -150, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_3_2)))
+.attr("fill","none").attr("stroke",line_3_2.color).attr("stroke-width",1)
+
+
+
+const line_4_2 = {
+  start: {
+    x: 26,
+    y: 4
+  },
+  sections: [
+    {dx: -6, dy: 23, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_4_2)))
+.attr("fill","none").attr("stroke",line_4_2.color).attr("stroke-width",1)
+
+
+
+//diagonal-er lines
+const line_5_2 = {
+  start: {
+    x: 28,
+    y: 5
+  },
+  sections: [
+    {dx: -21, dy: 20, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_5_2)))
+.attr("fill","none").attr("stroke",line_5_2.color).attr("stroke-width",1)
+
+
+
+const line_6_2 = {
+  start: {
+    x: 24,
+    y: 20
+  },
+  sections: [
+    {dx: -26, dy: 26, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_6_2)))
+.attr("fill","none").attr("stroke",line_6_2.color).attr("stroke-width",1)
+
+
+
+const line_7_2 = {
+  start: {
+    x: 13,
+    y: 41
+  },
+  sections: [
+    {dx: -20, dy: 22, r: -90, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_7_2)))
+.attr("fill","none").attr("stroke",line_7_2.color).attr("stroke-width",1)
+
+
+
+const line_8_2 = {
+  start: {
+    x: 3,
+    y: 63
+  },
+  sections: [
+    {dx: -13, dy: 16, r: -70, step_size: 1, wiggle_size: 0},
+  ],
+  color: "#FF3333"
+}
+group_2.append("path").attr("d",removeZ(svg_path_generator(line_8_2)))
+.attr("fill","none").attr("stroke",line_8_2.color).attr("stroke-width",1)
+
+
+
+
+
+
+function removeZ(str) {
+  return str.slice(0, str.indexOf("Z"))
+}
+
+</script>
+
+</html>
