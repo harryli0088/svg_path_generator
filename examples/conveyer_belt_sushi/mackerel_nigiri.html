@@ -21,8 +21,8 @@
   </defs>
   <defs>
     <linearGradient id="ginger" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FFF9B7;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DAB200;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#FFF478;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C1B100;stop-opacity:1" />
     </linearGradient>
   </defs>
 </svg>
@@ -30,7 +30,7 @@
 <script src="../../node_modules/d3/dist/d3.js"></script>
 <script src="../../index.js"></script>
 <script type="text/javascript">
-const scallion_color_scale = d3.scaleLinear().domain([0,1]).range(["#A2E27E","#286E00"])
+const scallion_color_scale = d3.scaleLinear().domain([0,1]).range(["#64CF28","#286E00"])
 
 const svg = d3.select("svg")
 
@@ -156,10 +156,10 @@ const ginger_1 = {
     y: 50
   },
   sections: [
-    {dx: 10, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
-    {dx: 0, dy: 10, r: -8, step_size: 2, wiggle_size: 1},
-    {dx: -10, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
-    {dx: 0, dy: -10, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 12, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: 12, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: -12, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: -12, r: -8, step_size: 2, wiggle_size: 1},
   ],
   color: "url(#ginger)"
 }
@@ -168,14 +168,14 @@ group_1.append("path").attr("fill",ginger_1.color).attr("d",svg_path_generator(g
 
 const scallion_group_1 = group_1.append("g")
 for(let i=0; i<12; ++i) {
-  scallion_group_1.append("rect").attr("x",0).attr("y",0).attr("width",5).attr("height",3)
+  scallion_group_1.append("rect").attr("x",0).attr("y",0).attr("width",7).attr("height",4)
   .attr("transform",`scale(${1.25 - 0.5*Math.random()}) translate(${25},${50}) rotate(${(Math.round(Math.random() * 360))})`)
   .attr("fill", scallion_color_scale(Math.random()))
 }
 for(let i=0; i<12; ++i) {
-  scallion_group_1.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 1)
+  scallion_group_1.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 2)
   .attr("transform",`translate(${Math.round(Math.random() * 15)},${Math.round(Math.random() * 15)})`)
-  .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 0.75)
+  .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 1)
 }
 
 
@@ -293,10 +293,10 @@ const ginger_2 = {
     y: 55
   },
   sections: [
-    {dx: 10, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
-    {dx: 0, dy: 10, r: -8, step_size: 2, wiggle_size: 1},
-    {dx: -10, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
-    {dx: 0, dy: -10, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 13, dy: 0, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: 13, r: -8, step_size: 2, wiggle_size: 1},
+    {dx: -13, dy: 0, r: 8, step_size: 2, wiggle_size: 1},
+    {dx: 0, dy: -13, r: -8, step_size: 2, wiggle_size: 1},
   ],
   color: "url(#ginger)"
 }
@@ -304,15 +304,15 @@ group_2.append("path").attr("fill",ginger_2.color).attr("d",svg_path_generator(g
 
 
 const scallion_group_2 = group_2.append("g").attr("transform","translate(80,30) rotate(90)")
-for(let i=0; i<12; ++i) {
-  scallion_group_2.append("rect").attr("x",0).attr("y",0).attr("width",5).attr("height",3)
+for(let i=0; i<10; ++i) {
+  scallion_group_2.append("rect").attr("x",0).attr("y",0).attr("width",7).attr("height",4)
   .attr("transform",`scale(${1.25 - 0.5*Math.random()}) translate(${25},${50}) rotate(${(Math.round(Math.random() * 360))})`)
   .attr("fill", scallion_color_scale(Math.random()))
 }
 for(let i=0; i<12; ++i) {
-  scallion_group_2.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 1)
+  scallion_group_2.append("circle").attr("cx",20).attr("cy",48).attr("r",Math.random() + 2)
   .attr("transform",`translate(${Math.round(Math.random() * 15)},${Math.round(Math.random() * 15)})`)
-  .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 0.75)
+  .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 1)
 }
 
 </script>
