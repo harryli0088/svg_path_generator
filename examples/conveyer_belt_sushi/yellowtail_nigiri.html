@@ -15,7 +15,7 @@ g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#eee")
 g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","none").attr("stroke","#ddd").attr("stroke-width",2)
 
 // const rotate_group = g.append("g").attr("transform","rotate(45) scale(1.5)")
-const nigiri_group = g.append("g").attr("transform","translate(-55,-53)")
+const nigiri_group = g.append("g").attr("transform","scale(1.4) translate(-55,-53)")
 
 const group_1 = nigiri_group.append("g").attr("transform","translate(50,0) scale(-1,1)")
 const group_2 = nigiri_group.append("g").attr("transform","translate(110,-20) scale(-1,1)")
@@ -33,7 +33,7 @@ const yellowtail_1 = {
     {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
   ],
-  color: "#FFE7C9"
+  color: "#FFD9AA"
 };
 group_1.append("path").attr("fill",yellowtail_1.color).attr("d",svg_path_generator(yellowtail_1))
 
@@ -87,7 +87,7 @@ const yellowtail_2 = {
     {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
   ],
-  color: "#FFE7C9"
+  color: "#FFD9AA"
 };
 group_2.append("path").attr("fill",yellowtail_2.color).attr("d",svg_path_generator(yellowtail_2))
 
