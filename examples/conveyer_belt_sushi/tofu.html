@@ -28,7 +28,7 @@ const svg = d3.select("svg")
 const g = svg.append("g").attr("transform","translate(150,150)")
 
 //plate
-g.append("circle").attr("cx",0).attr("cy",0).attr("r",150).attr("fill","#922B21")
+g.append("circle").attr("cx",0).attr("cy",0).attr("r",149).attr("fill","#922B21")
 g.append("circle").attr("cx",0).attr("cy",0).attr("r",100).attr("fill","#A93226").attr("stroke","#641E16").attr("stroke-width",2)
 
 
@@ -99,23 +99,102 @@ tofu_g.append("path").attr("fill",top_soy_sauce.color).attr("d",svg_path_generat
 
 
 const scallion_color_scale = d3.scaleLinear().domain([0,1]).range(["#AFFF83","#286E00"])
-const scallion_group = tofu_g.append("g")
-for(let i=0; i<20; ++i) {
-  scallion_group.append("rect").attr("x",0).attr("y",0).attr("width",7).attr("height",Math.round(2 * Math.random() + 2))
-  .attr("transform",`translate(${getRandomValueAroundZero(20)},${getRandomValueAroundZero(35)}) rotate(${(Math.round(Math.random() * 360))}) scale(${1.25 - 0.5*Math.random()}) `)
+const topping_group = tofu_g.append("g")
+
+function addScallionRect() {
+  topping_group.append("rect").attr("x",0).attr("y",0).attr("width",7).attr("height",Math.round(2 * Math.random() + 2))
+  .attr("transform",`translate(${getRandomScallionValue(20)},${getRandomScallionValue(35)}) rotate(${getRandomDegree()}) scale(${1.25 - 0.5*Math.random()}) `)
   .attr("fill", scallion_color_scale(Math.random()))
 }
-for(let i=0; i<25; ++i) {
-  scallion_group.append("circle").attr("cx",0).attr("cy",0).attr("r",2*Math.random() + 2)
-  .attr("transform",`translate(${getRandomValueAroundZero(20)},${getRandomValueAroundZero(35)}) scale(${(1 + 0.5*Math.random()).toFixed()})`)
+
+function addScallionCircle() {
+  topping_group.append("circle").attr("cx",0).attr("cy",0).attr("r",2*Math.random() + 2)
+  .attr("transform",`translate(${getRandomScallionValue(20)},${getRandomScallionValue(35)}) scale(${(1 + 0.5*Math.random()).toFixed()})`)
   .attr("fill", "none").attr("stroke",scallion_color_scale(Math.random())).attr("stroke-width", 1)
 }
 
-
-function getRandomValueAroundZero(maxMagnitude) {
+function getRandomScallionValue(maxMagnitude, round) {
   return Math.round(
     maxMagnitude * (Math.sign(Math.random()>0.5 ? 1 : -1) * Math.pow(Math.random(), 3))
   )
+}
+
+
+
+const bonito_x_random = 20
+const bonito_y_random = 45
+const bonito_scale_random = 0.5
+const bonito_colors = ["#ffe174","#ffedab","#fde17e","#f2d56e"]
+const bonito_sections = [ //made a few scraggly looking sections
+  [
+    {dx: 3, dy: -3, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: -1, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 5, dy: -5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 2, dy: 2, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 6, dy: -6, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 5, dy: -2, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -6, dy: 6, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -3, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 5, dy: -7, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 7, dy: 0, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -2, dy: 5, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: -5, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+  [
+    {dx: 3, dy: -3, r: 0, step_size: 1, wiggle_size: 0.5},
+    {dx: 8, dy: 8, r: 0, step_size: 1, wiggle_size: 0},
+    {dx: -3, dy: 3, r: 0, step_size: 1, wiggle_size: 0.5},
+  ],
+]
+function addBonito(counter) {
+  //iterate through all bonito sections
+  bonito_sections.forEach(function(s) {
+    const x = Math.round( Math.random()*2*bonito_x_random - bonito_x_random )
+    const y = Math.round( Math.random()*2*bonito_y_random - bonito_y_random )
+    const bonito = {
+      start: {
+        x: Math.round(100*Math.sign(x)*Math.pow(Math.abs(x),.95))/100,
+        y: Math.round(100*Math.sign(y)*Math.pow(Math.abs(y),.95))/100
+      },
+      sections: s
+    }
+    topping_group.append("path").attr("class","bonito").attr("d",svg_path_generator(bonito))
+    .attr("transform",`rotate(${getRandomDegree()},${bonito.start.x.toFixed(2)},${bonito.start.y.toFixed(2)})`)
+    .attr("stroke","#ffeeb3").attr("stroke-width",.2).attr("fill",bonito_colors[Math.floor(Math.random()*bonito_colors.length)])
+    .attr("opacity",getRandomBonitoOpacity())
+  })
+}
+function getRandomBonitoOpacity(magnitude=0.2) {
+  return (
+    0.8 + Math.random()*magnitude - magnitude/2
+  ).toFixed(2)
+}
+
+
+const iterations = 30
+for(let i=0; i<iterations; ++i) {
+  addBonito()
+
+  if(i >= iterations-20) {
+    addScallionRect()
+  }
+  if(i >= iterations-25) {
+    addScallionCircle()
+  }
+}
+
+
+function getRandomDegree() {
+  return Math.round( Math.random()*360 )
 }
 </script>
 
