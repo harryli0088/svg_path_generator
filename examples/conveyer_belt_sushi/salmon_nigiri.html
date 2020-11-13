@@ -1,6 +1,12 @@
 <html>
 <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
 <!-- made by Harry Li github.com/harryli0088 -->
+<defs>
+  <linearGradient id="salmon" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#FF9D3A;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#FF8000;stop-opacity:1" />
+  </linearGradient>
+</defs>
 </svg>
 
 <script src="../../node_modules/d3/dist/d3.js"></script>
@@ -32,7 +38,7 @@ const salmon_1 = {
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
 
   ],
-  color: "#FF8A14"
+  color: "url(#salmon)"
 };
 group_1.append("path").attr("fill",salmon_1.color).attr("d",svg_path_generator(salmon_1))
 
@@ -128,7 +134,7 @@ const salmon_2 = {
     {dx: 0, dy: -102, r: -1000, step_size: 3, wiggle_size: 0},
 
   ],
-  color: "#FF8A14"
+  color: "url(#salmon)"
 };
 group_2.append("path").attr("fill",salmon_2.color).attr("d",svg_path_generator(salmon_2))
 

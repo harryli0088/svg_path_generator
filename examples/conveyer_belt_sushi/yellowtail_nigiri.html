@@ -1,6 +1,12 @@
 <html>
 <svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" width="300" height="300" style="background: gray">
 <!-- made by Harry Li github.com/harryli0088 -->
+<defs>
+  <linearGradient id="yellowtail" x1="50%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FFE9CE;stop-opacity:1"></stop>
+    <stop offset="100%" style="stop-color:#FFDBAE;stop-opacity:1"></stop>
+  </linearGradient>
+</defs>
 </svg>
 
 <script src="../../node_modules/d3/dist/d3.js"></script>
@@ -33,7 +39,7 @@ const yellowtail_1 = {
     {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
   ],
-  color: "#FFE0B9"
+  color: "url(#yellowtail)"
 };
 group_1.append("path").attr("fill",yellowtail_1.color).attr("d",svg_path_generator(yellowtail_1))
 
@@ -87,7 +93,7 @@ const yellowtail_2 = {
     {dx: -49, dy: -31, r: 100, step_size: 3, wiggle_size: 0},
     {dx: 0, dy: -100, r: -1000, step_size: 3, wiggle_size: 0},
   ],
-  color: "#FFE0B9"
+  color: "url(#yellowtail)"
 };
 group_2.append("path").attr("fill",yellowtail_2.color).attr("d",svg_path_generator(yellowtail_2))
 
