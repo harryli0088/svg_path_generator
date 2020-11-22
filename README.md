@@ -87,6 +87,9 @@ svg_path_generator(path_data); //returns the "d" attribute string to put into yo
 ## Examples
 Examples can be found in the /examples directory. You can install d3.js as a peer dependency.
 
+## Boxy SVG
+I've discovered this awesome online SVG editor called Boxy SVG https://boxy-svg.com/ that works really well too!
+
 
 ## License
 MIT License
