@@ -7,7 +7,7 @@
     "example": "examples"
   },
   "devDependencies": {
-    "d3": "^5.9.2"
+    "d3": "^7.6.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
